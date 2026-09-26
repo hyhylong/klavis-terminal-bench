@@ -224,6 +224,10 @@ class DatabaseRuntime:
         kwargs.setdefault("autocommit", True)
         connection = psycopg.connect(self._app_dsn(database), **kwargs)
         try:
+            # Role defaults are application-controlled. Keep trusted inspection
+            # decoding and builtin resolution independent of those defaults.
+            connection.execute("SET client_encoding='UTF8'")
+            connection.execute("SET search_path=pg_catalog")
             connection.execute("SET default_transaction_read_only=on")
             connection.execute("SET statement_timeout='5s'")
             connection.execute("SET lock_timeout='5s'")

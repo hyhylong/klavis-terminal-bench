@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "classification": "normal_pilot_success",
+  "task_status": "difficulty_requirement_not_met; stop full matrix for this frozen candidate",
+  "job": "standard-codex-20260926T213203660705Z",
+  "trial": "online-order-cutover__DDiSCkf",
+  "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+  "frozen_task": "artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover",
+  "agent_info": {
+    "name": "codex",
+    "version": "0.157.1",
+    "model_info": {
+      "name": "gpt-6-astra",
+      "provider": "openai"
+    }
+  },
+  "reasoning_effort": "xhigh",
+  "reward": 1.0,
+  "exception_info": null,
+  "separate_verifier": "separate",
+  "ctrf_summary": {
+    "tests": 23,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "pending": 0,
+    "other": 0,
+    "start": 1790459384984,
+    "stop": 1790459442429
+  },
+  "preflight": {
+    "purpose": "trusted platform only; submitted artifact not evaluated",
+    "status": "passed",
+    "checks": [
+      "trusted_model_golden",
+      "fresh_postgresql",
+      "unprivileged_application",
+      "standard_library_and_psycopg",
+      "protected_tests_read_denied",
+      "reward_write_denied",
+      "restricted_sql_role",
+      "server_file_read_denied",
+      "known_inventory",
+      "read_only_inspection",
+      "commit_ack_proxy"
+    ]
+  },
+  "coverage": [
+    {
+      "backend": "source",
+      "committed_receipt_observed_before_kill": true,
+      "complete_http_request_sent": true,
+      "coverage": "committed_before_kill",
+      "response_read": false,
+      "schedule": "service_unknown_response"
+    },
+    {
+      "backend": "target",
+      "committed_receipt_observed_before_kill": true,
+      "complete_http_request_sent": true,
+      "coverage": "committed_before_kill",
+      "response_read": false,
+      "schedule": "service_unknown_response"
+    },
+    {
+      "backend_at_barrier": "source",
+      "fault_observed": true,
+      "phase": "blocked",
+      "schedule": "backfill"
+    },
+    {
+      "crash_observed": true,
+      "phase": "blocked",
+      "schedule": "restart"
+    },
+    {
+      "backend_at_barrier": "source",
+      "initial_phase": "blocked",
+      "release_reason": "migration_waits_on_writer",
+      "schedule": "delayed_commit"
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "baseline",
+      "fault_observed": false,
+      "initial_commit_count": 2,
+      "initial_exit_code": 0,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": null
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 1,
+      "initial_exit_code": 1,
+      "initial_phase": "selected_ack_lost",
+      "live_source_changes": false,
+      "schedule": "commit_ack",
+      "selected_ordinal": 1
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 2,
+      "initial_exit_code": 1,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": 2
+    },
+    {
+      "coverage": "held_across_activation",
+      "schedule": "connection_gate"
+    }
+  ],
+  "started_at": "2026-09-26T21:32:05.419072Z",
+  "finished_at": "2026-09-26T21:50:45.110602Z",
+  "job_seconds": 1119.69153,
+  "agent_execution_seconds": 1014.208143,
+  "artifact": {
+    "path": "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/artifacts/app/orderbridge",
+    "files": [
+      {
+        "path": "__init__.py",
+        "bytes": 138,
+        "sha256": "69a1321d229d342a89e4e1b590776e0b2ad03ba7810206e23ca47a48d4a74779",
+        "starter_status": "modified"
+      },
+      {
+        "path": "__main__.py",
+        "bytes": 911,
+        "sha256": "0acd181140c84e994f7ee17df30cd38d27440c982888f5a6cae7121be45ffa2d",
+        "starter_status": "unchanged"
+      },
+      {
+        "path": "api.py",
+        "bytes": 2462,
+        "sha256": "da5d16f327314f6e67ff6cb83b7b842942e2ab9b1afc5245a4dbb730f8b6a328",
+        "starter_status": "unchanged"
+      },
+      {
+        "path": "backend.py",
+        "bytes": 8961,
+        "sha256": "9b333f7fd6167dbcbfdad47446cd3b7cabc144540175db0699bb2ba1f334f68c",
+        "starter_status": "modified"
+      },
+      {
+        "path": "coordination.py",
+        "bytes": 2716,
+        "sha256": "0ef86e2d50189d6edc5ebfb1cfa7f1e3dd48d1bdcbd9209510a735a055b4f4d8",
+        "starter_status": "added"
+      },
+      {
+        "path": "migrate.py",
+        "bytes": 4374,
+        "sha256": "37021161c1669a64a530a1b6b73256ecbbe0fa392ebaaa63f565d6644b035f85",
+        "starter_status": "modified"
+      },
+      {
+        "path": "README.md",
+        "bytes": 3352,
+        "sha256": "399d9103cf08b5ee0d4fe157c31a5f629c96c904c37db9779ce83380ac0704fd",
+        "starter_status": "added"
+      },
+      {
+        "path": "service.py",
+        "bytes": 3690,
+        "sha256": "f9fe1b83bba62e2d1deba919c159b3384f9267de3792b5e99c78dbd4414b2673",
+        "starter_status": "modified"
+      },
+      {
+        "path": "test_integration.py",
+        "bytes": 20809,
+        "sha256": "5efd4c00a7a776381f0125112abade013536a872c1cc1a074975a3165b2f812b",
+        "starter_status": "added"
+      }
+    ]
+  },
+  "source_sha256": {
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/result.json": "9e68f055452d32586162ccbc343f62644e238da3751483b7fd6a4a20ab729f03",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/verifier/ctrf.json": "35dbfb060c39d5004bc998817194ff0c7358344e75a17c61b9afcc568ccb16d3",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/verifier/coverage.jsonl": "84423cd47fd0d0f74b6e3b433e56a317a731d3b1c67cd0a8e0312ca4b6c7ecb5",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/verifier/preflight.json": "87dc4cb35e4f7a1adab85691774e14e279dcc256fa2b665feb93e11d84983d02",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/verifier/reward.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/verifier/test-stdout.txt": "acf6af9188ed48a5e7c3afbf15cc9189688c85fd8164fecf33adff631c0f59bf",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/agent/trajectory.json": "18ed8f9eed76d1c9129b367718266b51d91e7fdf48bf6aa71d73e8dd4c2aec7b",
+    "artifacts/jobs/standard-codex-20260926T213203660705Z/online-order-cutover__DDiSCkf/agent/codex.txt": "63b8743d4ff3cc6ccad0495baa3efddaf0bae4887a7a27143db33a74550e0d1d"
+  },
+  "limits": [
+    "One ordinary trial, not six-trial qualification or a formal cheat trial.",
+    "First frozen verifier has separately documented coverage/classification defects; retain this score and inspect the actual solution instead of relabeling success.",
+    "Observed fault schedules confirm blocked live backfill, migration kill, delayed commit, both actual target COMMIT ACK losses, discarded HTTP responses and held-across-activation connection.",
+    "No cost estimate is asserted; model pricing metadata is not required for the outcome."
+  ],
+  "ctrf_window_seconds": 57.445,
+  "pytest_reported_seconds": 61.03
+}

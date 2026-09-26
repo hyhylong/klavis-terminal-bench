@@ -7,6 +7,132 @@
   ],
   "trials": [
     {
+      "trial_name": "online-order-cutover__qeMxGMK",
+      "task_name": "terminal-bench/online-order-cutover",
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+      "agent": "nop",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T21:29:53.243184Z",
+        "finished_at": "2026-09-26T21:31:14.722941Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T21:29:53.344796Z",
+          "finished_at": "2026-09-26T21:29:56.205646Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T21:29:56.205691Z",
+          "finished_at": "2026-09-26T21:29:56.205752Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T21:29:56.205820Z",
+          "finished_at": "2026-09-26T21:29:56.206157Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T21:30:00.082135Z",
+          "finished_at": "2026-09-26T21:31:14.722921Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "nop_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-nop-v1\\online-order-cutover__qeMxGMK\\trial.log"
+      }
+    },
+    {
+      "trial_name": "online-order-cutover__Fcvkiwj",
+      "task_name": "terminal-bench/online-order-cutover",
+      "task_checksum": "8099509f81b68374fcc9378f1a94c09567e96baf38fb8319cbe578807209748e",
+      "agent": "oracle",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T21:54:35.381421Z",
+        "finished_at": "2026-09-26T21:56:04.027011Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T21:54:35.448048Z",
+          "finished_at": "2026-09-26T21:54:39.689934Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T21:54:39.689983Z",
+          "finished_at": "2026-09-26T21:54:39.690037Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T21:54:39.690104Z",
+          "finished_at": "2026-09-26T21:54:40.176315Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T21:54:43.743117Z",
+          "finished_at": "2026-09-26T21:56:04.026995Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "oracle_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-boundaries-v2\\online-order-cutover__Fcvkiwj\\trial.log"
+      }
+    },
+    {
+      "trial_name": "online-order-cutover__TjMR9i9",
+      "task_name": "terminal-bench/online-order-cutover",
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+      "agent": "oracle",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T21:29:53.366346Z",
+        "finished_at": "2026-09-26T21:31:34.924965Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T21:29:53.517435Z",
+          "finished_at": "2026-09-26T21:29:56.188100Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T21:29:56.188151Z",
+          "finished_at": "2026-09-26T21:29:56.188207Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T21:29:56.188304Z",
+          "finished_at": "2026-09-26T21:29:56.788171Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T21:30:00.690638Z",
+          "finished_at": "2026-09-26T21:31:34.924951Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "oracle_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cutover-oracle-v1\\online-order-cutover__TjMR9i9\\trial.log"
+      }
+    },
+    {
       "trial_name": "durable-ledger-repair__3ZzjuPG",
       "task_name": "terminal-bench/durable-ledger-repair",
       "task_checksum": "67b7011c64d6221ee8f0312a50e5d3b88f71cb37e8420dfec628f2d932fa858c",
@@ -446,6 +572,49 @@
         "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\artifacts\\manifest.json",
         "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\agent\\trajectory.json",
         "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\trial.log"
+      }
+    },
+    {
+      "trial_name": "review-task__ZgkLZCk",
+      "task_name": "review-task",
+      "task_checksum": "4971971077042feef9471533aef9b6cd8f9af5660836fdd16c7dc75e97137e62",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T21:30:56.336210Z",
+        "finished_at": "2026-09-26T21:40:53.854004Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T21:30:56.358533Z",
+          "finished_at": "2026-09-26T21:31:02.118333Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T21:31:02.118386Z",
+          "finished_at": "2026-09-26T21:31:02.588901Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T21:31:02.589050Z",
+          "finished_at": "2026-09-26T21:40:42.131823Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T21:40:51.254554Z",
+          "finished_at": "2026-09-26T21:40:51.583942Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "solved",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T213043756969Z\\review-task__ZgkLZCk\\trial.log"
       }
     },
     {
@@ -1065,6 +1234,49 @@
       }
     },
     {
+      "trial_name": "online-order-cutover__DDiSCkf",
+      "task_name": "terminal-bench/online-order-cutover",
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T21:32:05.419072Z",
+        "finished_at": "2026-09-26T21:50:45.110602Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T21:32:05.506688Z",
+          "finished_at": "2026-09-26T21:32:09.425658Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T21:32:09.425740Z",
+          "finished_at": "2026-09-26T21:32:09.935565Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T21:32:09.935696Z",
+          "finished_at": "2026-09-26T21:49:04.143839Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T21:49:09.748203Z",
+          "finished_at": "2026-09-26T21:50:45.110583Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "solved",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T213203660705Z\\online-order-cutover__DDiSCkf\\trial.log"
+      }
+    },
+    {
       "trial_name": "temporal-ledger-repair__SAk7yaT",
       "task_name": "terminal-bench/temporal-ledger-repair",
       "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
@@ -1233,6 +1445,13 @@
       "count": 1
     },
     {
+      "task_checksum": "4971971077042feef9471533aef9b6cd8f9af5660836fdd16c7dc75e97137e62",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "solved",
+      "count": 1
+    },
+    {
       "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
       "agent": "codex",
       "model": "gpt-6-astra",
@@ -1262,6 +1481,34 @@
     },
     {
       "task_checksum": "67b7011c64d6221ee8f0312a50e5d3b88f71cb37e8420dfec628f2d932fa858c",
+      "agent": "oracle",
+      "model": null,
+      "classification": "oracle_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "8099509f81b68374fcc9378f1a94c09567e96baf38fb8319cbe578807209748e",
+      "agent": "oracle",
+      "model": null,
+      "classification": "oracle_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "solved",
+      "count": 1
+    },
+    {
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+      "agent": "nop",
+      "model": null,
+      "classification": "nop_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
       "agent": "oracle",
       "model": null,
       "classification": "oracle_pass",

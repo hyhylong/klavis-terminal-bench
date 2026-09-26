@@ -1,10 +1,10 @@
 # Klavis Terminal-Bench local workspace
 
-原创任务实现工作区。题目从乱序 CDC 事件恢复双时间账本，处理原子事务、重复冲突、schema 延迟、历史修正、半开区间、删除和字段来源。输入为合成数据：1,010 条事件、21 个交付检查点。
+原创 Terminal-Bench 任务与本地评测工作区，包含账本恢复、持久化修复和在线订单迁移三个候选。WSL、Docker、Harbor 及模型试做均已实际运行；当前尚无达到全部作业门槛的候选。
 
-**第一版被 Codex 和 DeepSeek 各成功解出；第二版也已被 Codex 正常试做成功解出。两版均不满足所需难度，保留全部真实结果作为反证，当前任务尚未完成。**
+**第一版被 Codex 和 DeepSeek 各成功解出；第二版、第三版也均被 Codex 正常解出。三版均不满足所需难度，保留全部真实成功结果，当前作业尚未完成。**
 
-第三版在线订单服务迁移已冻结：真实 PostgreSQL 原型 68 项检查通过；正式 Harbor 参考解 23/23、初始代码 9/23，两次均无执行异常。更简单的合法双次复制方案也通过了完整的 23 项验收。35 项 rubric 为 25 pass、9 fail、1 N/A，发现非法响应误分类和并发故障覆盖缺口，尚未通过；Codex 普通试做仍在运行，详见[当前进度](docs/online-cutover-progress.md)。
+第三版在线订单服务迁移的 Codex / GPT-6 Astra / xhigh 普通试做 **23/23、reward 1、无异常**，整个 trial 18 分 40 秒。真实经历了阻塞回填、晚提交、两个 COMMIT 回执丢失及跨切换旧连接，未依赖已知观察窗口漏洞。35 项 rubric 为 25 pass、9 fail、1 N/A；另有需要修复的验收器问题。已停止该候选的完整失败矩阵，详见[试做分析](docs/online-cutover-pilot-analysis.md)、[过滤后的实测证据](artifacts/validation/cutover-codex-pilot.json)和[进度与限制](docs/online-cutover-progress.md)。
 
 第二版 `tasks/durable-ledger-repair` 修复持久化账本的修订依赖和缓存恢复。冻结版本的参考解 26/26 通过，初始代码有 6 项语义错误，控制试验均无执行异常。随后 Codex / GPT-6 Astra / xhigh 获得真实 reward 1，26/26 通过，无异常；整个 job 约 8 分 3 秒，stream 中位数 0.365 秒，低于公开的 3 秒上限。它保留正确的源存储层，修复两处索引错误，并合法丢弃可选缓存。该候选的难度假设已被否证，不再为它继续六次失败和两次对抗的完整评测。首次安装网络错误仍保留为基础设施失败。见 [试做分析](docs/durable-pilot-analysis.md)、[过滤后的证据](artifacts/validation/durable-codex-pilot.json)和[第二版记录](docs/durable-progress.md)。
 
