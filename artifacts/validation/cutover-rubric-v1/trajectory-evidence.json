@@ -1,0 +1,35 @@
+{
+  "scope": "Selected completed reviewer tool outputs; temporary review-only controls, not a formal cheat-model trial. Original temporary controls were not exported as task artifacts.",
+  "events": [
+    {
+      "item_id": "item_34",
+      "command": "/bin/bash -lc \"python - <<'PY'\nfrom pathlib import Path\nsource=Path('/app/task-under-review/online-order-cutover/solution/orderbridge/migrate.py').read_text()\nsource=source.replace('import json\\\\n','import json\\\\nimport time\\\\n')\nsource=source.replace('def main(source_dsn, target_dsn):\\\\n','def main(source_dsn, target_dsn):\\\\n    time.sleep(4)\\\\n')\nsource=source.replace('        copy_snapshot(source_dsn, target)\\\\n','        with psycopg.connect(source_dsn, autocommit=True) as offline:\\\\n            offline.execute(\\\"SELECT pg_advisory_lock(%s,1)\\\", (NAMESPACE,))\\\\n            copy_snapshot(source_dsn, target)\\\\n')\ncompile(source,'offline-migrate','exec')\nPath('/tmp/order-cutover-offline-migrate.py').write_text(source)\nsource=Path('/app/task-under-review/online-order-cutover/solution/orderbridge/backend.py').read_text()\nsource=source.replace('def _execute(conn, backend, request):\\\\n','def _execute(conn, backend, request):\\\\n    if request.get(\\\"request_id\\\") == \\\"shared\\\":\\\\n        return []\\\\n')\ncompile(source,'malformed-backend','exec')\nPath('/tmp/order-cutover-malformed-backend.py').write_text(source)\nprint('Prepared two review-only mutations outside the task tree')\nPY\"",
+      "output": "Prepared two review-only mutations outside the task tree\n",
+      "exit_code": 0
+    },
+    {
+      "item_id": "item_37",
+      "command": "/bin/bash -lc 'cat /tmp/order-cutover-malformed-test.log; ls -l /logs/verifier; cat /logs/verifier/infrastructure-error.json'",
+      "output": "{\"preflight\": \"passed\"}\nFF                                                                       [100%]\n=================================== FAILURES ===================================\n______________ test_concurrent_conflicting_ids_and_stock[source] _______________\ntest_outputs.py:119: in test_concurrent_conflicting_ids_and_stock\n    winners = [i for i, result in enumerate(actual) if result.get(\"ok\") is True]\n                                                       ^^^^^^^^^^\nE   AttributeError: 'list' object has no attribute 'get'\n______________ test_concurrent_conflicting_ids_and_stock[target] _______________\ntest_outputs.py:119: in test_concurrent_conflicting_ids_and_stock\n    winners = [i for i, result in enumerate(actual) if result.get(\"ok\") is True]\n                                                       ^^^^^^^^^^\nE   AttributeError: 'list' object has no attribute 'get'\n=========================== short test summary info ============================\nFAILED test_outputs.py::test_concurrent_conflicting_ids_and_stock[source] - A...\nFAILED test_outputs.py::test_concurrent_conflicting_ids_and_stock[target] - A...\n2 failed, 21 deselected in 4.43s\ntotal 4\n-rwxrwxrwx 1 root root 2203 Sep 26 21:36 ctrf.json\n-rwxrwxrwx 1 root root  151 Sep 26 21:36 infrastructure-error.json\n-rwxrwxrwx 1 root root  430 Sep 26 21:36 preflight.json\n{\"status\": \"requires_investigation\", \"test\": \"test_concurrent_conflicting_ids_and_stock[target]\", \"phase\": \"call\", \"exception_type\": \"AttributeError\"}\n",
+      "exit_code": 0
+    },
+    {
+      "item_id": "item_40",
+      "command": "/bin/bash -lc \"tail -n 5 /tmp/order-cutover-offline-test.log; python - <<'PY'\nfrom pathlib import Path\nimport json, hashlib\np=Path('/app/task-under-review/online-order-cutover')\nbefore=json.loads(Path('/tmp/task-review-original-hashes.json').read_text())\nnow={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in p.rglob('*') if f.is_file()}\nprint('Task files unchanged:',before==now)\nprint('File count:',len(now))\nPY\"",
+      "output": "{\"preflight\": \"passed\"}\n.........Task files unchanged: True\nFile count: 35\n",
+      "exit_code": 0
+    },
+    {
+      "item_id": "item_42",
+      "command": "/bin/bash -lc 'tail -n 8 /tmp/order-cutover-offline-test.log; test ! -f /logs/verifier/coverage.jsonl || tail -n 6 /logs/verifier/coverage.jsonl'",
+      "output": "{\"preflight\": \"passed\"}\n.....................{\"backend_at_barrier\": \"source\", \"fault_observed\": false, \"phase\": \"observation_expired\", \"schedule\": \"backfill\"}\n{\"crash_observed\": true, \"phase\": \"observation_expired\", \"schedule\": \"restart\"}\n{\"backend_at_barrier\": \"source\", \"initial_phase\": \"observation_expired\", \"release_reason\": \"bounded_release\", \"schedule\": \"delayed_commit\"}\n{\"backend_at_barrier\": \"source\", \"coverage\": \"baseline\", \"fault_observed\": false, \"initial_commit_count\": 3, \"initial_exit_code\": 0, \"initial_phase\": \"observation_expired\", \"live_source_changes\": false, \"schedule\": \"commit_ack\", \"selected_ordinal\": null}\n{\"backend_at_barrier\": \"source\", \"coverage\": \"fault_observed\", \"fault_observed\": true, \"initial_commit_count\": 1, \"initial_exit_code\": 1, \"initial_phase\": \"observation_expired\", \"live_source_changes\": false, \"schedule\": \"commit_ack\", \"selected_ordinal\": 1}\n{\"backend_at_barrier\": \"source\", \"coverage\": \"fault_observed\", \"fault_observed\": true, \"initial_commit_count\": 2, \"initial_exit_code\": 1, \"initial_phase\": \"observation_expired\", \"live_source_changes\": false, \"schedule\": \"commit_ack\", \"selected_ordinal\": 2}\n",
+      "exit_code": 0
+    },
+    {
+      "item_id": "item_44",
+      "command": "/bin/bash -lc 'tail -n 8 /tmp/order-cutover-offline-test.log; test ! -f /logs/verifier/reward.txt || cat /logs/verifier/reward.txt'",
+      "output": "{\"preflight\": \"passed\"}\n.......................                                                  [100%]\n23 passed in 188.09s (0:03:08)\n1\n",
+      "exit_code": 0
+    }
+  ]
+}

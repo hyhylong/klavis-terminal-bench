@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "not_passed",
+  "review_job": "implementation-review-codex-20260926T213043756969Z",
+  "review_trial": "review-task__ZgkLZCk",
+  "reviewed_task_checksum": "96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a",
+  "review_meta_task_checksum": "4971971077042feef9471533aef9b6cd8f9af5660836fdd16c7dc75e97137e62",
+  "exception_info": null,
+  "review_artifact_reward": {
+    "rewards": {
+      "reward": 1.0
+    }
+  },
+  "reward_meaning": "Only nonempty verdict artifact existence, not rubric pass",
+  "counts": {
+    "fail": 9,
+    "pass": 25,
+    "not_applicable": 1
+  },
+  "criterion_names_validated_against_pinned_35": true,
+  "frozen_files_hashes_rechecked": 35,
+  "reviewer": "codex/openai/gpt-6-astra/xhigh",
+  "upstream_default_reviewer": "claude-code/anthropic/claude-sonnet-5",
+  "sources_sha256": {
+    "artifacts/local/review/implementation-review-codex-20260926T213043756969Z/manifest.json": "cdb8ae7b108f99990da2ff663746faff488e5381cfd745c1e8c20c71b213bff5",
+    "artifacts/jobs/implementation-review-codex-20260926T213043756969Z/review-task__ZgkLZCk/result.json": "cf283f451405e37a69c881a26dc125ea10678891ee0ab69bfa58d876b8914d8d",
+    "artifacts/jobs/implementation-review-codex-20260926T213043756969Z/review-task__ZgkLZCk/artifacts/app/verdicts.json": "52f850ac2b7921cfc486192975b9b1b77fa3577e7cd96b170562f5f9caf9aa56",
+    "artifacts/jobs/implementation-review-codex-20260926T213043756969Z/review-task__ZgkLZCk/agent/codex.txt": "5ce74f4ef3c7fa3136851424f615c0e05c441bd2d5b8509aea0301199e885021"
+  },
+  "classification": {
+    "accepted_technical_failures": [
+      "verifiable",
+      "anti_cheat_robustness",
+      "test_instruction_alignment"
+    ],
+    "pending_human_readme": [
+      "reviewable",
+      "difficulty_explanation_quality",
+      "solution_explanation_quality",
+      "verification_explanation_quality",
+      "task_readme"
+    ],
+    "upstream_schema_version_conflict": [
+      "task_toml_schema"
+    ]
+  },
+  "counterexamples": {
+    "malformed_array_response": {
+      "preflight": "passed",
+      "pytest_failed": 2,
+      "pytest_deselected": 21,
+      "exception": "AttributeError",
+      "process_exit": 70,
+      "reward_written": false
+    },
+    "delayed_offline_copy": {
+      "start_delay_seconds": 4,
+      "source_exclusive_fence_during_copy": true,
+      "pytest_passed": 23,
+      "pytest_seconds": 188.09,
+      "reward": 1,
+      "coverage_gap": "observation_expired; no blocked backfill or live source changes observed"
+    }
+  },
+  "limits": [
+    "Reviewer installed tooling and ran disposable controls in its review environment; this is not a separate Harbor cheat job.",
+    "Frozen task unchanged; these findings do not automatically relabel the ongoing normal pilot.",
+    "Original verdicts retained; schema-conflict adjudication is not a rewritten pass."
+  ]
+}

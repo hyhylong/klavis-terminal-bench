@@ -1,0 +1,144 @@
+{
+  "checks": {
+    "verifiable": {
+      "outcome": "fail",
+      "explanation": "Malformed submitted responses can escape grading: tests/test_outputs.py:119 calls result.get without checking the response type, and tests/conftest.py classifies the resulting AttributeError as an infrastructure failure. A review-only mutation returning an array reproduced exit 70 with no reward, although this is clearly an incorrect submission that should receive 0."
+    },
+    "solvable": {
+      "outcome": "pass",
+      "explanation": "The supplied reference implementation passed all 23 tests and received reward 1 in a local run using the specified Python, PostgreSQL and psycopg versions; pytest took 76.95 seconds. The implementation extends an existing service with a few hundred lines of database and routing logic, reasonably achievable by an expert in several hours."
+    },
+    "difficult": {
+      "outcome": "pass",
+      "explanation": "The task requires reasoning about cross-database cutover, transactional inventory, historical idempotency receipts, commit uncertainty and stale routing across process boundaries. Combining these guarantees under concurrent writers and crashes requires substantial database and distributed-systems expertise."
+    },
+    "interesting": {
+      "outcome": "pass",
+      "explanation": "Migrating a live order service to a normalized schema while preserving reservations and request history is a realistic production engineering problem. Database and backend engineers are paid to perform this kind of migration safely."
+    },
+    "outcome_verified": {
+      "outcome": "pass",
+      "explanation": "Tests evaluate public CLI behavior, HTTP responses and independently inspected database state, without requiring particular private tables, SQL statements or replication algorithms. The instruction specifies the required service behavior and permits implementations to choose their migration strategy."
+    },
+    "anti_cheat_robustness": {
+      "outcome": "fail",
+      "explanation": "The backfill tests release their blocking fixtures after a two-second observation window when no blocked migration is observed. A review-only mutation that sleeps four seconds and holds an exclusive source fence throughout snapshot copying passed all 23 tests and received reward 1, despite preventing source operations from progressing during a blocked backfill. The coverage log confirmed observation_expired and fault_observed=false, demonstrating a timing shortcut around the central availability requirement."
+    },
+    "task_security": {
+      "outcome": "pass",
+      "explanation": "The inspected scripts perform legitimate database provisioning, local fault injection, application execution and verification. External downloads are pinned package assets used during image builds; no credential exfiltration, hidden payloads, host escape or unrelated destructive behavior was found."
+    },
+    "functional_verification": {
+      "outcome": "pass",
+      "explanation": "The verifier starts submitted service and migration processes, sends real HTTP requests, and compares PostgreSQL relations and responses against an independent executable model. It does not grade source-code keywords or patterns."
+    },
+    "deterministic_reproducible": {
+      "outcome": "pass",
+      "explanation": "Both Dockerfiles pin the base images and Python packages, including wheel checksums, and use matching shared dependency versions. Verification creates fresh local databases with fixed synthetic fixtures and accounts for either legitimate winner of concurrent requests, without depending on live external services."
+    },
+    "essential_difficulty": {
+      "outcome": "pass",
+      "explanation": "The central challenge is maintaining correct state and routing under concurrency, failures and migration. Exact JSON responses and integer monetary arithmetic express the service contract rather than arbitrary formatting or precision obstacles."
+    },
+    "test_instruction_alignment": {
+      "outcome": "fail",
+      "explanation": "CONTRACT.md schedule 6 describes starting concurrent migrations and terminating one while another survives. In tests/test_outputs.py, test_killed_migration_and_concurrent_restarts kills the first process before starting the second and third, so that explicitly described overlapping crash scenario is not exercised."
+    },
+    "novel": {
+      "outcome": "pass",
+      "explanation": "The custom starter service combines schema normalization, inventory reservation semantics, historical receipts and several specific crash schedules. Solving it requires adapting to this codebase and its contract rather than reproducing a standard textbook algorithm."
+    },
+    "agentic": {
+      "outcome": "pass",
+      "explanation": "A successful implementation requires exploring the supplied service and database harness, changing both migration and request routing, and testing concurrent and restart behavior. This is substantial environment-dependent implementation and debugging work."
+    },
+    "reviewable": {
+      "outcome": "fail",
+      "explanation": "Assessing the cross-database recovery protocol and completeness of its fault coverage requires specialized knowledge, but the README supplies only placeholders for the difficulty, solution and verification explanations. The technical contract and source comments do not provide the promised high-level justification for non-specialist reviewers."
+    },
+    "instruction_concision": {
+      "outcome": "pass",
+      "explanation": "instruction.md leads with the objective, uses absolute paths and delegates the necessary API and SQL details to an explicitly referenced contract. Its package-transfer and runtime constraints explain the execution interface without prescribing a solution algorithm or adding roleplay."
+    },
+    "solution_quality": {
+      "outcome": "pass",
+      "explanation": "solve.sh installs separately maintained source files implementing actual snapshot copying, change capture, replay, transaction fencing and normalized database operations. It does not substitute hardcoded final answers, and substantial Python files are kept outside the shell script."
+    },
+    "separate_verifier_configured": {
+      "outcome": "pass",
+      "explanation": "The only submitted input read by the verifier is the declared /app/orderbridge artifact; the schema, oracle, fixtures and runtime helpers are baked into /tests or generated therefrom. Verifier tooling is preinstalled, and the duplicated schema.sql and runtime helpers byte-match across environment/ and tests/, with matching shared dependency pins."
+    },
+    "environment_hygiene": {
+      "outcome": "pass",
+      "explanation": "The agent image contains the starter package and public development helpers without the private tests, reference solution or pytest dependencies. The verifier image owns its test tooling, test.sh performs no network installs, and the agent Dockerfile correctly updates apt and removes its package lists."
+    },
+    "structured_data_schema": {
+      "outcome": "pass",
+      "explanation": "The explicitly referenced /app/CONTRACT.md normatively specifies exact request fields, response shapes, error semantics, validation bounds and the public SQL columns. These are stated as interface requirements rather than merely illustrative examples."
+    },
+    "typos": {
+      "outcome": "pass",
+      "explanation": "No critical identifier, filename, command or path typos were found across the instruction, Dockerfiles, tests and reference solution. All Python files parsed successfully and the reference commands executed successfully in verification."
+    },
+    "difficulty_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "The README Difficulty explanation section is only a pending-author placeholder. It explains neither the intrinsic reasoning challenge nor the professional context, and provides no required discussion of the synthetic data and its realism."
+    },
+    "solution_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "The README Solution explanation section contains only a placeholder requesting a future explanation. It does not summarize the implemented capture, replay and routing strategy or explain why it preserves correctness."
+    },
+    "verification_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "The README Verification explanation section is unfilled. It does not explain the independent model, SQL inspection, fault coverage or the justification for the timing and observation bounds used by the verifier."
+    },
+    "category_and_tags": {
+      "outcome": "pass",
+      "explanation": "Software and Data engineering fit the primary work of implementing a database-backed service migration. The PostgreSQL, online-migration, transactions, idempotency, concurrency and recovery tags are specific and relevant."
+    },
+    "task_name": {
+      "outcome": "pass",
+      "explanation": "online-order-cutover is a descriptive lowercase kebab-case name with exactly three hyphen-separated words. It identifies the live order-service cutover at the center of the task."
+    },
+    "resource_configuration": {
+      "outcome": "pass",
+      "explanation": "The configured two CPUs, 4 GiB memory and small bounded fixtures are appropriate for reasoning-intensive database migration work. The two-hour agent limit and 900-second verifier limit allow implementation and fault recovery, and the reference test run completed in approximately 77 seconds."
+    },
+    "task_readme": {
+      "outcome": "fail",
+      "explanation": "README.md contains the required headings but explicitly labels all four sections as pending placeholders. Consequently it supplies neither the required explanations nor a completed Relevant experience section or useful reviewer context."
+    },
+    "expert_time_estimate": {
+      "outcome": "pass",
+      "explanation": "expert_time_estimate_hours is nonzero at 6, which is plausible for implementing and validating a crash-safe migration protocol on top of the supplied service. Although marked provisional, the estimate is consistent with the amount and nature of the missing functionality."
+    },
+    "task_toml_schema": {
+      "outcome": "fail",
+      "explanation": "task.toml includes network_mode = \"public\" under [environment], which is not a recognized field in the supplied Harbor schema. Remove it or use the supported allow_internet field if an internet-access policy is intended."
+    },
+    "no_extraneous_files": {
+      "outcome": "pass",
+      "explanation": "All 35 files serve the required task scaffold, Docker build contexts, public development environment, reference implementation or verifier. No unused scratch files, backups, caches or unrelated assets were found."
+    },
+    "artifact_efficiency": {
+      "outcome": "not_applicable",
+      "explanation": "The artifact is only the small /app/orderbridge implementation package, which is the requested deliverable. Database fixtures and verifier assets are generated or baked separately, and no large source tree, dependency directory or collect hook is involved."
+    },
+    "verifier_execution_isolation": {
+      "outcome": "pass",
+      "explanation": "Submitted code runs only in subprocesses with UID/GID 65534, cleared supplementary groups and resource limits; root pytest never imports it. The tests and reward directories are protected with mode 0700 before execution, output is captured in private files, process groups are cleaned up, and root test.sh alone writes the reward."
+    },
+    "ctrf_reporting": {
+      "outcome": "pass",
+      "explanation": "test.sh invokes pytest with --ctrf /logs/verifier/ctrf.json. The reference run produced that report with individual results for all 23 executed test cases."
+    },
+    "do_not_modify_enforced": {
+      "outcome": "pass",
+      "explanation": "The preservation requirements concern the public API, inventory reservations and historical receipts, all of which are compared against the independent model and public SQL state across migration and restart. Only the editable package is transferred, so changing development fixtures or inputs cannot alter the verifier's pristine database seeds or oracle."
+    },
+    "binary_reward": {
+      "outcome": "pass",
+      "explanation": "The only reward writes in tests/test.sh emit literal 1 for a successful pytest exit or 0 for test failures. No scorer or hook writes fractional credit; infrastructure-error paths exit without writing a reward."
+    }
+  }
+}
