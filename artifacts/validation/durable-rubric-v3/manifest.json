@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "kind": "sanitized_local_implementation_review_evidence",
+  "exported_at": "2026-09-26T20:17:33.959334+00:00",
+  "execution_status": "completed_with_rubric_failures",
+  "preparation_manifest_status": "prepared_not_run",
+  "upstream_commit": "4def1f367467b34b18e0dbdc086400ba71c3e037",
+  "harbor_version": "0.23.1.dev202609170426",
+  "reviewer": "codex/openai/gpt-6-astra/xhigh",
+  "upstream_default_reviewer": "claude-code/anthropic/claude-sonnet-5",
+  "local_adaptations": [
+    "Review the verified frozen local candidate rather than fetch a published task repository",
+    "Use Codex instead of the upstream default Claude reviewer; omit its baked Claude CLI",
+    "Use public network for reviewer setup and model access",
+    "Allow 1800 seconds for agent setup and independently 7200 seconds for review execution",
+    "Preserve the complete verified frozen candidate file inventory",
+    "Stage the review task and Docker context in the native Linux home state directory to avoid detached DrvFS working directories; keep config and manifest in repository artifacts",
+    "Use the pinned locally cached Python 3.13 slim-bookworm image for the review runtime instead of Ubuntu; Python is supplied by the base. The task-under-review bytes, rubric and reviewer model are unchanged",
+    "Preinstall the official standalone linux-x64 Codex 0.157.1 release and bundled ripgrep using a pinned archive SHA-256; Harbor detects the CLI and skips its Node/npm setup. No credentials or agent container state are included in this image"
+  ],
+  "review_runtime": {
+    "base_image": "python:3.13-slim-bookworm@sha256:2325bb286ec344af3e5898cc224b5844e2707ac6e26b1632516fd3edc84a5e26",
+    "apt_packages": [
+      "ca-certificates",
+      "curl",
+      "git",
+      "procps"
+    ],
+    "cached_python_base": true,
+    "codex_release": {
+      "version": "0.157.1",
+      "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.157.1-linux-x64.tgz",
+      "sha256": "7f12677740f439fe4884c7031d9d703e571cecf5ea9fa3a05abd1bbccc2162a8",
+      "platform": "linux-x64"
+    }
+  },
+  "checksum_algorithm": "dirhash sha256, matching Harbor TrialResult.task_checksum; not TrialLock.task.digest",
+  "source_freeze": {
+    "manifest_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/durable-ledger-repair-20260926T200157076022Z/source-manifest.json",
+    "manifest_sha256": "092297950b293f2516a23816fd0802727359281150abe88b367afbb5cfb2888f",
+    "snapshot_tree_sha256": "f7e8df2833dd9f8a4696b8cf0f64cdf4ec6035270d41325a3b2c1c7c59f05f22"
+  },
+  "reviewed_task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+  "review_meta_task_checksum": "20eac021577a9de913478e60980751a88f728706351251133bbf514024d0b319",
+  "reviewed_files_sha256": {
+    "README.md": "1e276a994c6e97b1ac32e7a693468fe2fe73d1f6a0c4aa244a7bae158c898ad2",
+    "environment/.dockerignore": "11e0f10d98a7ae88a4cd8669b82db86dcc54ea9dbf6de5ad6e4d2c01dbf57f81",
+    "environment/Dockerfile": "a8e1bb9cf69f1b2a66e3341d6f5d67df16396be35fb2eeca018abbfaf15a5b6a",
+    "environment/app/SPEC.md": "492c08fd9638540184204efcfaae20e46af08c927f108facd84ff7685038c8ab",
+    "environment/app/STORAGE.md": "93801ccc05bb1aa4e64f96ed3517533de2740dfee3c5a64781a0b7fdb8f16d12",
+    "environment/app/benchmark.py": "2bd5ece83b58b86f30c5d9812835268068e7bcd3bc13abb572e27d984eb8e566",
+    "environment/app/controller.py": "b3dd32d4cdaa1c46b0c426086dd9701713c56777dbacd723a16a54700035f4f3",
+    "environment/app/durablefs.py": "e55587d75babef3942805aa344aeb644e627cd195acee97a5bd410409e6ff1d8",
+    "environment/app/ledgerstore/FORMAT.md": "aaae567171627536fd9dffcf091fa6e33b84621378353c52e202598c33c9dc0a",
+    "environment/app/ledgerstore/__init__.py": "610d243a896ac2e4e26771509e6ff70a6b6366bd4d32944d8f40ab14884bd2cf",
+    "environment/app/ledgerstore/domain.py": "edc6aecaa4c2b0e09f31a9d0805a66e8bde2c9e70e70521e5d7119508e8c12a0",
+    "environment/app/ledgerstore/projection.py": "f2d7c2bfab421c57e7d7c509e4b1c8839cb8a306eeca3cd57c9e2a178ae4b311",
+    "environment/app/ledgerstore/storage.py": "cb3172d9fe2f72fc6ef24a12a408f8a808b867555699a04dee3b1c3665540e96",
+    "environment/app/ledgerstore/store.py": "6e0cf3c6946b4db36f399fec79cb958098e90357189cced065985587e612812c",
+    "environment/app/smoke.py": "a079fdb9a89a2edfd98bed6d8ac2354dfd07ac290545e25a922f30d08f94a2e2",
+    "environment/app/worker.py": "3e65360d71de5a01703b9c3ec95540a47d28998ead1d8b0b3847c0d69f4c3d58",
+    "environment/app/workload.py": "a0d2fc23052cd4e216f973cc1ccc44a047b3109f1d187672b7ca21606c656505",
+    "instruction.md": "788cb6478ed4931f2d40bb0496c85251dd4a81a6f78f588916980c6e83de9c1e",
+    "solution/ledgerstore/__init__.py": "071882fb44bd51dac5efd4756965129a1ccee3e38021b4b060cc1c2a98002a8d",
+    "solution/ledgerstore/domain.py": "edc6aecaa4c2b0e09f31a9d0805a66e8bde2c9e70e70521e5d7119508e8c12a0",
+    "solution/ledgerstore/incremental_index.py": "f8dfdfdd678acb0b537938797098abd5a27b6d3047c096161336047fa9c14b89",
+    "solution/ledgerstore/incremental_store.py": "1d1b39fda58e28abe09126fb80b491b9bcc083fb95d8d81810beb41f4cdbe81c",
+    "solution/ledgerstore/replay_store.py": "342a8873e1d010b1a1bba9128052aa9bcb5bb7b62dda0903290075d7247833d3",
+    "solution/solve.sh": "cb2a170a8ce5314442afa83763e60c189f2f689bd949cbdc1fa2390c9475144c",
+    "task.toml": "abe249aa46e256d065d48c7ebd597ad7e5e74adb86c445d5aad954104d41afe8",
+    "tests/.dockerignore": "11e0f10d98a7ae88a4cd8669b82db86dcc54ea9dbf6de5ad6e4d2c01dbf57f81",
+    "tests/Dockerfile": "bba2f8db15cdaab2f9d511e008ecbf5efa66d52f654bc1e767bcf4db33f834e5",
+    "tests/controller.py": "3aac8b73fb8c77fadfdde58cfac89c0b732c3a89c236a7d23e38a79489b285ca",
+    "tests/durablefs.py": "e55587d75babef3942805aa344aeb644e627cd195acee97a5bd410409e6ff1d8",
+    "tests/fixtures/checkpoints.json": "4529bb0272debd4429bffd965a4b8fa46441fb99e033001c40677ed9278fed3d",
+    "tests/fixtures/feed.jsonl": "5347bbe8371611f71c1b49cad42f55358dc73198e383beeafbc2f4511f3edfd4",
+    "tests/helpers.py": "507a2319efaa80b14c6eead56002c0f2af654a67caa55f875318bca52fa3c28e",
+    "tests/preflight.py": "f64730051a915a5da2c8c642e75fb5f287886cb47133369fed0953da6dc1aea3",
+    "tests/reference.py": "a67d8095fa473a27770fa25da804e8a179d5ac9fcaed2e940e76c401d1a180a5",
+    "tests/test.sh": "086961be363de2fb1d7c579c9332045f3900c8693b758a1e8ff2b496f1a1ea19",
+    "tests/test_outputs.py": "4b89c353125331121f1b8874cc346d7105001d69954089a36bf811ca8a1c7cc4",
+    "tests/test_performance.py": "7465b3ca7cb2693e95a54aae930efe756e21a6aa1a768dff8984103d14994018",
+    "tests/worker.py": "3e65360d71de5a01703b9c3ec95540a47d28998ead1d8b0b3847c0d69f4c3d58",
+    "tests/workload.py": "a0d2fc23052cd4e216f973cc1ccc44a047b3109f1d187672b7ca21606c656505"
+  },
+  "inventory_verification": {
+    "frozen_files": 39,
+    "native_staged_files": 39,
+    "all_match_preparation_manifest": true
+  },
+  "criteria": [
+    "verifiable",
+    "solvable",
+    "difficult",
+    "interesting",
+    "outcome_verified",
+    "anti_cheat_robustness",
+    "task_security",
+    "functional_verification",
+    "deterministic_reproducible",
+    "essential_difficulty",
+    "test_instruction_alignment",
+    "novel",
+    "agentic",
+    "reviewable",
+    "instruction_concision",
+    "solution_quality",
+    "separate_verifier_configured",
+    "environment_hygiene",
+    "structured_data_schema",
+    "typos",
+    "difficulty_explanation_quality",
+    "solution_explanation_quality",
+    "verification_explanation_quality",
+    "category_and_tags",
+    "task_name",
+    "resource_configuration",
+    "task_readme",
+    "expert_time_estimate",
+    "task_toml_schema",
+    "no_extraneous_files",
+    "artifact_efficiency",
+    "verifier_execution_isolation",
+    "ctrf_reporting",
+    "do_not_modify_enforced",
+    "binary_reward"
+  ],
+  "criterion_count": 35,
+  "pinned_source_sha256": {
+    "scripts/review/stage_task.py": "9471273659edd035d522339b86e8080eef056ed206597adee31086c5dede8f96",
+    "scripts/rubric-regression/templates/instruction.md": "20898e2a08062508ed75707ecbf47f3cba6b807762c8a82c84f6e57db9419052",
+    "docs/prompts/task-implementation.toml": "3668aa5ab0ba8321a3b16d8711c0703ca6bb767f90c061bb60f150dd8885c84e"
+  },
+  "source_records": [
+    {
+      "path": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/artifacts/app/verdicts.json",
+      "sha256": "5ee60f32f8cb7996a2507aa4b4b70fb500e79bb9ad2ac42240273c95d54a9709",
+      "bytes": 13999
+    },
+    {
+      "path": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/result.json",
+      "sha256": "056a335bbc5606a7e6b343266dab1cdad06bd2a3fda613a55a22339abdf16fd3",
+      "bytes": 4393
+    },
+    {
+      "path": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/agent/trajectory.json",
+      "sha256": "dd53ec8597152d76c6a6b5b9a153685cca9342538650ff753b0762a616290a47",
+      "bytes": 394595
+    },
+    {
+      "path": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/artifacts/manifest.json",
+      "sha256": "57b1fc2eb35f933ab4fd991c8e2f7a70a6f1afbc76f0a84a881a99926b80477f",
+      "bytes": 352
+    },
+    {
+      "path": "artifacts/local/review/implementation-review-codex-20260926T200212311524Z/manifest.json",
+      "sha256": "53d43418327d161ecb2e1ad157df9bac7e9204abc8b379b9fb43c0ab3928a1a4",
+      "bytes": 8932
+    },
+    {
+      "path": ".cache/upstream/docs/prompts/task-implementation.toml",
+      "sha256": "3668aa5ab0ba8321a3b16d8711c0703ca6bb767f90c061bb60f150dd8885c84e",
+      "bytes": 59949
+    }
+  ],
+  "export_policy": "Allowlisted verdicts, provenance, result metadata and selected non-secret test observations only. No configuration, environment variables, credentials, raw trajectory, raw agent text or session transcript is copied.",
+  "verdict_copy": "Byte-identical to captured artifact; local analysis does not alter reviewer outcomes.",
+  "reward_meaning": "Upstream verifier only checks a nonempty verdict artifact; inspect all 35 outcomes",
+  "acceptance_status": "not_passed_not_maintainer_approval"
+}

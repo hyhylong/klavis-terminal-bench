@@ -2,9 +2,9 @@
 
 原创任务实现工作区。题目从乱序 CDC 事件恢复双时间账本，处理原子事务、重复冲突、schema 延迟、历史修正、半开区间、删除和字段来源。输入为合成数据：1,010 条事件、21 个交付检查点。
 
-**第一版可运行，但已被 Codex 和 DeepSeek 各成功解出，尚不满足作业的难度要求。保留全部真实结果，正在开发第二个候选版本。**
+**第一版被 Codex 和 DeepSeek 各成功解出；第二版也已被 Codex 正常试做成功解出。两版均不满足所需难度，保留全部真实结果作为反证，当前任务尚未完成。**
 
-第二版候选为 `tasks/durable-ledger-repair`：修复持久化账本的修订依赖和缓存恢复。它提供完整协议、可复现的公开失败示例、参考实现和进程隔离验证器。最新冻结版本的 Harbor 正反例均已验证：参考解 26/26 通过，初始代码有 6 项语义错误，双方无执行异常。首次 Codex 试做因依赖安装网络错误中断，不能计入模型失败；已改为预装可校验的官方 CLI，并启动新的试做与 35 项规则审查。正确实现与故障实现分开放置；不能将开发测试通过写成模型失败证据。研发状态与测量口径见 [第二版记录](docs/durable-progress.md)。
+第二版 `tasks/durable-ledger-repair` 修复持久化账本的修订依赖和缓存恢复。冻结版本的参考解 26/26 通过，初始代码有 6 项语义错误，控制试验均无执行异常。随后 Codex / GPT-6 Astra / xhigh 获得真实 reward 1，26/26 通过，无异常；整个 job 约 8 分 3 秒，stream 中位数 0.365 秒，低于公开的 3 秒上限。它保留正确的源存储层，修复两处索引错误，并合法丢弃可选缓存。该候选的难度假设已被否证，不再为它继续六次失败和两次对抗的完整评测。首次安装网络错误仍保留为基础设施失败。见 [试做分析](docs/durable-pilot-analysis.md)、[过滤后的证据](artifacts/validation/durable-codex-pilot.json)和[第二版记录](docs/durable-progress.md)。
 
 ## 已验证与待完成
 
@@ -17,9 +17,9 @@
 | Harbor nop | nop-v3-lf：reward 0，无执行异常，验证器独立运行 |
 | 上游静态检查 | 24/25 通过；作者 GitHub 用户名尚未提供 |
 | 作者信息与人工说明 | 待作者补充，详见 [中文作者指南](docs/author-guide.zh-CN.md) |
-| Implementation rubric | 两次本地审查因镜像构建网络错误未完成；未声称通过 |
+| Implementation rubric | 第二版 Codex 本地审查已完成：23 pass、11 fail、1 N/A；未通过。存在已证明的 WAL 写入格式漏验，另有作者占位及上游 schema 版本冲突，见[逐项分析](docs/durable-rubric-analysis.md)。审查 reward 1 仅表示产出 verdict 文件 |
 | Codex + DeepSeek 正常试验 | 两个模型均有真实 reward 1；第一版不满足难度要求 |
-| 对抗试验与轨迹分析 | 尚未完成 |
+| 对抗试验与轨迹分析 | 第二版成功轨迹已分析；正式对抗尚未运行，当前候选停止完整评测 |
 | GitHub 交付 | 当前为本地 Git 仓库，尚未发布 |
 
 最新 oracle 与有效 nop 使用同一 Harbor task checksum：`44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51`。跨平台生成器现统一写入 LF，之后已重跑两项控制验证。首次 nop-v1 因 Harbor 相对路径处理报 FileNotFoundError，已保留为基础设施失败；这次失败不计作题目难度证据。后续运行使用绝对任务路径和 jobs 路径，并在每次调用前重新进入项目目录。

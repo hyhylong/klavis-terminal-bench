@@ -1,0 +1,144 @@
+{
+  "checks": {
+    "verifiable": {
+      "outcome": "fail",
+      "explanation": "Verification is programmatic and installs no runtime tooling, but it accepts a demonstrably incompatible storage implementation. In a temporary copy, I changed the reference solution to prefix newly written WAL frames with the nonstandard bytes PRIV, while retaining its ability to read legacy frames; all 26 verifier tests still passed despite violating the required format-1 write interface. This leaves a central deliverable insufficiently verified."
+    },
+    "solvable": {
+      "outcome": "pass",
+      "explanation": "The supplied reference implementation passed all 26 verifier tests and all four public smoke tests in a temporary local reproduction using Python 3.13.15. The verifier suite took 24.45 seconds, and the reference's median streaming time was 0.364 seconds against the 3.0-second limit; the implementation is small enough for an expert to complete within a few hours."
+    },
+    "difficult": {
+      "outcome": "fail",
+      "explanation": "The starter already provides the working temporal replay and durable storage implementation: domain.py matches the reference exactly, and storage.py differs from the reference replay_store.py only in its docstring. The substantive repair is localized to retaining alternative amendment candidates and invalidating previously affected entity caches, with public smoke tests identifying both failure modes. This is a useful debugging exercise, but an average undergraduate could reasonably complete it within a few days."
+    },
+    "interesting": {
+      "outcome": "pass",
+      "explanation": "Maintaining correct entitlement projections under late CDC deliveries, corrections, retractions, and crashes is a realistic data-platform maintenance problem. Repairing stale caches while preserving source history and lookup performance has direct professional value."
+    },
+    "outcome_verified": {
+      "outcome": "pass",
+      "explanation": "Tests exercise public Store methods, reconstructed query results, durable storage state, crash recovery, and the published performance budget. The contract permits replacement implementations and alternative algorithms, and the verifier does not require a particular editing tool or internal projection design."
+    },
+    "anti_cheat_robustness": {
+      "outcome": "pass",
+      "explanation": "Oracle code and hidden fixtures remain in the separate verifier image, while submitted code runs behind a bounded JSON protocol with unprivileged identity, Landlock restrictions, and a seccomp allowlist. The controller owns crash scheduling and expected results, rejects host-only filesystem methods, and includes executable checks against protected-file reads and reward writes. No complete repaired implementation or hidden answer fixture is exposed in the agent image."
+    },
+    "task_security": {
+      "outcome": "pass",
+      "explanation": "The files contain legitimate ledger implementation, fixture generation, crash simulation, and verifier isolation code, with no credential access, exfiltration, host escape, or unrelated destructive behavior found. Base64 transports simulated filesystem bytes, and the hostile isolation fixtures access only their explicitly created test files."
+    },
+    "functional_verification": {
+      "outcome": "pass",
+      "explanation": "The verifier executes Store through isolated workers and compares actual snapshots, lookups, exceptions, persistence behavior, and performance against independently computed expectations. It does not grade submitted source through keywords, imports, or implementation-pattern matching."
+    },
+    "deterministic_reproducible": {
+      "outcome": "pass",
+      "explanation": "Both images pin the same Python image digest, and the declared uv, pytest, pytest-json-ctrf, and Codex versions are pinned; verification requires no live service. The randomized workload records its seed and computes independent answers for that exact workload, while median-of-three timing and substantial reference headroom reduce timing sensitivity."
+    },
+    "essential_difficulty": {
+      "outcome": "pass",
+      "explanation": "The substantive work concerns nonmonotonic transaction eligibility, historical amendment selection, cache invalidation, and durable source history. Exact JSON structures and integer codecs represent meaningful API requirements rather than arbitrary formatting or precision obstacles."
+    },
+    "test_instruction_alignment": {
+      "outcome": "fail",
+      "explanation": "STORAGE.md requires every newly accepted event to be appended using the published length/payload/SHA-256 WAL framing, but tests independently inspect the WAL only after compaction, when it must be empty. A temporary reference variant that writes PRIV-prefixed frames and reads them with its own parser passed all 26 tests. Newly produced, nonempty WALs need independent format validation to cover the stated storage compatibility requirement."
+    },
+    "novel": {
+      "outcome": "pass",
+      "explanation": "The task combines a custom CDC protocol, amendment precedence, provenance-aware interval projections, generation-based persistence, and a specific streaming workload. Solving the supplied code's defects requires reasoning about that implementation rather than reproducing a standard textbook answer."
+    },
+    "agentic": {
+      "outcome": "pass",
+      "explanation": "A solver must inspect the existing package and specifications, trace failures across projection and persistence boundaries, modify package files, and exercise smoke and timing drivers. This is a multi-file debugging and validation task requiring interaction with the supplied environment."
+    },
+    "reviewable": {
+      "outcome": "pass",
+      "explanation": "SPEC.md and STORAGE.md explicitly define transaction priorities, amendment semantics, output structures, and the simulated crash model. The verifier derives expected results through a readable endpoint-partition replay implementation instead of unexplained specialized golden answers, allowing a reviewer to compare the model with the contract despite the incomplete README."
+    },
+    "instruction_concision": {
+      "outcome": "fail",
+      "explanation": "The final workload paragraph refers to Read SPEC.md using a relative, unformatted filename, violating the requirement for absolute backticked paths. The instruction also repeats return-shape and workload details already specified in the referenced contract, making it less concise than necessary."
+    },
+    "solution_quality": {
+      "outcome": "pass",
+      "explanation": "solve.sh installs separate, reviewable Python source files and runs the public smoke suite. Those files compute transaction classifications, effective amendments, interval projections, WAL recovery, and durable compaction from inputs; they do not submit precomputed answers or large inline heredocs."
+    },
+    "separate_verifier_configured": {
+      "outcome": "fail",
+      "explanation": "Verifier inputs are available through the declared package artifact or baked test assets, and verifier tooling is installed in tests/Dockerfile. However, environment/app/controller.py and tests/controller.py are not byte-identical: only the public copy imports unittest. This small divergence is undocumented in the README's placeholder Verification explanation, so the explicit shared-asset consistency requirement is not met."
+    },
+    "environment_hygiene": {
+      "outcome": "pass",
+      "explanation": "The agent image copies only environment/app and does not include hidden tests, the reference solution, or pytest tooling. The verifier image owns the test suite and its installed dependencies, and both Dockerfiles precede apt installs with apt-get update and remove apt lists afterward."
+    },
+    "structured_data_schema": {
+      "outcome": "pass",
+      "explanation": "The explicitly referenced SPEC.md normatively defines envelope variants, exact snapshot and lookup keys, JSON types, ordering, provenance, and segmentation. STORAGE.md additionally defines the manifest, checkpoint, and binary WAL formats, so structured outputs are not specified solely by informal examples."
+    },
+    "typos": {
+      "outcome": "pass",
+      "explanation": "No misspelled critical filenames, commands, imports, or variable identifiers were found. Python files and JSON fixtures parse successfully, and the supplied package imports and executes successfully in the reference run."
+    },
+    "difficulty_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "README.md's Difficulty explanation contains only a pending-author placeholder. It does not explain the intrinsic challenge, identify the real-world practitioner, or describe the accompanying data's provenance and realism."
+    },
+    "solution_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "README.md's Solution explanation is an unfilled placeholder despite a working reference solution being present. It provides no high-level account of amendment candidate retention, invalidation of affected timelines, or the relationship between durable source history and disposable projections."
+    },
+    "verification_explanation_quality": {
+      "outcome": "fail",
+      "explanation": "README.md's Verification explanation merely says the author's explanation is pending. It does not explain the independent oracle, crash-boundary checks, isolation strategy, coverage limits, or calibration of the 3.0-second threshold; calibration text elsewhere does not fill the required README section."
+    },
+    "category_and_tags": {
+      "outcome": "pass",
+      "explanation": "Software with the Data engineering subcategory fits this CDC and persistent projection library task. Tags such as bitemporal, crash-recovery, transactions, storage, and cache-invalidation identify relevant technical skills and behavior."
+    },
+    "task_name": {
+      "outcome": "pass",
+      "explanation": "The folder name durable-ledger-repair is a descriptive lowercase kebab-case slug containing exactly three words. It accurately identifies the artifact and repair objective."
+    },
+    "resource_configuration": {
+      "outcome": "pass",
+      "explanation": "The explicit two-hour agent budget, two CPUs, 4 GiB agent memory, and 2 GiB verifier memory are reasonable for this small Python debugging workload. The documented 900-second verifier ceiling accommodates crash campaigns and slower submissions, while the separate 3-second stream requirement targets algorithmic efficiency; the reference suite finished locally in about 25 seconds."
+    },
+    "task_readme": {
+      "outcome": "fail",
+      "explanation": "README.md has the required section headings, but Difficulty explanation, Solution explanation, Verification explanation, and Relevant experience are all unfilled placeholders. Its brief candidate notice and change log do not supply the required reviewer context."
+    },
+    "expert_time_estimate": {
+      "outcome": "pass",
+      "explanation": "expert_time_estimate_hours is explicitly set to 6 rather than left at zero. Several hours is a plausible allowance for understanding the custom protocol, repairing projection behavior, and validating persistence and performance, although the unfinished README does not yet substantiate the estimate."
+    },
+    "task_toml_schema": {
+      "outcome": "fail",
+      "explanation": "The environment section contains network_mode = public, which is not a recognized field in the rubric's Harbor schema. The valid environment network-control field is allow_internet; the invented network_mode field does not configure the intended behavior."
+    },
+    "no_extraneous_files": {
+      "outcome": "pass",
+      "explanation": "The directory contains scaffold files, the starter package and documented development drivers, imported reference-solution modules, and verifier scripts and fixtures. Docker ignore files support the builds, and no unused standalone assets, scratch files, backups, or generated cache directories were found."
+    },
+    "artifact_efficiency": {
+      "outcome": "pass",
+      "explanation": "The sole artifact is the small editable /app/ledgerstore package; the large input corpus, workload driver, oracle, and verifier dependencies stay baked in the verifier image. There are no dependency trees or collect hooks to introduce unnecessary transfer or stale-capture risks."
+    },
+    "verifier_execution_isolation": {
+      "outcome": "fail",
+      "explanation": "Submitted imports run only after dropping to UID/GID 65534 with Landlock and seccomp, and the controller captures logs in temporary files and kills the process group. However, test.sh only creates /logs/verifier and never makes it root-only with chmod 700 before executing submitted code. The explicit reward-directory permission requirement is therefore missing, even though the current Landlock sandbox blocks worker access."
+    },
+    "ctrf_reporting": {
+      "outcome": "pass",
+      "explanation": "test.sh invokes pytest with --ctrf /logs/verifier/ctrf.json using the preinstalled reporting plugin. The local reproduction produced a CTRF report containing all 26 discrete test results."
+    },
+    "do_not_modify_enforced": {
+      "outcome": "not_applicable",
+      "explanation": "The instruction permits repairing or replacing the implementation and does not forbid edits to a concrete existing artifact. Its preservation requirements concern historical behavior, source-format compatibility, and ownership semantics rather than keeping a named file or declaration unchanged."
+    },
+    "binary_reward": {
+      "outcome": "pass",
+      "explanation": "The only reward writes in test.sh emit exactly 1 for pytest exit status 0 or exactly 0 for exit status 1. Infrastructure failures exit without writing a reward, and no continuous metric or partial-credit value is written to the reward channel."
+    }
+  }
+}

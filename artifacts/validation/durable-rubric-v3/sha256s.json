@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "files": {
+    "manifest.json": "b3ff82df64db29556c6188e98e55c98733d713d88ede8769eb50ea3983749490",
+    "summary.json": "ccf7ab6780e17dfc098cee8d1d61774f2ae1d33402a166cb7368ca09d297a555",
+    "trajectory-evidence.json": "6f85e0e8dbc771b3e495f72cc8e9f1119285a00fdda6fe49ec6f1772bcf5f831",
+    "verdicts.json": "5ee60f32f8cb7996a2507aa4b4b70fb500e79bb9ad2ac42240273c95d54a9709"
+  }
+}

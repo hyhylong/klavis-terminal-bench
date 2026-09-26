@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "kind": "alternate_local_implementation_review",
+  "trial_name": "review-task__qQXgwB6",
+  "trial_id": "aab6e4b3-1b2a-430b-b88b-04606351704c",
+  "source_result": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/result.json",
+  "agent": {
+    "name": "codex",
+    "version": "0.157.1",
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh"
+  },
+  "started_at": "2026-09-26T20:03:22.432861Z",
+  "finished_at": "2026-09-26T20:11:55.408891Z",
+  "wall_seconds": 512.97603,
+  "exception_info_present": false,
+  "meta_task_reward": 1.0,
+  "meta_task_reward_means": "nonempty verdict artifact exists, not rubric pass",
+  "review_meta_task_checksum": "20eac021577a9de913478e60980751a88f728706351251133bbf514024d0b319",
+  "reviewed_task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+  "exact_criterion_names_match": true,
+  "criterion_count": 35,
+  "duplicate_json_keys": false,
+  "all_outcomes_valid": true,
+  "all_explanations_nonempty": true,
+  "outcome_counts": {
+    "fail": 11,
+    "pass": 23,
+    "not_applicable": 1
+  },
+  "failed_criteria": [
+    "verifiable",
+    "difficult",
+    "test_instruction_alignment",
+    "instruction_concision",
+    "separate_verifier_configured",
+    "difficulty_explanation_quality",
+    "solution_explanation_quality",
+    "verification_explanation_quality",
+    "task_readme",
+    "task_toml_schema",
+    "verifier_execution_isolation"
+  ],
+  "not_applicable_criteria": [
+    "do_not_modify_enforced"
+  ],
+  "local_failure_classification": {
+    "demonstrated_storage_contract_gap": [
+      "verifiable",
+      "test_instruction_alignment"
+    ],
+    "supported_difficulty_concern": [
+      "difficult"
+    ],
+    "explicit_rubric_or_documentation_defects": [
+      "instruction_concision",
+      "separate_verifier_configured",
+      "verifier_execution_isolation"
+    ],
+    "known_human_authorship_placeholders": [
+      "difficulty_explanation_quality",
+      "solution_explanation_quality",
+      "verification_explanation_quality",
+      "task_readme"
+    ],
+    "upstream_contract_version_inconsistency": [
+      "task_toml_schema"
+    ]
+  },
+  "reviewer_outcomes_preserved": true,
+  "task_rubric_passed": false,
+  "assignment_acceptance_established": false,
+  "counts_toward_normal_or_cheat_trials": false,
+  "reviewer_experiments": {
+    "reference_pytest": {
+      "passed": 26,
+      "failed": 0,
+      "seconds": 24.45
+    },
+    "reference_stream_median_seconds": 0.36417884100001174,
+    "nonstandard_wal_mutant_pytest": {
+      "passed": 26,
+      "failed": 0,
+      "seconds": 25.02
+    }
+  },
+  "experiment_evidence_limit": "Verified captured commands and corresponding tool observations; this export did not rerun tests. Reviewer ran copied tests inside the review container, not an end-to-end Harbor benchmark trial. Temporary mutant and CTRF files were not collected as standalone artifacts.",
+  "ctrf_note": "The review meta-task uses the pinned artifact-existence verifier; its lack of CTRF is not a missing 26-test task report.",
+  "schema_adjudication": "Pinned installed Harbor recognizes network_mode=public and validates the frozen task; pinned template uses it. Both explicit allow_internet booleans are rejected by separate static checks. The task_toml_schema rubric field enumeration is stale; do not add forbidden allow_internet to chase this verdict."
+}

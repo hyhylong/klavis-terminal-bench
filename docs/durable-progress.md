@@ -1,8 +1,12 @@
 # Durable ledger candidate: development evidence
 
-This is a candidate, not a completed assignment or a demonstrated hard task.
-V1 was solved by both configured models. Its successful trials and source remain
-in commit `89fb5d8` and the original task directory.
+This candidate's required difficulty was falsified by a successful normal Codex
+pilot: reward 1, 26/26 checks, no exception, and a 0.365-second stream median
+against the 3.0-second limit. It is not a completed assignment or a qualified hard
+task. The six-failure/two-cheat campaign will not continue for this candidate.
+V1 was also solved by both configured models. Preserve both versions and all
+successful evidence; V1 source remains in commit `89fb5d8` and the original task
+directory. See the [pilot analysis](durable-pilot-analysis.md).
 
 ## Why this candidate
 
@@ -91,12 +95,12 @@ requires the author's real GitHub handle; all author fields and four human
 sections still need genuine author input. Placeholders do not satisfy that
 substantive requirement even where the static script only checks headings.
 
-## Remaining qualification
+## Qualification history before the successful pilot
 
 Codex pilot `standard-codex-20260926T194253144614Z` failed during dependency
 installation with `NetworkConnectionError`, before a model answered. Debian
 package downloads failed; it is not a genuine task failure. The next setup
-will use verified official standalone CLI artifacts to avoid the unnecessary
+used verified official standalone CLI artifacts to avoid the unnecessary
 Node/npm distribution dependency chain. Two attempted rubric jobs also failed
 before model execution: one DrvFS working-directory error, then an Ubuntu
 registry timeout. Native Linux staging and a disclosed cached Python base are
@@ -104,15 +108,14 @@ available for the local reviewer, with the same 35 criteria and model settings.
 
 An independent audit then demonstrated a compaction-test false positive:
 appending a duplicate WAL frame passed the old retirement check. The working
-candidate now checks the published format-1 post-compaction state explicitly;
+candidate was updated to check the published format-1 post-compaction state explicitly;
 both correct implementations pass and that mutant fails. The storage
-read/write interface was clarified publicly, so a new freeze and controls are
-required. A trusted harness preflight is also being added to separate platform
-failures from solution failures before reward generation.
-The final
-accepted task still needs six genuine normal failures, two meaningful zero-reward
-cheat trials, analyses, actual author metadata and human sections, and GitHub
-delivery. Environment errors, timeouts and cancelled runs do not qualify.
+read/write interface was clarified publicly; the new freeze and controls are
+recorded below. A trusted harness preflight was added to separate platform
+failures from solution failures before reward generation. A future qualifying
+candidate still needs the requested real trial evidence, author metadata and
+human sections, analyses and GitHub delivery. Environment errors, timeouts and
+cancelled runs do not qualify; this candidate's later success does not either.
 
 ## Requalified runtime and working candidate
 
@@ -135,8 +138,40 @@ Independent direct Docker controls also pass/fail as intended at 2 CPU/2 GiB.
 The refreshed static checks remain 24/25, with author GitHub missing; 121
 development tests pass under the pinned Linux Python runtime.
 
-`standard-codex-20260926T200419294708Z` is the new single-attempt pilot.
-`implementation-review-codex-20260926T200212311524Z` reviews the same frozen
-candidate, using native Linux staging, the pinned Python base and the
-preinstalled CLI. Both are still in progress at this checkpoint. Preparation
-and runtime controls do not establish model difficulty or rubric acceptance.
+## Successful normal pilot: reject this difficulty hypothesis
+
+`standard-codex-20260926T200419294708Z`, trial
+`durable-ledger-repair__Z3p4gpg`, completed with Codex 0.157.1 /
+`openai/gpt-6-astra` / xhigh. It has reward 1, no trial exception, a passed trusted
+preflight and 26/26 independent checks. Its three measured stream times are
+0.344291, 0.369361 and 0.364649 seconds; the median is 0.364649 against 3.0 seconds.
+The job took 483.338 seconds; agent execution took 410.030 of the available
+7200 seconds. This is a genuine success, not an infrastructure result.
+
+The submitted repair keeps `storage.py` and `domain.py` byte-identical to the
+frozen starter, retains all amendment candidates, invalidates the old effective
+entity, and discards the optional persisted projection cache. It rebuilds that
+index from complete source history on open, outside the published timed region.
+This lawful simplification leaves the realtime incremental query path fast.
+Public smoke passed about 101 seconds into agent execution; the agent then added
+regression and differential tests. The [analysis](durable-pilot-analysis.md) and
+[filtered result record](../artifacts/validation/durable-codex-pilot.json) retain
+step evidence and original-file hashes.
+
+Do not continue this candidate's formal six-normal-failure/two-cheat campaign,
+hide its reproduction, tighten the budget after seeing the result, or discard
+the successful run. One pilot does not estimate population success probability;
+it does falsify treating this candidate as having demonstrated the required
+difficulty.
+
+`implementation-review-codex-20260926T200212311524Z` reviewed the same frozen
+candidate using native Linux staging, the pinned Python base and preinstalled
+CLI. Its exact 35 outcomes were independently checked: **23 pass, 11 fail,
+1 not applicable**. The rubric did not pass; review reward 1 means only that a
+nonempty verdict artifact was delivered. The [rubric analysis](durable-rubric-analysis.md)
+and [filtered summary](../artifacts/validation/durable-rubric-v3/summary.json)
+separate a demonstrated WAL writer-format coverage gap, other explicit rubric
+defects, known author placeholders and an upstream schema-version inconsistency.
+The submitted pilot kept the storage writer unchanged, so its success does not
+depend on the demonstrated format gap. Neither review experiments nor review
+reward count as formal normal-failure or cheat trials.

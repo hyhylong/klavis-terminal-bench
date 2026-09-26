@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "source_trajectory": "artifacts/jobs/implementation-review-codex-20260926T200212311524Z/review-task__qQXgwB6/agent/trajectory.json",
+  "source_sha256": "dd53ec8597152d76c6a6b5b9a153685cca9342538650ff753b0762a616290a47",
+  "captured_steps": 22,
+  "kind": "selected tool-observation evidence, not raw agent trajectory",
+  "entries": [
+    {
+      "steps": [
+        14
+      ],
+      "finding": "Trusted preflight passed; shared assets differ only by import unittest in controller.py.",
+      "observed_output": "durablefs.py IDENTICAL\nworker.py IDENTICAL\ncontroller.py DIFFERS\n--- \n+++ \n@@ -15,7 +15,6 @@\n import sys\n import tempfile\n import time\n-import unittest\n \n \n class HarnessError(RuntimeError):\n\nworkload.py IDENTICAL\ndomain shared with solution True\nall file sizes 393688\ndockerignore files:\n/app/task-under-review/durable-ledger-repair/tests/.dockerignore '**/__pycache__\\n**/*.pyc\\n**/*.pyo\\n**/.pytest_cache\\n'\n/app/task-under-review/durable-ledger-repair/environment/.dockerignore '**/__pycache__\\n**/*.pyc\\n**/*.pyo\\n**/.pytest_cache\\n'\n{\"preflight\": \"passed\", \"report\": \"/tmp/ledger-review/logs/preflight.json\"}\n{\n  \"purpose\": \"trusted platform preflight; no submitted artifact evaluated\",\n  \"python\": \"3.13.15\",\n  \"system\": \"Linux\",\n  \"machine\": \"x86_64\",\n  \"status\": \"passed\",\n  \"checks\": [\n    \"unprivileged_identity\",\n    \"copy_fractions_decimal_hashlib_imports\",\n    \"protected_reference_read_denied\",\n    \"protected_write_denied\",\n    \"network_socket_denied\",\n    \"binary_durable_filesystem_rpc\",\n    \"known_snapshot\"\n  ]\n}\n"
+    },
+    {
+      "steps": [
+        15,
+        16
+      ],
+      "finding": "Reference package under LEDGER_SUBMISSION_PARENT passed all26 tests in a temporary reproduction.",
+      "observed_output": "................                                               [100%]\n============================= slowest 5 durations ==============================\n16.69s call     test_performance.py::test_published_stream_workload_answers_and_budget\n2.37s call     test_outputs.py::test_every_compaction_filesystem_boundary_preserves_history_and_future_corrections\n1.28s call     test_outputs.py::test_every_initialization_filesystem_boundary_recovers_an_empty_store\n0.93s call     test_outputs.py::test_full_corpus_snapshots_match_independent_endpoint_replay\n0.67s call     test_outputs.py::test_every_ingest_filesystem_boundary_preserves_acknowledged_prefix_and_atomic_retry\n26 passed in 24.45s\n",
+      "observed_exit_code": 0
+    },
+    {
+      "steps": [
+        18,
+        19
+      ],
+      "finding": "In a temporary oracle copy, prefix new WAL frames with PRIV and teach its parser to skip this prefix; backward-compatible private writer passes all26 tests.",
+      "mutated_file": "solution/ledgerstore/replay_store.py",
+      "exact_replacements": [
+        {
+          "old": "return struct.pack(\">I\", len(payload)) + payload + hashlib.sha256(payload).digest()",
+          "new": "return b\"PRIV\" + struct.pack(\">I\", len(payload)) + payload + hashlib.sha256(payload).digest()",
+          "occurrences_in_frozen_source": 1
+        },
+        {
+          "old": "while len(contents) - offset >= 4:\n        size",
+          "new": "while len(contents) - offset >= 4:\n        if contents[offset:offset + 4] == b\"PRIV\":\n            offset += 4\n        size",
+          "occurrences_in_frozen_source": 1
+        }
+      ],
+      "observed_output": "................                                               [100%]\n26 passed in 25.02s\n",
+      "observed_exit_code": 0,
+      "standalone_mutant_or_ctrf_collected": false
+    },
+    {
+      "steps": [
+        17
+      ],
+      "finding": "Review-container log directory had mode0777, and task test.sh contains no chmod700. This is not a reproduced reward-forgery exploit.",
+      "observed_directory_line": "drwxrwxrwx 1 root root 4096 Sep 26 20:03 /logs/verifier"
+    },
+    {
+      "steps": [
+        21
+      ],
+      "finding": "Reviewer checked35names/outcomes and unchanged reviewed task hashes.",
+      "observed_output": "Validated /app/verdicts.json: 35 criteria\nOutcomes: {'fail': 11, 'pass': 23, 'not_applicable': 1}\nTask file hashes unchanged.\n",
+      "observed_exit_code": 0
+    }
+  ],
+  "local_contract_cross_check": {
+    "harbor_version": "0.23.1.dev202609170426",
+    "EnvironmentConfig_fields": {
+      "network_mode": "<enum 'NetworkMode'>",
+      "allow_internet": "bool | None"
+    },
+    "frozen_task_validation": "network_mode == NetworkMode.PUBLIC",
+    "upstream_template_network_line": 29,
+    "forbidden_explicit_allow_internet": [
+      true,
+      false
+    ],
+    "checked_files": [
+      {
+        "path": ".cache/upstream/docs/task-template.toml",
+        "sha256": "3d079fd8360c3f0f46a7d42112ba0beb466bb7b3f6efafe6565f469e13b3dddf"
+      },
+      {
+        "path": ".cache/upstream/scripts/checks/check-no-allow-internet-true.sh",
+        "sha256": "5fb646301d5ea0e6d3a6b55d607f7a553ca4c9c81aec82892a527b0b4e7e59ca"
+      },
+      {
+        "path": ".cache/upstream/scripts/checks/check-allow-internet.sh",
+        "sha256": "3381127a1fe657c350f4d84b261757865311d3eb252afabfa1bc6e96490c394c"
+      }
+    ]
+  }
+}

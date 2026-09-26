@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "kind": "normal_model_pilot_counterevidence",
+  "analyzed_at_utc": "2026-09-26T20:17:10.354153+00:00",
+  "classification": "genuine_success_difficulty_falsified",
+  "job_name": "standard-codex-20260926T200419294708Z",
+  "job_id": "636e6cab-02ed-420b-9912-9615919e469d",
+  "trial_name": "durable-ledger-repair__Z3p4gpg",
+  "trial_id": "eb484917-8b47-4cc8-b882-edcfc054ede8",
+  "frozen_candidate": "artifacts/local/frozen/durable-ledger-repair-20260926T200157076022Z/durable-ledger-repair",
+  "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+  "same_checksum_controls": "artifacts/validation/durable-controls-v3.json",
+  "agent": {
+    "name": "codex",
+    "version": "0.157.1",
+    "model": "openai/gpt-6-astra",
+    "reasoning_effort": "xhigh"
+  },
+  "outcome": {
+    "reward": 1.0,
+    "exception_info": null,
+    "verifier_environment_mode": "separate",
+    "preflight_status": "passed",
+    "ctrf_counts": {
+      "tests": 26,
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "pending": 0,
+      "other": 0
+    }
+  },
+  "timing": {
+    "trial_started_at_utc": "2026-09-26T20:04:21.203908Z",
+    "trial_finished_at_utc": "2026-09-26T20:12:23.699395Z",
+    "job_elapsed_seconds": 483.338109,
+    "trial_elapsed_seconds": 482.495487,
+    "agent_execution_seconds": 410.030002,
+    "agent_timeout_seconds": 7200.0
+  },
+  "performance": {
+    "seed": 1657691945,
+    "seconds": [
+      0.34429070399983175,
+      0.3693609810002272,
+      0.36464902500028984
+    ],
+    "median": 0.36464902500028984,
+    "limit_seconds": 3.0
+  },
+  "trajectory": {
+    "atif_steps": 19,
+    "agent_steps": 14,
+    "outer_exec_tool_calls": 13,
+    "counting_note": "ATIF includes system/user messages; exec calls batch multiple nested tools. These are not total shell-command or model-turn counts.",
+    "evidence_steps": {
+      "10": "Public smoke reproduces two semantic failures.",
+      "11": "Identifies both projection defects and patches candidate retention/invalidation; store patch syntax error is recovered next step.",
+      "12": "Replaces optional cache restore with source reconstruction; all four smoke tests pass.",
+      "14": "Eight agent-authored regression tests pass.",
+      "16": "Independent agent-authored replay matches 4320 streaming lookups over two seeds.",
+      "18": "Second public benchmark median is 0.36180353000008836 seconds."
+    }
+  },
+  "submission_changes": {
+    "modified_existing_files": [
+      "FORMAT.md",
+      "projection.py",
+      "store.py"
+    ],
+    "added_files": [
+      "tests/test_regression.py"
+    ],
+    "removed_files": [],
+    "unchanged_files": [
+      "__init__.py",
+      "domain.py",
+      "storage.py"
+    ],
+    "durable_storage_and_domain_unchanged": true
+  },
+  "qualification": {
+    "required_difficulty_met": false,
+    "continue_six_normal_failure_and_two_cheat_campaign_for_this_candidate": false,
+    "reason": "A normal xhigh pilot legitimately repaired the candidate and passed the independent correctness and workload verifier. Preserve it as counter-evidence; do not relabel setup errors or this success as failures. One pilot does not estimate population success probability."
+  },
+  "evidence_sha256": {
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/result.json": "1da6bb3839a8e794260205000b71fb7f0031e3a1b80bd40b5a2980a6a706ecfd",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/result.json": "00295ca40b3b5f2f6d3b9950253967b6484bb48f6f73ee35e49f9df0c815bab3",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/verifier/ctrf.json": "1a41b3b0ef988a51e80263f80e2f79df9c90d984f09146ed30207b3a3f07ce6b",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/verifier/performance.json": "383148d7521c8f4f264059dc94907bbdd86dd1ea3a84e8a7908461447ed344e1",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/verifier/preflight.json": "3635156dd2cb04702a5d3473008e99ff547e9c5773d92d85b4baa223695d3b7d",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/agent/trajectory.json": "a4d1876f5328d2760a37c14be6ae18c25ca8e1a7106102acef0284065b5c37f1",
+    "artifacts/local/frozen/durable-ledger-repair-20260926T200157076022Z/source-manifest.json": "092297950b293f2516a23816fd0802727359281150abe88b367afbb5cfb2888f",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/FORMAT.md": "13f809e7b90efc60958dacc377f76e55d8762fe92d8b2e5a1cb67fe2ec3cf137",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/__init__.py": "610d243a896ac2e4e26771509e6ff70a6b6366bd4d32944d8f40ab14884bd2cf",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/domain.py": "edc6aecaa4c2b0e09f31a9d0805a66e8bde2c9e70e70521e5d7119508e8c12a0",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/projection.py": "58a82ea51b3e711f85716926cb2b56d40839c1c47006e707c5b7e7b0fd2331b9",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/storage.py": "cb3172d9fe2f72fc6ef24a12a408f8a808b867555699a04dee3b1c3665540e96",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/store.py": "24d9bc3dd07523d22d432f0128dec4c6bada8c1cd9538b7c593b0d73472167be",
+    "artifacts/jobs/standard-codex-20260926T200419294708Z/durable-ledger-repair__Z3p4gpg/artifacts/app/ledgerstore/tests/test_regression.py": "23598db7fc52ef0a95012a40ce3a75df1956fdc3265f79d28fc290ba836f9b50"
+  },
+  "redaction_policy": "Explicitly selected evidence fields only; no raw configuration, environment variables, credentials, raw trajectory messages or token payloads copied."
+}
