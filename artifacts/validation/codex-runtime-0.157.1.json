@@ -1,0 +1,146 @@
+{
+  "recorded_at": "2026-09-26T20:05:08.984087+00:00",
+  "cli_version": "0.157.1",
+  "platform": "linux-x64 musl",
+  "source": "official @openai/codex npm registry distribution",
+  "verified_at": "2026-09-26T19:55:23.151919+00:00",
+  "packages": [
+    {
+      "name": "@openai/codex",
+      "version": "0.157.1",
+      "tarball": "https://registry.npmjs.org/@openai/codex/-/codex-0.157.1.tgz",
+      "archive_bytes": 4904,
+      "archive_sha256": "813e2a944f4474b7e1826d9ce8bf696ad8d80c68f43f7a7067beec51fa8f5b73",
+      "sha512_sri_verified": true,
+      "sha1_verified": true,
+      "npm_registry_ecdsa_signatures_verified": 2,
+      "signing_keyids": [
+        "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+        "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      ]
+    },
+    {
+      "name": "@openai/codex",
+      "version": "0.157.1-linux-x64",
+      "tarball": "https://registry.npmjs.org/@openai/codex/-/codex-0.157.1-linux-x64.tgz",
+      "archive_bytes": 150336017,
+      "archive_sha256": "7f12677740f439fe4884c7031d9d703e571cecf5ea9fa3a05abd1bbccc2162a8",
+      "sha512_sri_verified": true,
+      "sha1_verified": true,
+      "npm_registry_ecdsa_signatures_verified": 2,
+      "signing_keyids": [
+        "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+        "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      ]
+    }
+  ],
+  "verification_manifest_sha256": "66fa67e6568f127f7289e31e9df444d04f0fe156d2871c44d899ee935c630402",
+  "smoke_report_sha256": "7071e9994f7a42014290be450c1a510d9254a0765ea8b28417b8a58a6549fb99",
+  "dockerfile_sha256": "239a2e6099f7ec257c33b5f469a4afc4f57a05aeb5fdf98a90ea28643b8962e4",
+  "helper_image": "klavis-codex-runtime:0.157.1",
+  "helper_image_config_sha256": "f042eab2b14f94baf33f20599e4d8222d26c4826bd485c8c204819743e844784",
+  "bundle_root_in_tarball": "package/vendor/x86_64-unknown-linux-musl",
+  "bundle_install_root": "/opt/codex",
+  "codex_relative_path": "bin/codex",
+  "ripgrep_relative_path": "codex-path/rg",
+  "bundle_policy": "Preserve entire platform bundle for packaged helpers and resources.",
+  "smoke": {
+    "checked_at": "2026-09-26T20:02:25.396586+00:00",
+    "image": "klavis-codex-runtime:0.157.1",
+    "network": "none",
+    "host_mounts": [],
+    "model_invocations": 0,
+    "checks": [
+      {
+        "command": "codex --version",
+        "return_code": 0,
+        "stdout": "codex-cli 0.157.1",
+        "stderr": ""
+      },
+      {
+        "command": "rg --version",
+        "return_code": 0,
+        "stdout": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)",
+        "stderr": ""
+      },
+      {
+        "command": "! command -v node && ! command -v npm",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": "codex exec --help >/dev/null",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": "codex login status",
+        "return_code": 1,
+        "stdout": "",
+        "stderr": "Not logged in"
+      },
+      {
+        "command": "test ! -e /root/.codex/auth.json",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "harbor_setup_checks": [
+      {
+        "requested_version": null,
+        "detected_version": "0.157.1",
+        "dependency_installer_called": false,
+        "calls": [
+          {
+            "command": "[ -d /installed-agent ] || mkdir -p /installed-agent",
+            "return_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "command": "if [ -s ~/.nvm/nvm.sh ]; then . ~/.nvm/nvm.sh; fi; command -v codex >/dev/null 2>&1",
+            "return_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "command": "if [ -s ~/.nvm/nvm.sh ]; then . ~/.nvm/nvm.sh; fi; codex --version",
+            "return_code": 0,
+            "stdout": "codex-cli 0.157.1",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "requested_version": "0.157.1",
+        "detected_version": "0.157.1",
+        "dependency_installer_called": false,
+        "calls": [
+          {
+            "command": "[ -d /installed-agent ] || mkdir -p /installed-agent",
+            "return_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "command": "if [ -s ~/.nvm/nvm.sh ]; then . ~/.nvm/nvm.sh; fi; codex --version",
+            "return_code": 0,
+            "stdout": "codex-cli 0.157.1",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "harbor_tmp_codex_home_version_check": {
+      "command": "codex --version",
+      "return_code": 0,
+      "stdout": "codex-cli 0.157.1",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: CODEX_HOME points to \"/tmp/codex-home\", but that path does not exist"
+    }
+  },
+  "scope": "Public runtime only; no model invocation, host authentication mount, or global network changes. Authenticated agent execution is not established by these checks.",
+  "runtime_adaptation": "Preinstalled native CLI and bundled ripgrep bypass pinned Harbor dependency installation. Node/npm are absent; model and reasoning settings are unchanged."
+}

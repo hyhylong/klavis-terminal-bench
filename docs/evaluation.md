@@ -25,7 +25,7 @@ An inspected compatibility issue in installed LiteLLM `1.102.1` matters: its Dee
 {"extra_body": {"reasoning_effort": "max", "thinking": {"type": "enabled"}}}
 ```
 
-The offline preflight intercepts LiteLLM's prepared HTTP body before network dispatch and verifies that the final model and effort remain `deepseek-flash` and `max`. A socket guard prohibits network access. This validates serialization; provider authentication and successful live multi-turn execution remain unverified until actual trials run. No older DeepSeek alias is silently substituted.
+The offline preflight intercepts LiteLLM's prepared HTTP body before network dispatch and verifies that the final model and effort remain `deepseek-flash` and `max`. A socket guard prohibits network access. This validates serialization only. A later completed v1 trial (`standard-deepseek-20260926T154101662393Z`) also verified live multi-turn execution and received reward 1; this disproved v1's required difficulty. No older DeepSeek alias is silently substituted.
 
 DeepSeek also documents [Codex Responses integration](https://api-docs.deepseek.com/quick_start/agent_integrations/codex/), including a custom model catalog. That integration is not used by these templates. Terminus 2 is a disclosed replacement agent, so the replacement slot is not identical to the upstream Claude agent/model pairing. Any aggregate cost estimate from LiteLLM may use peak pricing; DeepSeek's billing is authoritative.
 
@@ -88,7 +88,22 @@ source artifacts/environment/runtime-env.sh
 python evaluation/prepare_job.py standard-codex
 ```
 
-The printed file can be run explicitly with `harbor run --config /absolute/path/to/generated.json` from a stable Linux working directory, passing `--env-file /absolute/path/to/.env` when needed. Config generation and preflight never embed credentials. Harbor installs the Codex CLI in its task container; its effective CLI version must be retained in each trial's trajectory. The upstream matrix does not pin a Codex CLI version.
+For a source-only candidate snapshot and one exploratory attempt:
+
+```bash
+candidate=$(python evaluation/freeze_task.py tasks/durable-ledger-repair)
+python evaluation/prepare_job.py standard-codex --task-path "$candidate" --attempts 1
+# The following command really invokes the model:
+bash evaluation/run.sh standard-codex --task-path "$candidate" --attempts 1
+```
+
+The freezer excludes Git-ignored interpreter caches, records every source hash,
+and refuses concurrent source changes during capture. Keep the returned snapshot
+unchanged and compare each trial's task checksum with the control/review evidence.
+One pilot does not replace the required three normal trials. If a candidate is
+solved, preserve that result and reassess difficulty before paying for the rest.
+
+The printed file can be run explicitly with `harbor run --config /absolute/path/to/generated.json` from a stable Linux working directory, passing `--env-file /absolute/path/to/.env` when needed. Config generation and preflight never embed credentials. Harbor normally installs the Codex CLI in its task container; its effective CLI version must be retained in each trial's trajectory. The upstream matrix does not pin a Codex CLI version. The durable candidate's new image preinstalls official standalone Codex 0.157.1 with a pinned public archive checksum to avoid Debian Node/npm setup failures. Pinned Harbor detects the existing CLI and skips installation. Its offline verification is recorded in `artifacts/validation/codex-runtime-0.157.1.json`; account state is supplied separately at trial runtime.
 
 ## Exact adversarial prompt and unavailable review stages
 

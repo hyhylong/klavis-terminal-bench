@@ -1,0 +1,281 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-09-26T20:02:31.052531+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 26,
+            "passed": 20,
+            "failed": 6,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790452924313,
+            "stop": 1790452951051
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_empty_store_public_return_schema_and_lookup",
+                "status": "passed",
+                "duration": 102,
+                "start": 1790452924355,
+                "stop": 1790452924457,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_acknowledged_ingest_survives_abrupt_exit_without_close",
+                "status": "passed",
+                "duration": 299,
+                "start": 1790452924457,
+                "stop": 1790452924756,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_structural_retries_remain_idempotent_after_restart_and_compaction",
+                "status": "passed",
+                "duration": 211,
+                "start": 1790452924756,
+                "stop": 1790452924967,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_conflicting_retry_is_valueerror_without_changing_accepted_history",
+                "status": "passed",
+                "duration": 214,
+                "start": 1790452924968,
+                "stop": 1790452925182,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_invalid_or_unseen_older_arrival_is_rejected_without_changing_storage",
+                "status": "passed",
+                "duration": 234,
+                "start": 1790452925182,
+                "stop": 1790452925416,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_input_and_returned_nested_containers_do_not_alias_store_state",
+                "status": "passed",
+                "duration": 111,
+                "start": 1790452925416,
+                "stop": 1790452925527,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_late_schema_and_parts_reclassify_at_each_accepted_prefix",
+                "status": "passed",
+                "duration": 64,
+                "start": 1790452925527,
+                "stop": 1790452925591,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_redelivery_conflicting_commit_and_abort_obey_classification_priority",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 80,
+                "start": 1790452925592,
+                "stop": 1790452925672,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_redelivery_conflicting_commit_and_abort_obey_classification_priority():\n        \"\"\"Transport duplicates do not conflict; a later conflicting commit quarantines until abort wins.\"\"\"\n        original = delete_history()\n        duplicate = delivery(6, \"row\", original[0][\"body\"])\n        conflicting = copy.deepcopy(original[1][\"body\"])\n        conflicting[\"sha256\"] = \"0\" * 64\n        events = original + [duplicate, delivery(7, \"commit\", conflicting), delivery(8, \"abort\", {\"tx\": \"delete\"})]\n        with session() as worker:\n            for index, event in enumerate(events, 1):\n                worker.call(\"ingest\", event)\n>               check_snapshot(worker, events[:index])\n\ntest_outputs.py:126: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nhelpers.py:60: in check_snapshot\n    assert_json_equal(worker.call(\"snapshot\", cutoff), wanted)\nhelpers.py:45: in assert_json_equal\n    compare_output(actual, wanted)\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nactual = [{'entity': 'a', 'segments': [{'from': -3, 'to': 7, 'deleted': True, 'values': {}, ...}]}]\nexpected = [], location = '$.entities'\n\n    def compare_output(actual, expected, location=\"$\"):\n        \"\"\"Check exact keys, array order, values and JSON types (bool is not int).\"\"\"\n        if type(actual) is not type(expected):\n            raise ValueError(f\"{location}: expected {type(expected).__name__}, got {type(actual).__name__}\")\n        if isinstance(expected, dict):\n            if actual.keys() != expected.keys():\n                raise ValueError(f\"{location}: object keys do not match the required schema\")\n            for key in expected:\n                compare_output(actual[key], expected[key], f\"{location}.{key}\")\n        elif isinstance(expected, list):\n            if len(actual) != len(expected):\n>               raise ValueError(f\"{location}: expected {len(expected)} items, got {len(actual)}\")\nE               ValueError: $.entities: expected 0 items, got 1\n\nreference.py:219: ValueError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_compaction_keeps_late_retraction_abort_and_historical_snapshots",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 165,
+                "start": 1790452925672,
+                "stop": 1790452925837,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_compaction_keeps_late_retraction_abort_and_historical_snapshots():\n        \"\"\"Compacted source lineage still supports a late null amendment and its later abort.\"\"\"\n        events = correction_history()\n        fs = MemoryDurableFS()\n        for end, start in ((5, 0), (7, 5), (8, 7)):\n            with session(fs) as worker:\n                ingest_all(worker, events[start:end])\n>               check_snapshot(worker, events[:end])\n\ntest_outputs.py:136: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nhelpers.py:60: in check_snapshot\n    assert_json_equal(worker.call(\"snapshot\", cutoff), wanted)\nhelpers.py:45: in assert_json_equal\n    compare_output(actual, wanted)\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nactual = [{'entity': 'a', 'segments': [{'deleted': False, 'from': 0, 'origins': {'enabled': 'base/0', 'note': 'base/0', 'quota'...': 8, 'origins': {'enabled': 'base/0', 'note': 'base/0', 'quota': 'base/0', 'region': 'base/0', ...}, 'to': 10, ...}]}]\nexpected = [], location = '$.entities'\n\n    def compare_output(actual, expected, location=\"$\"):\n        \"\"\"Check exact keys, array order, values and JSON types (bool is not int).\"\"\"\n        if type(actual) is not type(expected):\n            raise ValueError(f\"{location}: expected {type(expected).__name__}, got {type(actual).__name__}\")\n        if isinstance(expected, dict):\n            if actual.keys() != expected.keys():\n                raise ValueError(f\"{location}: object keys do not match the required schema\")\n            for key in expected:\n                compare_output(actual[key], expected[key], f\"{location}.{key}\")\n        elif isinstance(expected, list):\n            if len(actual) != len(expected):\n>               raise ValueError(f\"{location}: expected {len(expected)} items, got {len(actual)}\")\nE               ValueError: $.entities: expected 0 items, got 1\n\nreference.py:219: ValueError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_amendment_winner_provenance_and_original_slot_survive_compaction",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 109,
+                "start": 1790452925837,
+                "stop": 1790452925946,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_amendment_winner_provenance_and_original_slot_survive_compaction():\n        \"\"\"Amendment part differs from target part; abort restores the earlier eligible winner.\"\"\"\n        events = amendments_history()\n        fs = MemoryDurableFS()\n        with session(fs) as worker:\n            for index, event in enumerate(events, 1):\n                worker.call(\"ingest\", event)\n                if index in (5, 8, 10, 11):\n>                   check_snapshot(worker, events[:index])\n\ntest_outputs.py:151: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nhelpers.py:60: in check_snapshot\n    assert_json_equal(worker.call(\"snapshot\", cutoff), wanted)\nhelpers.py:45: in assert_json_equal\n    compare_output(actual, wanted)\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nactual = [{'entity': 'a', 'segments': [{'from': -2, 'to': 3, 'deleted': False, 'values': {'enabled': True, 'note': None, 'quota...egion': 'eu', ...}, ...}]}, {'entity': 'side', 'segments': [{'from': 4, 'to': 6, 'deleted': True, 'values': {}, ...}]}]\nexpected = [{'entity': 'side', 'segments': [{'from': 4, 'to': 6, 'deleted': True, 'values': {}, ...}]}]\nlocation = '$.entities'\n\n    def compare_output(actual, expected, location=\"$\"):\n        \"\"\"Check exact keys, array order, values and JSON types (bool is not int).\"\"\"\n        if type(actual) is not type(expected):\n            raise ValueError(f\"{location}: expected {type(expected).__name__}, got {type(actual).__name__}\")\n        if isinstance(expected, dict):\n            if actual.keys() != expected.keys():\n                raise ValueError(f\"{location}: object keys do not match the required schema\")\n            for key in expected:\n                compare_output(actual[key], expected[key], f\"{location}.{key}\")\n        elif isinstance(expected, list):\n            if len(actual) != len(expected):\n>               raise ValueError(f\"{location}: expected {len(expected)} items, got {len(actual)}\")\nE               ValueError: $.entities: expected 1 items, got 2\n\nreference.py:219: ValueError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_repeated_compaction_is_observably_idempotent_and_retires_old_wal",
+                "status": "passed",
+                "duration": 168,
+                "start": 1790452925946,
+                "stop": 1790452926114,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_full_corpus_snapshots_match_independent_endpoint_replay",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1408,
+                "start": 1790452926114,
+                "stop": 1790452927522,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_full_corpus_snapshots_match_independent_endpoint_replay():\n        \"\"\"All 21 corpus cutoffs agree after interleaved retries, compaction, and fresh workers.\"\"\"\n        events, checkpoints = corpus()\n        fs = MemoryDurableFS()\n        for start in range(0, len(events), 127):\n            with session(fs) as worker:\n                for index, event in enumerate(events[start:start + 127], start):\n                    worker.call(\"ingest\", event)\n                    if index % 17 == 0: worker.call(\"ingest\", copy.deepcopy(event))\n                worker.call(\"compact\")\n            fs.crash()\n        with session(fs) as worker:\n>           for checkpoint in reversed(checkpoints): check_snapshot(worker, events, checkpoint[\"cutoff\"])\n                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntest_outputs.py:201: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nhelpers.py:60: in check_snapshot\n    assert_json_equal(worker.call(\"snapshot\", cutoff), wanted)\nhelpers.py:45: in assert_json_equal\n    compare_output(actual, wanted)\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\nreference.py:221: in compare_output\n    compare_output(got, want, f\"{location}[{index}]\")\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\nreference.py:221: in compare_output\n    compare_output(got, want, f\"{location}[{index}]\")\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nactual = 8, expected = 7, location = '$.entities[27].segments[3].to'\n\n    def compare_output(actual, expected, location=\"$\"):\n        \"\"\"Check exact keys, array order, values and JSON types (bool is not int).\"\"\"\n        if type(actual) is not type(expected):\n            raise ValueError(f\"{location}: expected {type(expected).__name__}, got {type(actual).__name__}\")\n        if isinstance(expected, dict):\n            if actual.keys() != expected.keys():\n                raise ValueError(f\"{location}: object keys do not match the required schema\")\n            for key in expected:\n                compare_output(actual[key], expected[key], f\"{location}.{key}\")\n        elif isinstance(expected, list):\n            if len(actual) != len(expected):\n                raise ValueError(f\"{location}: expected {len(expected)} items, got {len(actual)}\")\n            for index, (got, want) in enumerate(zip(actual, expected)):\n                compare_output(got, want, f\"{location}[{index}]\")\n        elif actual != expected:\n>           raise ValueError(f\"{location}: value does not match reconstructed history\")\nE           ValueError: $.entities[27].segments[3].to: value does not match reconstructed history\n\nreference.py:223: ValueError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 201,
+                "start": 1790452927522,
+                "stop": 1790452927723,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot():\n        \"\"\"Lookup returns whole maximal segments and respects every tested half-open boundary.\"\"\"\n        events, _ = corpus()\n        with session(MemoryDurableFS.from_image(legacy_image(events))) as worker:\n            wanted = expected(events)\n            for record in wanted[\"entities\"]:\n                points = set()\n                for segment in record[\"segments\"]:\n                    points.update((segment[\"from\"] - 1, segment[\"from\"], segment[\"from\"] + 1))\n                    if segment[\"to\"] is None: points.add(10**9)\n                    else: points.update((segment[\"to\"] - 1, segment[\"to\"]))\n                for point in sorted(points):\n>                   assert_json_equal(worker.call(\"lookup\", record[\"entity\"], point), lookup_expected(wanted, record[\"entity\"], point))\n\ntest_outputs.py:216: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nhelpers.py:45: in assert_json_equal\n    compare_output(actual, wanted)\nreference.py:216: in compare_output\n    compare_output(actual[key], expected[key], f\"{location}.{key}\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nactual = 8, expected = 7, location = '$.to'\n\n    def compare_output(actual, expected, location=\"$\"):\n        \"\"\"Check exact keys, array order, values and JSON types (bool is not int).\"\"\"\n        if type(actual) is not type(expected):\n            raise ValueError(f\"{location}: expected {type(expected).__name__}, got {type(actual).__name__}\")\n        if isinstance(expected, dict):\n            if actual.keys() != expected.keys():\n                raise ValueError(f\"{location}: object keys do not match the required schema\")\n            for key in expected:\n                compare_output(actual[key], expected[key], f\"{location}.{key}\")\n        elif isinstance(expected, list):\n            if len(actual) != len(expected):\n                raise ValueError(f\"{location}: expected {len(expected)} items, got {len(actual)}\")\n            for index, (got, want) in enumerate(zip(actual, expected)):\n                compare_output(got, want, f\"{location}[{index}]\")\n        elif actual != expected:\n>           raise ValueError(f\"{location}: value does not match reconstructed history\")\nE           ValueError: $.to: value does not match reconstructed history\n\nreference.py:223: ValueError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_legacy_checkpoint_wal_whitespace_and_nonlatest_manifest_generation",
+                "status": "passed",
+                "duration": 118,
+                "start": 1790452927723,
+                "stop": 1790452927841,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_legacy_identical_duplicate_arrivals_are_idempotent",
+                "status": "passed",
+                "duration": 59,
+                "start": 1790452927841,
+                "stop": 1790452927900,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_legacy_conflicting_or_unseen_older_arrivals_are_rejected",
+                "status": "passed",
+                "duration": 115,
+                "start": 1790452927901,
+                "stop": 1790452928016,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_incomplete_wal_header_payload_and_digest_are_repaired_before_append",
+                "status": "passed",
+                "duration": 352,
+                "start": 1790452928016,
+                "stop": 1790452928368,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_complete_corrupt_wal_frame_is_never_silently_dropped",
+                "status": "passed",
+                "duration": 55,
+                "start": 1790452928368,
+                "stop": 1790452928423,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_missing_active_file_cannot_reinitialize_to_an_empty_store",
+                "status": "passed",
+                "duration": 123,
+                "start": 1790452928424,
+                "stop": 1790452928547,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_every_initialization_filesystem_boundary_recovers_an_empty_store",
+                "status": "passed",
+                "duration": 2187,
+                "start": 1790452928547,
+                "stop": 1790452930734,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_every_ingest_filesystem_boundary_preserves_acknowledged_prefix_and_atomic_retry",
+                "status": "passed",
+                "duration": 1240,
+                "start": 1790452930734,
+                "stop": 1790452931974,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_every_compaction_filesystem_boundary_preserves_history_and_future_corrections",
+                "status": "passed",
+                "duration": 4829,
+                "start": 1790452931974,
+                "stop": 1790452936803,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_every_incomplete_tail_recovery_boundary_preserves_complete_prefix",
+                "status": "passed",
+                "duration": 1072,
+                "start": 1790452936803,
+                "stop": 1790452937875,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_worker_boundary_blocks_protected_reads_and_reward_writes",
+                "status": "passed",
+                "duration": 43,
+                "start": 1790452937875,
+                "stop": 1790452937918,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_worker_cannot_dispatch_host_only_simulator_methods",
+                "status": "passed",
+                "duration": 122,
+                "start": 1790452937918,
+                "stop": 1790452938040,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_performance.py::test_published_stream_workload_answers_and_budget",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 13010,
+                "start": 1790452938041,
+                "stop": 1790452951051,
+                "retries": 0,
+                "file_path": "test_performance.py",
+                "trace": "def test_published_stream_workload_answers_and_budget():\n        \"\"\"Corrections and queries stay correct and meet the documented median budget.\"\"\"\n        parent = Path(os.environ.get('LEDGER_SUBMISSION_PARENT', '/app'))\n        seed = secrets.randbits(32)\n        metrics = Path(os.environ.get('LEDGER_METRICS_PATH', '/logs/verifier/performance.json'))\n        metrics.parent.mkdir(parents=True, exist_ok=True)\n        metrics.write_text(json.dumps({'seed': seed, 'phase': 'preparing independent answers'}) + '\\n')\n        workload = build_workload(seed=seed)\n        expected, final = independent_answers(workload)\n        times = []\n        for _ in range(3):\n            elapsed, actual, snapshot = sample(parent, workload)\n            # A pytest string-equality assertion asks difflib to align megabytes of\n            # repetitive JSON on failure. Report the first structural mismatch;\n            # failure reporting must not turn a wrong answer into a timeout.\n            try:\n                compare_output(actual, expected, 'lookups')\n                compare_output(snapshot, final, 'snapshot')\n            except ValueError as mismatch:\n>               raise AssertionError(f'Stream mismatch; seed={seed}; {mismatch}') from None\nE               AssertionError: Stream mismatch; seed=3869255297; lookups[132].from: value does not match reconstructed history\n\ntest_performance.py:75: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

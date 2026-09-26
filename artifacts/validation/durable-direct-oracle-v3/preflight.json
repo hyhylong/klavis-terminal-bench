@@ -1,0 +1,16 @@
+{
+  "purpose": "trusted platform preflight; no submitted artifact evaluated",
+  "python": "3.13.15",
+  "system": "Linux",
+  "machine": "x86_64",
+  "status": "passed",
+  "checks": [
+    "unprivileged_identity",
+    "copy_fractions_decimal_hashlib_imports",
+    "protected_reference_read_denied",
+    "protected_write_denied",
+    "network_socket_denied",
+    "binary_durable_filesystem_rpc",
+    "known_snapshot"
+  ]
+}

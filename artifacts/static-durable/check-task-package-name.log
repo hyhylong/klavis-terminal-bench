@@ -1,0 +1,3 @@
+Checking tasks/durable-ledger-repair/task.toml...
+PASS tasks/durable-ledger-repair
+All task.toml files have the expected [task] name

@@ -1,15 +1,17 @@
-# Klavis Terminal-Bench: temporal-ledger-repair
+# Klavis Terminal-Bench local workspace
 
 原创任务实现工作区。题目从乱序 CDC 事件恢复双时间账本，处理原子事务、重复冲突、schema 延迟、历史修正、半开区间、删除和字段来源。输入为合成数据：1,010 条事件、21 个交付检查点。
 
 **第一版可运行，但已被 Codex 和 DeepSeek 各成功解出，尚不满足作业的难度要求。保留全部真实结果，正在开发第二个候选版本。**
 
+第二版候选为 `tasks/durable-ledger-repair`：修复持久化账本的修订依赖和缓存恢复。它提供完整协议、可复现的公开失败示例、参考实现和进程隔离验证器。最新冻结版本的 Harbor 正反例均已验证：参考解 26/26 通过，初始代码有 6 项语义错误，双方无执行异常。首次 Codex 试做因依赖安装网络错误中断，不能计入模型失败；已改为预装可校验的官方 CLI，并启动新的试做与 35 项规则审查。正确实现与故障实现分开放置；不能将开发测试通过写成模型失败证据。研发状态与测量口径见 [第二版记录](docs/durable-progress.md)。
+
 ## 已验证与待完成
 
 | 验收项 | 当前证据 |
 | --- | --- |
-| 本地环境 | WSL2、Docker、Python 3.12.12、Harbor 0.23.1.dev202609170426 可用 |
-| 开发测试 | 47 项通过；含 8 个种子的独立算法交叉验证、错误产物拒绝和证据分类测试 |
+| 第一版本地环境 | 已使用 WSL2、Docker、Python 3.12.12、Harbor 0.23.1.dev202609170426 完成下列实测；当前状态另见第二版记录 |
+| 第一版开发测试 | 47 项通过；含 8 个种子的独立算法交叉验证、错误产物拒绝和证据分类测试 |
 | Docker 构建 | agent 与独立 verifier 镜像均构建成功 |
 | Harbor oracle | oracle-v2-lf：reward 1，22 项容器验证通过，无执行异常 |
 | Harbor nop | nop-v3-lf：reward 0，无执行异常，验证器独立运行 |
@@ -68,7 +70,7 @@ harbor run --path "$root/tasks/temporal-ledger-repair" --agent nop --env docker 
 - `docs/local-review.md`：使用 Codex 进行本地 implementation rubric 审查的方式与差异。
 - `artifacts/static/`：静态检查日志；完整运行轨迹在被 Git 忽略的 `artifacts/jobs/`。
 
-验证器只解析声明的 JSON 文件，不执行 agent 提交的程序，也不从 agent 容器导入测试或参考数据。
+第一版验证器只解析声明的 JSON 文件。第二版会执行提交的 Python 库，由隔离子进程调用公开 API；可信父进程保管预期答案、模拟磁盘和奖励。
 
 ## 评测口径
 

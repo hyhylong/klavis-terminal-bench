@@ -1,0 +1,6 @@
+Checking tasks/durable-ledger-repair/task.toml...
+FAIL tasks/durable-ledger-repair/task.toml: author_github must contain a valid GitHub username for each author
+
+Some tasks are missing required task.toml fields, README sections, or have invalid values
+Required task.toml fields: author_name author_email category subcategory tags expert_time_estimate_hours
+Required README sections: Difficulty explanation Solution explanation Verification explanation Relevant experience

@@ -1,0 +1,259 @@
+{"preflight": "passed", "report": "/logs/verifier/preflight.json"}
+.......FFF.FF............F                                               [100%]
+=================================== FAILURES ===================================
+__ test_redelivery_conflicting_commit_and_abort_obey_classification_priority ___
+
+    def test_redelivery_conflicting_commit_and_abort_obey_classification_priority():
+        """Transport duplicates do not conflict; a later conflicting commit quarantines until abort wins."""
+        original = delete_history()
+        duplicate = delivery(6, "row", original[0]["body"])
+        conflicting = copy.deepcopy(original[1]["body"])
+        conflicting["sha256"] = "0" * 64
+        events = original + [duplicate, delivery(7, "commit", conflicting), delivery(8, "abort", {"tx": "delete"})]
+        with session() as worker:
+            for index, event in enumerate(events, 1):
+                worker.call("ingest", event)
+>               check_snapshot(worker, events[:index])
+
+test_outputs.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+helpers.py:60: in check_snapshot
+    assert_json_equal(worker.call("snapshot", cutoff), wanted)
+helpers.py:45: in assert_json_equal
+    compare_output(actual, wanted)
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = [{'entity': 'a', 'segments': [{'from': -3, 'to': 7, 'deleted': True, 'values': {}, ...}]}]
+expected = [], location = '$.entities'
+
+    def compare_output(actual, expected, location="$"):
+        """Check exact keys, array order, values and JSON types (bool is not int)."""
+        if type(actual) is not type(expected):
+            raise ValueError(f"{location}: expected {type(expected).__name__}, got {type(actual).__name__}")
+        if isinstance(expected, dict):
+            if actual.keys() != expected.keys():
+                raise ValueError(f"{location}: object keys do not match the required schema")
+            for key in expected:
+                compare_output(actual[key], expected[key], f"{location}.{key}")
+        elif isinstance(expected, list):
+            if len(actual) != len(expected):
+>               raise ValueError(f"{location}: expected {len(expected)} items, got {len(actual)}")
+E               ValueError: $.entities: expected 0 items, got 1
+
+reference.py:219: ValueError
+_____ test_compaction_keeps_late_retraction_abort_and_historical_snapshots _____
+
+    def test_compaction_keeps_late_retraction_abort_and_historical_snapshots():
+        """Compacted source lineage still supports a late null amendment and its later abort."""
+        events = correction_history()
+        fs = MemoryDurableFS()
+        for end, start in ((5, 0), (7, 5), (8, 7)):
+            with session(fs) as worker:
+                ingest_all(worker, events[start:end])
+>               check_snapshot(worker, events[:end])
+
+test_outputs.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+helpers.py:60: in check_snapshot
+    assert_json_equal(worker.call("snapshot", cutoff), wanted)
+helpers.py:45: in assert_json_equal
+    compare_output(actual, wanted)
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = [{'entity': 'a', 'segments': [{'deleted': False, 'from': 0, 'origins': {'enabled': 'base/0', 'note': 'base/0', 'quota'...': 8, 'origins': {'enabled': 'base/0', 'note': 'base/0', 'quota': 'base/0', 'region': 'base/0', ...}, 'to': 10, ...}]}]
+expected = [], location = '$.entities'
+
+    def compare_output(actual, expected, location="$"):
+        """Check exact keys, array order, values and JSON types (bool is not int)."""
+        if type(actual) is not type(expected):
+            raise ValueError(f"{location}: expected {type(expected).__name__}, got {type(actual).__name__}")
+        if isinstance(expected, dict):
+            if actual.keys() != expected.keys():
+                raise ValueError(f"{location}: object keys do not match the required schema")
+            for key in expected:
+                compare_output(actual[key], expected[key], f"{location}.{key}")
+        elif isinstance(expected, list):
+            if len(actual) != len(expected):
+>               raise ValueError(f"{location}: expected {len(expected)} items, got {len(actual)}")
+E               ValueError: $.entities: expected 0 items, got 1
+
+reference.py:219: ValueError
+____ test_amendment_winner_provenance_and_original_slot_survive_compaction _____
+
+    def test_amendment_winner_provenance_and_original_slot_survive_compaction():
+        """Amendment part differs from target part; abort restores the earlier eligible winner."""
+        events = amendments_history()
+        fs = MemoryDurableFS()
+        with session(fs) as worker:
+            for index, event in enumerate(events, 1):
+                worker.call("ingest", event)
+                if index in (5, 8, 10, 11):
+>                   check_snapshot(worker, events[:index])
+
+test_outputs.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+helpers.py:60: in check_snapshot
+    assert_json_equal(worker.call("snapshot", cutoff), wanted)
+helpers.py:45: in assert_json_equal
+    compare_output(actual, wanted)
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = [{'entity': 'a', 'segments': [{'from': -2, 'to': 3, 'deleted': False, 'values': {'enabled': True, 'note': None, 'quota...egion': 'eu', ...}, ...}]}, {'entity': 'side', 'segments': [{'from': 4, 'to': 6, 'deleted': True, 'values': {}, ...}]}]
+expected = [{'entity': 'side', 'segments': [{'from': 4, 'to': 6, 'deleted': True, 'values': {}, ...}]}]
+location = '$.entities'
+
+    def compare_output(actual, expected, location="$"):
+        """Check exact keys, array order, values and JSON types (bool is not int)."""
+        if type(actual) is not type(expected):
+            raise ValueError(f"{location}: expected {type(expected).__name__}, got {type(actual).__name__}")
+        if isinstance(expected, dict):
+            if actual.keys() != expected.keys():
+                raise ValueError(f"{location}: object keys do not match the required schema")
+            for key in expected:
+                compare_output(actual[key], expected[key], f"{location}.{key}")
+        elif isinstance(expected, list):
+            if len(actual) != len(expected):
+>               raise ValueError(f"{location}: expected {len(expected)} items, got {len(actual)}")
+E               ValueError: $.entities: expected 1 items, got 2
+
+reference.py:219: ValueError
+_________ test_full_corpus_snapshots_match_independent_endpoint_replay _________
+
+    def test_full_corpus_snapshots_match_independent_endpoint_replay():
+        """All 21 corpus cutoffs agree after interleaved retries, compaction, and fresh workers."""
+        events, checkpoints = corpus()
+        fs = MemoryDurableFS()
+        for start in range(0, len(events), 127):
+            with session(fs) as worker:
+                for index, event in enumerate(events[start:start + 127], start):
+                    worker.call("ingest", event)
+                    if index % 17 == 0: worker.call("ingest", copy.deepcopy(event))
+                worker.call("compact")
+            fs.crash()
+        with session(fs) as worker:
+>           for checkpoint in reversed(checkpoints): check_snapshot(worker, events, checkpoint["cutoff"])
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_outputs.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+helpers.py:60: in check_snapshot
+    assert_json_equal(worker.call("snapshot", cutoff), wanted)
+helpers.py:45: in assert_json_equal
+    compare_output(actual, wanted)
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+reference.py:221: in compare_output
+    compare_output(got, want, f"{location}[{index}]")
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+reference.py:221: in compare_output
+    compare_output(got, want, f"{location}[{index}]")
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = 8, expected = 7, location = '$.entities[27].segments[3].to'
+
+    def compare_output(actual, expected, location="$"):
+        """Check exact keys, array order, values and JSON types (bool is not int)."""
+        if type(actual) is not type(expected):
+            raise ValueError(f"{location}: expected {type(expected).__name__}, got {type(actual).__name__}")
+        if isinstance(expected, dict):
+            if actual.keys() != expected.keys():
+                raise ValueError(f"{location}: object keys do not match the required schema")
+            for key in expected:
+                compare_output(actual[key], expected[key], f"{location}.{key}")
+        elif isinstance(expected, list):
+            if len(actual) != len(expected):
+                raise ValueError(f"{location}: expected {len(expected)} items, got {len(actual)}")
+            for index, (got, want) in enumerate(zip(actual, expected)):
+                compare_output(got, want, f"{location}[{index}]")
+        elif actual != expected:
+>           raise ValueError(f"{location}: value does not match reconstructed history")
+E           ValueError: $.entities[27].segments[3].to: value does not match reconstructed history
+
+reference.py:223: ValueError
+_ test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot __
+
+    def test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot():
+        """Lookup returns whole maximal segments and respects every tested half-open boundary."""
+        events, _ = corpus()
+        with session(MemoryDurableFS.from_image(legacy_image(events))) as worker:
+            wanted = expected(events)
+            for record in wanted["entities"]:
+                points = set()
+                for segment in record["segments"]:
+                    points.update((segment["from"] - 1, segment["from"], segment["from"] + 1))
+                    if segment["to"] is None: points.add(10**9)
+                    else: points.update((segment["to"] - 1, segment["to"]))
+                for point in sorted(points):
+>                   assert_json_equal(worker.call("lookup", record["entity"], point), lookup_expected(wanted, record["entity"], point))
+
+test_outputs.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+helpers.py:45: in assert_json_equal
+    compare_output(actual, wanted)
+reference.py:216: in compare_output
+    compare_output(actual[key], expected[key], f"{location}.{key}")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = 8, expected = 7, location = '$.to'
+
+    def compare_output(actual, expected, location="$"):
+        """Check exact keys, array order, values and JSON types (bool is not int)."""
+        if type(actual) is not type(expected):
+            raise ValueError(f"{location}: expected {type(expected).__name__}, got {type(actual).__name__}")
+        if isinstance(expected, dict):
+            if actual.keys() != expected.keys():
+                raise ValueError(f"{location}: object keys do not match the required schema")
+            for key in expected:
+                compare_output(actual[key], expected[key], f"{location}.{key}")
+        elif isinstance(expected, list):
+            if len(actual) != len(expected):
+                raise ValueError(f"{location}: expected {len(expected)} items, got {len(actual)}")
+            for index, (got, want) in enumerate(zip(actual, expected)):
+                compare_output(got, want, f"{location}[{index}]")
+        elif actual != expected:
+>           raise ValueError(f"{location}: value does not match reconstructed history")
+E           ValueError: $.to: value does not match reconstructed history
+
+reference.py:223: ValueError
+______________ test_published_stream_workload_answers_and_budget _______________
+
+    def test_published_stream_workload_answers_and_budget():
+        """Corrections and queries stay correct and meet the documented median budget."""
+        parent = Path(os.environ.get('LEDGER_SUBMISSION_PARENT', '/app'))
+        seed = secrets.randbits(32)
+        metrics = Path(os.environ.get('LEDGER_METRICS_PATH', '/logs/verifier/performance.json'))
+        metrics.parent.mkdir(parents=True, exist_ok=True)
+        metrics.write_text(json.dumps({'seed': seed, 'phase': 'preparing independent answers'}) + '\n')
+        workload = build_workload(seed=seed)
+        expected, final = independent_answers(workload)
+        times = []
+        for _ in range(3):
+            elapsed, actual, snapshot = sample(parent, workload)
+            # A pytest string-equality assertion asks difflib to align megabytes of
+            # repetitive JSON on failure. Report the first structural mismatch;
+            # failure reporting must not turn a wrong answer into a timeout.
+            try:
+                compare_output(actual, expected, 'lookups')
+                compare_output(snapshot, final, 'snapshot')
+            except ValueError as mismatch:
+>               raise AssertionError(f'Stream mismatch; seed={seed}; {mismatch}') from None
+E               AssertionError: Stream mismatch; seed=3869255297; lookups[132].from: value does not match reconstructed history
+
+test_performance.py:75: AssertionError
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_redelivery_conflicting_commit_and_abort_obey_classification_priority
+FAILED test_outputs.py::test_compaction_keeps_late_retraction_abort_and_historical_snapshots
+FAILED test_outputs.py::test_amendment_winner_provenance_and_original_slot_survive_compaction
+FAILED test_outputs.py::test_full_corpus_snapshots_match_independent_endpoint_replay
+FAILED test_outputs.py::test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot
+FAILED test_performance.py::test_published_stream_workload_answers_and_budget
+6 failed, 20 passed in 28.52s

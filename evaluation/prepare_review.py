@@ -22,24 +22,137 @@ INSTRUCTION = "scripts/rubric-regression/templates/instruction.md"
 RUBRIC = "docs/prompts/task-implementation.toml"
 DEFAULT_TASK = ROOT / "tasks/temporal-ledger-repair"
 SKIPPED_DIRS = {".git", "__pycache__", ".pytest_cache"}
+CODEX_RELEASE = {
+    "version": "0.157.1",
+    "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.157.1-linux-x64.tgz",
+    "sha256": "7f12677740f439fe4884c7031d9d703e571cecf5ea9fa3a05abd1bbccc2162a8",
+    "platform": "linux-x64",
+}
 
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def task_files(task):
-    """Inventory submission files while excluding documented local Python caches."""
+def task_files(task, *, exclude_caches=True):
+    """Inventory task files, optionally excluding documented local Python caches."""
     result = {}
     for path in sorted(task.rglob("*")):
         relative = path.relative_to(task)
-        if any(part in SKIPPED_DIRS for part in relative.parts) or path.suffix == ".pyc":
+        if exclude_caches and (any(part in SKIPPED_DIRS for part in relative.parts)
+                               or path.suffix == ".pyc"):
             continue
         if path.is_symlink():
             raise ValueError(f"Task snapshots do not follow symlinks: {relative}")
         if path.is_file():
             result[relative.as_posix()] = sha256(path)
     return result
+
+
+def validate_review_source(task):
+    """Allow a normal task or verify every byte of one of our frozen candidates."""
+    task = Path(task).resolve()
+    if task.parent == (ROOT / "tasks").resolve():
+        return None
+    frozen_root = (ROOT / "artifacts/local/frozen").resolve()
+    try:
+        relative = task.relative_to(frozen_root)
+    except ValueError:
+        raise ValueError("Review a direct tasks child or a verified local frozen candidate") from None
+    if len(relative.parts) != 2 or not task.is_dir():
+        raise ValueError("Frozen candidates must have the layout frozen/<container>/<task>")
+    manifest_path = task.parent / "source-manifest.json"
+    if manifest_path.is_symlink() or not manifest_path.is_file():
+        raise ValueError("Frozen candidate requires a regular sibling source-manifest.json")
+    manifest_bytes = manifest_path.read_bytes()
+    manifest = json.loads(manifest_bytes)
+    if (type(manifest) is not dict or manifest.get("source") != f"tasks/{task.name}"
+            or type(manifest.get("files")) is not list):
+        raise ValueError("Frozen manifest does not describe this task")
+    declared = {}
+    for item in manifest["files"]:
+        if (type(item) is not dict or set(item) != {"path", "bytes", "sha256"}
+                or type(item["path"]) is not str or type(item["bytes"]) is not int
+                or item["bytes"] < 0 or type(item["sha256"]) is not str
+                or item["path"] in declared):
+            raise ValueError("Frozen manifest has an invalid or duplicate file entry")
+        declared[item["path"]] = item
+    actual = {}
+    for path in task.rglob("*"):
+        if path.is_symlink():
+            raise ValueError("Frozen candidates must not contain symlinks")
+        if path.is_dir():
+            continue
+        if not path.is_file():
+            raise ValueError("Frozen candidates must contain only regular files")
+        actual[path.relative_to(task).as_posix()] = path
+    if set(actual) != set(declared):
+        raise ValueError("Frozen candidate file inventory differs from its manifest")
+    tree = hashlib.sha256()
+    for name in sorted(actual):
+        data = actual[name].read_bytes()
+        entry = declared[name]
+        if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
+            raise ValueError(f"Frozen candidate file differs from its manifest: {name}")
+        tree.update(name.encode("utf-8") + b"\0" + data + b"\0")
+    if tree.hexdigest() != manifest.get("snapshot_tree_sha256"):
+        raise ValueError("Frozen candidate tree checksum differs from its manifest")
+    return {"manifest_path": str(manifest_path),
+            "manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+            "snapshot_tree_sha256": tree.hexdigest()}
+
+
+def create_native_review_parent(label):
+    """Reserve a fresh review directory under the native Linux home state tree."""
+    parent = Path.home() / ".local/state/klavis-terminal-bench/reviews" / label
+    for component in (parent, *parent.parents):
+        if component.is_symlink():
+            raise ValueError(f"Native review staging must not follow symlinks: {component}")
+    parent.mkdir(parents=True, exist_ok=False)
+    return parent
+
+
+def review_runtime(cached_python_base=False):
+    """Select the disclosed review runtime without changing the reviewed task."""
+    if cached_python_base:
+        return {
+            "base_image": "python:3.13-slim-bookworm@sha256:2325bb286ec344af3e5898cc224b5844e2707ac6e26b1632516fd3edc84a5e26",
+            "apt_packages": ["ca-certificates", "curl", "git", "procps"],
+            "cached_python_base": True,
+        }
+    return {
+        "base_image": "ubuntu:24.04",
+        "apt_packages": ["ca-certificates", "curl", "git", "nodejs", "npm", "procps", "python3"],
+        "cached_python_base": False,
+    }
+
+
+def review_dockerfile(runtime, *, preinstalled_codex=False):
+    """Prepare portable CLI assets from the public, checksum-pinned release."""
+    base = runtime["base_image"]
+    packages = list(runtime["apt_packages"])
+    prefix, install = "", ""
+    if preinstalled_codex:
+        packages = [package for package in packages if package not in {"nodejs", "npm"}]
+        prefix = (
+            f"FROM {base} AS codex-assets\n"
+            f"ADD --checksum=sha256:{CODEX_RELEASE['sha256']} {CODEX_RELEASE['url']} /tmp/codex.tgz\n"
+            "RUN tar -xzf /tmp/codex.tgz -C /tmp && "
+            "mv /tmp/package/vendor/x86_64-unknown-linux-musl /opt/codex\n"
+        )
+        install = (
+            "COPY --from=codex-assets /opt/codex /opt/codex\n"
+            "RUN ln -s /opt/codex/bin/codex /usr/local/bin/codex && "
+            "ln -s /opt/codex/codex-path/rg /usr/local/bin/rg && "
+            f'test "$(codex --version)" = "codex-cli {CODEX_RELEASE["version"]}" && rg --version\n'
+        )
+    return (
+        prefix + f"FROM {base}\n"
+        "RUN apt-get update && apt-get install -y --no-install-recommends "
+        f"{' '.join(packages)} && rm -rf /var/lib/apt/lists/*\n"
+        + install + "COPY task-under-review /app/task-under-review\n"
+        "COPY rubric.toml /app/rubric.toml\nWORKDIR /app\n"
+    )
 
 
 def pinned_sources():
@@ -57,7 +170,8 @@ def pinned_sources():
             raise ValueError(f"Pinned review source has local modifications: {relative}")
 
 
-def prepare(task=DEFAULT_TASK):
+def prepare(task=DEFAULT_TASK, *, native_stage=False, cached_python_base=False,
+            preinstalled_codex=False):
     """Write a new immutable snapshot/config and return its absolute config path."""
     if sys.platform != "linux":
         raise RuntimeError("Run this preparation script with the pinned Linux/WSL Harbor Python")
@@ -70,10 +184,10 @@ def prepare(task=DEFAULT_TASK):
 
     pinned_sources()
     task = Path(task).resolve()
-    if task.parent != (ROOT / "tasks").resolve():
-        raise ValueError("The reviewed task must be directly under this project's tasks directory")
+    source_freeze = validate_review_source(task)
     Task(task)  # Validate the actual source task before copying it.
-    inventory = task_files(task)
+    exclude_caches = source_freeze is None
+    inventory = task_files(task, exclude_caches=exclude_caches)
     source_checksum = dirhash(task, "sha256")
     excluded = sorted(path.relative_to(task).as_posix() for path in task.rglob("*")
                       if path.is_file() and path.relative_to(task).as_posix() not in inventory)
@@ -84,8 +198,9 @@ def prepare(task=DEFAULT_TASK):
 
     label = "implementation-review-codex-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     destination = (ROOT / "artifacts/local/review" / label).resolve()
+    staging_parent = create_native_review_parent(label) if native_stage else destination
     destination.mkdir(parents=True, exist_ok=False)
-    review_task = destination / "review-task"
+    review_task = staging_parent / "review-task"
 
     spec = importlib.util.spec_from_file_location("pinned_review_stage", UPSTREAM / STAGE)
     stage = importlib.util.module_from_spec(spec)
@@ -106,18 +221,20 @@ def prepare(task=DEFAULT_TASK):
         copied = snapshot / relative
         copied.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(task / relative, copied)
-    if (task_files(task) != inventory or task_files(snapshot) != inventory
-            or dirhash(task, "sha256") != source_checksum):
+    if (task_files(task, exclude_caches=exclude_caches) != inventory
+            or task_files(snapshot, exclude_caches=exclude_caches) != inventory
+            or dirhash(task, "sha256") != source_checksum
+            or validate_review_source(task) != source_freeze):
         raise RuntimeError("Task files changed during preparation; discard this snapshot and prepare again")
     shutil.copyfile(UPSTREAM / RUBRIC, environment / "rubric.toml")
+    runtime = review_runtime(cached_python_base)
+    if preinstalled_codex:
+        runtime["codex_release"] = dict(CODEX_RELEASE)
+        runtime["apt_packages"] = [package for package in runtime["apt_packages"]
+                                   if package not in {"nodejs", "npm"}]
     (environment / "Dockerfile").write_text(
-        "FROM ubuntu:24.04\n"
-        "RUN apt-get update && apt-get install -y --no-install-recommends "
-        "ca-certificates curl git nodejs npm procps python3 "
-        "&& rm -rf /var/lib/apt/lists/*\n"
-        "COPY task-under-review /app/task-under-review\n"
-        "COPY rubric.toml /app/rubric.toml\n"
-        "WORKDIR /app\n", encoding="utf-8", newline="\n",
+        review_dockerfile(runtime, preinstalled_codex=preinstalled_codex),
+        encoding="utf-8", newline="\n",
     )
     (review_task / "task.toml").write_text(
         'schema_version = "1.0"\n'
@@ -130,6 +247,10 @@ def prepare(task=DEFAULT_TASK):
     for relative in ("instruction.md", "tests/test.sh"):
         path = review_task / relative
         path.write_text(path.read_text(encoding="utf-8"), encoding="utf-8", newline="\n")
+    if native_stage:
+        for path in (review_task, *review_task.parents, *review_task.rglob("*")):
+            if path.is_symlink():
+                raise ValueError(f"Native review staging contains a symlink: {path}")
 
     payload = {
         "job_name": label, "jobs_dir": str((ROOT / "artifacts/jobs").resolve()),
@@ -149,6 +270,10 @@ def prepare(task=DEFAULT_TASK):
         "schema_version": 1, "kind": "alternate_local_implementation_review",
         "status": "prepared_not_run", "upstream_commit": UPSTREAM_COMMIT,
         "harbor_version": installed, "source_task": str(task),
+        "review_runtime": runtime,
+        "staging": {"native_linux": native_stage, "review_task": str(review_task),
+                    "metadata_directory": str(destination)},
+        "source_freeze": source_freeze,
         "source_task_checksum_at_prepare": source_checksum,
         "snapshot_task": str(snapshot), "reviewed_task_checksum": dirhash(snapshot, "sha256"),
         "review_task_checksum": dirhash(review_task, "sha256"),
@@ -162,15 +287,36 @@ def prepare(task=DEFAULT_TASK):
         "staged_instruction_sha256": sha256(review_task / "instruction.md"),
         "reviewed_files_sha256": inventory,
         "adaptations": [
-            "Review the local working-tree snapshot rather than fetch a published task repository",
+            ("Review the verified frozen local candidate rather than fetch a published task repository"
+             if source_freeze else
+             "Review the local working-tree snapshot rather than fetch a published task repository"),
             "Use Codex instead of the upstream default Claude reviewer; omit its baked Claude CLI",
             "Use public network for reviewer setup and model access",
             "Allow 1800 seconds for agent setup and independently 7200 seconds for review execution",
-            "Exclude .git, __pycache__, .pytest_cache directories and .pyc files from the snapshot",
+            ("Preserve the complete verified frozen candidate file inventory"
+             if source_freeze else
+             "Exclude .git, __pycache__, .pytest_cache directories and .pyc files from the snapshot"),
         ],
         "reward_meaning": "Upstream verifier only checks a nonempty verdict artifact; inspect all 35 outcomes",
         "acceptance_status": "not_assessed",
     }
+    if native_stage:
+        manifest["adaptations"].append(
+            "Stage the review task and Docker context in the native Linux home state directory "
+            "to avoid detached DrvFS working directories; keep config and manifest in repository artifacts"
+        )
+    if cached_python_base:
+        manifest["adaptations"].append(
+            "Use the pinned locally cached Python 3.13 slim-bookworm image for the review runtime "
+            "instead of Ubuntu; Python is supplied by the base. "
+            "The task-under-review bytes, rubric and reviewer model are unchanged"
+        )
+    if preinstalled_codex:
+        manifest["adaptations"].append(
+            "Preinstall the official standalone linux-x64 Codex 0.157.1 release and bundled ripgrep "
+            "using a pinned archive SHA-256; Harbor detects the CLI and skips its Node/npm setup. "
+            "No credentials or agent container state are included in this image"
+        )
     config = destination / "config.json"
     config.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     (destination / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
@@ -180,4 +326,13 @@ def prepare(task=DEFAULT_TASK):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--task", type=Path, default=DEFAULT_TASK)
-    print(prepare(parser.parse_args().task))
+    parser.add_argument("--native-stage", action="store_true",
+                        help="Stage the review Docker context under the native Linux home state directory")
+    parser.add_argument("--cached-python-base", action="store_true",
+                        help="Use the pinned locally cached Python 3.13 slim-bookworm review runtime")
+    parser.add_argument("--preinstalled-codex", action="store_true",
+                        help="Preinstall the checksum-pinned official standalone Codex 0.157.1 CLI")
+    args = parser.parse_args()
+    print(prepare(args.task, native_stage=args.native_stage,
+                  cached_python_base=args.cached_python_base,
+                  preinstalled_codex=args.preinstalled_codex))

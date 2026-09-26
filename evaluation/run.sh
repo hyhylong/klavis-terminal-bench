@@ -10,7 +10,7 @@ case "${1:-}" in
 esac
 source "$project_root/artifacts/environment/runtime-env.sh"
 bash "$project_root/scripts/preflight-models.sh" --provider "$provider"
-resolved_config=$("$HARBOR_PYTHON" "$project_root/evaluation/prepare_job.py" "$1")
+resolved_config=$("$HARBOR_PYTHON" "$project_root/evaluation/prepare_job.py" "$@")
 printf 'Starting evaluation with resolved config: %s\n' "$resolved_config"
 env_args=()
 if [[ -f "$project_root/.env" ]]; then

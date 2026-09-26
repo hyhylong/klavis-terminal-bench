@@ -1,0 +1,3 @@
+Checking /mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/durable-ledger-repair-20260926T200157076022Z/durable-ledger-repair/task.toml...
+PASS /mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/durable-ledger-repair-20260926T200157076022Z/durable-ledger-repair
+All task.toml files have the expected [task] name

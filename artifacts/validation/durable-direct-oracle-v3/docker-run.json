@@ -1,0 +1,72 @@
+{
+  "kind": "oracle",
+  "image": "klavis-durable-ledger-verifier:dev",
+  "image_id": "sha256:1dfdd1954291a04248bbe11dfe40da7c1675bee8048bfcd01528c924cacea448",
+  "cpus": 2,
+  "memory_bytes": 2147483648,
+  "network": "none",
+  "submission_package": "/mnt/e/JOB/klavis-terminal-bench/tasks/durable-ledger-repair/solution/ledgerstore",
+  "started_utc": "2026-09-26T20:02:03.704420+00:00",
+  "finished_utc": "2026-09-26T20:02:31.590918+00:00",
+  "wall_seconds": 29.663334531000146,
+  "docker_exit_code": 0,
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--name",
+    "klavis-durable-direct-oracle-v3-1790452923",
+    "--cpus",
+    "2",
+    "--memory",
+    "2g",
+    "--network",
+    "none",
+    "--mount",
+    "type=bind,src=/mnt/e/JOB/klavis-terminal-bench/tasks/durable-ledger-repair/solution/ledgerstore,dst=/app/ledgerstore,readonly",
+    "--mount",
+    "type=bind,src=/mnt/e/JOB/klavis-terminal-bench/artifacts/validation/durable-direct-oracle-v3,dst=/logs/verifier",
+    "klavis-durable-ledger-verifier:dev",
+    "bash",
+    "/tests/test.sh"
+  ],
+  "preflight": {
+    "purpose": "trusted platform preflight; no submitted artifact evaluated",
+    "python": "3.13.15",
+    "system": "Linux",
+    "machine": "x86_64",
+    "status": "passed",
+    "checks": [
+      "unprivileged_identity",
+      "copy_fractions_decimal_hashlib_imports",
+      "protected_reference_read_denied",
+      "protected_write_denied",
+      "network_socket_denied",
+      "binary_durable_filesystem_rpc",
+      "known_snapshot"
+    ]
+  },
+  "ctrf": {
+    "tests": 26,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "pending": 0,
+    "other": 0,
+    "start": 1790452924313,
+    "stop": 1790452951486
+  },
+  "performance": {
+    "seed": 1352955179,
+    "seconds": [
+      0.43790732599973126,
+      0.4134386630003064,
+      0.4033381960002771
+    ],
+    "median": 0.4134386630003064,
+    "limit_seconds": 3.0
+  },
+  "reward": "1"
+}

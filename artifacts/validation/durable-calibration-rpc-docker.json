@@ -1,0 +1,144 @@
+{
+  "purpose": "Exploratory isolated calibration; no model results",
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "docker": {
+      "desktop_version": "4.69.0",
+      "engine_version": "29.4.0",
+      "image": "klavis-durable-calibration:latest",
+      "image_id": "sha256:3af09ed4da40f850315c2b9fdbba7ceb875c06d7304cdb6277b427d508625b11",
+      "cpu_limit": 1,
+      "nano_cpus": 1000000000,
+      "cgroup_cpu_max": "100000 100000",
+      "cpu_affinity_count": 24,
+      "cpu_limit_method": "CFS quota; not pinned to one logical processor",
+      "memory_limit_bytes": 2147483648,
+      "cgroup_memory_max": "2147483648",
+      "network_mode": "none",
+      "privileged": false,
+      "security_options_override": null,
+      "default_seccomp": "builtin",
+      "landlock_abi": 3,
+      "libseccomp": "libseccomp.so.2",
+      "bind_mount": {
+        "source": "/mnt/e/JOB/klavis-terminal-bench",
+        "destination": "/workspace"
+      }
+    }
+  },
+  "workload": {
+    "seed": 41,
+    "entities": 192,
+    "versions": 12,
+    "rounds": 180,
+    "queries_per_round": 12,
+    "input_sha256": "d071bd097dc3c4b29ec2d8279046833779e19c652fa8586e821f2e001d6d3b1a"
+  },
+  "worker_limits": {
+    "timeout_sec": 30,
+    "max_frame_bytes": 8388608,
+    "max_memory_bytes": 536870912,
+    "max_fs_operations": 100000,
+    "max_write_bytes": 134217728,
+    "cpu_seconds": 180
+  },
+  "independent_full_snapshots_checked": 3,
+  "samples": {
+    "memoized_replay": [
+      {
+        "load_seconds": 1.5508108820000075,
+        "compact_reopen_seconds": 0.2382907219999879,
+        "stream_seconds": 9.38521522900001,
+        "final_snapshot_seconds": 0.04314567500000521,
+        "total_seconds": 11.217462508000011,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 1.733548829,
+        "compact_reopen_seconds": 0.2103478500000051,
+        "stream_seconds": 10.451994920999994,
+        "final_snapshot_seconds": 0.04172920999999974,
+        "total_seconds": 12.437620809999999,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 1.9892374979999943,
+        "compact_reopen_seconds": 0.29761911800000007,
+        "stream_seconds": 12.791602967000017,
+        "final_snapshot_seconds": 0.06216127499999402,
+        "total_seconds": 15.140620858000005,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      }
+    ],
+    "incremental": [
+      {
+        "load_seconds": 2.052626982999982,
+        "compact_reopen_seconds": 0.4042707929999949,
+        "stream_seconds": 0.5421466220000184,
+        "final_snapshot_seconds": 0.06357506799997736,
+        "total_seconds": 3.0626194659999726,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 2.0199278520000234,
+        "compact_reopen_seconds": 0.32212328800000023,
+        "stream_seconds": 0.41761075299999106,
+        "final_snapshot_seconds": 0.0391807750000055,
+        "total_seconds": 2.7988426680000202,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 2.30040917300002,
+        "compact_reopen_seconds": 0.4034665039999936,
+        "stream_seconds": 0.5214328920000071,
+        "final_snapshot_seconds": 0.06201199299999871,
+        "total_seconds": 3.287320562000019,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      }
+    ]
+  },
+  "median_stream_seconds": {
+    "memoized_replay": 10.451994920999994,
+    "incremental": 0.5214328920000071
+  },
+  "median_stream_ratio": 20.04475567490639,
+  "pass_threshold_seconds": null,
+  "isolation_checks": {
+    "command": "python -m unittest experiments.durable_ledger.controller.IsolationChecks -v",
+    "passed": 13,
+    "failed": 0,
+    "surface": "same Docker image and 1 CPU / 2 GiB / default-seccomp settings"
+  },
+  "docker_command": "docker run --rm --pull never --cpus 1 --memory 2g --network none --mount type=bind,src=/mnt/e/JOB/klavis-terminal-bench,dst=/workspace klavis-durable-calibration python -m experiments.durable_ledger.calibrate_rpc --repetitions 3 --output artifacts/local/durable-calibration-rpc-docker.json"
+}

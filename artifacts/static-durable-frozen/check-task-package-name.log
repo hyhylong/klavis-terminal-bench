@@ -1,0 +1,3 @@
+Checking artifacts/local/frozen/durable-ledger-repair-20260926T193557813948Z/durable-ledger-repair/task.toml...
+PASS artifacts/local/frozen/durable-ledger-repair-20260926T193557813948Z/durable-ledger-repair
+All task.toml files have the expected [task] name

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "delivery-window-0000",
+    "cutoff": 0
+  },
+  {
+    "id": "delivery-window-0003",
+    "cutoff": 3
+  },
+  {
+    "id": "delivery-window-0009",
+    "cutoff": 9
+  },
+  {
+    "id": "delivery-window-0014",
+    "cutoff": 11
+  },
+  {
+    "id": "delivery-window-0019",
+    "cutoff": 15
+  },
+  {
+    "id": "delivery-window-0022",
+    "cutoff": 16
+  },
+  {
+    "id": "delivery-window-0025",
+    "cutoff": 18
+  },
+  {
+    "id": "delivery-window-0028",
+    "cutoff": 19
+  },
+  {
+    "id": "delivery-window-0030",
+    "cutoff": 20
+  },
+  {
+    "id": "delivery-window-0034",
+    "cutoff": 23
+  },
+  {
+    "id": "delivery-window-0035",
+    "cutoff": 24
+  },
+  {
+    "id": "delivery-window-0047",
+    "cutoff": 36
+  },
+  {
+    "id": "delivery-window-0048",
+    "cutoff": 37
+  },
+  {
+    "id": "delivery-window-0065",
+    "cutoff": 45
+  },
+  {
+    "id": "delivery-window-0500",
+    "cutoff": 101
+  },
+  {
+    "id": "delivery-window-1000",
+    "cutoff": 281
+  },
+  {
+    "id": "delivery-window-1599",
+    "cutoff": 527
+  },
+  {
+    "id": "delivery-window-1600",
+    "cutoff": 528
+  },
+  {
+    "id": "delivery-window-2200",
+    "cutoff": 757
+  },
+  {
+    "id": "delivery-window-2800",
+    "cutoff": 968
+  },
+  {
+    "id": "complete-delivery",
+    "cutoff": 1010
+  }
+]

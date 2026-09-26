@@ -1,0 +1,89 @@
+{
+  "recorded_at": "2026-09-26T19:44:47.253500+00:00",
+  "frozen_task_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/durable-ledger-repair-20260926T193933080719Z/durable-ledger-repair",
+  "frozen_task_toml_sha256": "abe249aa46e256d065d48c7ebd597ad7e5e74adb86c445d5aad954104d41afe8",
+  "task_checksum": "440b57b209c8ee7c28177c2a6c0755ec8ae7c37713abe60c60c1d35ff49b8cc0",
+  "runtime_cwd": "/root/.local/state/klavis-terminal-bench",
+  "jobs_directory": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs",
+  "environment": "docker",
+  "attempts_per_control": 1,
+  "maximum_retries": 0,
+  "model_calls": 0,
+  "control_status": "oracle_pass_nop_fail_without_harbor_exceptions",
+  "basis": "Per-trial results and CTRF, not aggregate process exit status",
+  "controls": [
+    {
+      "agent": "oracle",
+      "job_name": "durable-oracle-v2",
+      "job_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2",
+      "trial_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD",
+      "trial_result_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/result.json",
+      "ctrf_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/verifier/ctrf.json",
+      "trial_result_sha256": "69ad24eb4916cbeedb321166afcae12971aed5a7ffa74469218b35d90499bbb4",
+      "ctrf_sha256": "9dfadd8a468a7cab00dd1ce7a9c4b9d0ee847e688ea54aea413bf74fb9182d2c",
+      "task_checksum": "440b57b209c8ee7c28177c2a6c0755ec8ae7c37713abe60c60c1d35ff49b8cc0",
+      "exception_info": null,
+      "reward": 1.0,
+      "ctrf_counts": {
+        "tests": 26,
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "pending": 0,
+        "other": 0
+      },
+      "started_at": "2026-09-26T19:41:01.649052Z",
+      "finished_at": "2026-09-26T19:41:40.504258Z",
+      "nonpassing_tests": [],
+      "performance_report_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/verifier/performance.json",
+      "performance_report": {
+        "seed": 1392136111,
+        "seconds": [
+          0.40166078700008256,
+          0.42851074200007133,
+          0.36843637000004037
+        ],
+        "median": 0.40166078700008256,
+        "limit_seconds": 3.0
+      },
+      "performance_report_complete": true
+    },
+    {
+      "agent": "nop",
+      "job_name": "durable-nop-v2",
+      "job_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2",
+      "trial_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7",
+      "trial_result_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/result.json",
+      "ctrf_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/verifier/ctrf.json",
+      "trial_result_sha256": "6b898936335fa5bd4760a4bee98d47702cee3edb9575daa1d0e148671cff1e35",
+      "ctrf_sha256": "67c26d818f38e216fdc792e25c573e066acb58938f5ace5b42eecb2bb8798513",
+      "task_checksum": "440b57b209c8ee7c28177c2a6c0755ec8ae7c37713abe60c60c1d35ff49b8cc0",
+      "exception_info": null,
+      "reward": 0.0,
+      "ctrf_counts": {
+        "tests": 26,
+        "passed": 20,
+        "failed": 6,
+        "skipped": 0,
+        "pending": 0,
+        "other": 0
+      },
+      "started_at": "2026-09-26T19:41:01.611932Z",
+      "finished_at": "2026-09-26T19:41:36.719988Z",
+      "nonpassing_tests": [
+        "test_outputs.py::test_redelivery_conflicting_commit_and_abort_obey_classification_priority",
+        "test_outputs.py::test_compaction_keeps_late_retraction_abort_and_historical_snapshots",
+        "test_outputs.py::test_amendment_winner_provenance_and_original_slot_survive_compaction",
+        "test_outputs.py::test_full_corpus_snapshots_match_independent_endpoint_replay",
+        "test_outputs.py::test_current_lookup_boundaries_gaps_tombstones_and_open_ends_match_snapshot",
+        "test_performance.py::test_published_stream_workload_answers_and_budget"
+      ],
+      "performance_report_path": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/verifier/performance.json",
+      "performance_report": {
+        "seed": 3862436852,
+        "phase": "preparing independent answers"
+      },
+      "performance_report_complete": false
+    }
+  ]
+}

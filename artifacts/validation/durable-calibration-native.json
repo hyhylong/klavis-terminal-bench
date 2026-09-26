@@ -1,0 +1,106 @@
+{
+  "purpose": "Exploratory calibration, not formal task evaluation",
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  },
+  "workload": {
+    "seed": 41,
+    "entities": 192,
+    "versions": 12,
+    "rounds": 180,
+    "queries_per_round": 12,
+    "input_sha256": "d071bd097dc3c4b29ec2d8279046833779e19c652fa8586e821f2e001d6d3b1a"
+  },
+  "independent_full_snapshots_checked": 3,
+  "samples": {
+    "memoized_replay": [
+      {
+        "load_seconds": 0.08644966600000004,
+        "compact_reopen_seconds": 0.03742790500000126,
+        "stream_seconds": 7.308911815000002,
+        "final_snapshot_seconds": 0.019400826000001814,
+        "total_seconds": 7.452190212000005,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 0.08766928600000057,
+        "compact_reopen_seconds": 0.03659561699999614,
+        "stream_seconds": 8.040877170000002,
+        "final_snapshot_seconds": 0.02045702899999924,
+        "total_seconds": 8.185599101999998,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 0.091234962999998,
+        "compact_reopen_seconds": 0.03562949900000234,
+        "stream_seconds": 7.146805473999997,
+        "final_snapshot_seconds": 0.016187711999997134,
+        "total_seconds": 7.289857647999995,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      }
+    ],
+    "incremental": [
+      {
+        "load_seconds": 0.1419107079999975,
+        "compact_reopen_seconds": 0.09426088200000038,
+        "stream_seconds": 0.052766541000004,
+        "final_snapshot_seconds": 0.01739010600000057,
+        "total_seconds": 0.30632823700000245,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 0.14339241999999786,
+        "compact_reopen_seconds": 0.09967182300000132,
+        "stream_seconds": 0.05526224599999807,
+        "final_snapshot_seconds": 0.019762141000001066,
+        "total_seconds": 0.3180886299999983,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      },
+      {
+        "load_seconds": 0.143640560999998,
+        "compact_reopen_seconds": 0.09347149999999971,
+        "stream_seconds": 0.05188119999999685,
+        "final_snapshot_seconds": 0.018050706000003913,
+        "total_seconds": 0.3070439669999985,
+        "result_sha256": "dd31f306e6a6e80f9c5c6693fdd5984742a80134b4b652e0e28e732c3bc4a2cd",
+        "filesystem_operations": 9912,
+        "storage": {
+          "inode_count": 3,
+          "content_bytes": 1797280
+        }
+      }
+    ]
+  },
+  "median_stream_seconds": {
+    "memoized_replay": 7.308911815000002,
+    "incremental": 0.052766541000004
+  },
+  "median_stream_ratio": 138.51413559587786,
+  "pass_threshold_seconds": null
+}
