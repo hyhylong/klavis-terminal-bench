@@ -1,0 +1,13 @@
+{
+  "kind": "authoring_feasibility_suite",
+  "model_trial": false,
+  "exit_code": 0,
+  "tests": 61,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "unittest_seconds": 122.014,
+  "command": "docker run --rm --network none --cpus 2 --memory 4g -e RUN_PG_PROXY_INTEGRATION=1 -e PYTHONPATH=/workspace/experiments/online_cutover --mount type=bind,source=E:\\JOB\\klavis-terminal-bench,target=/workspace,readonly --workdir /workspace klavis-cutover-runtime:dev python -B -m unittest discover -s experiments/online_cutover -v",
+  "scope": "Root observed all 61 authoring tests pass. Includes dynamic baseline plus four lost target COMMIT acknowledgement runs; low-sequence mutant, runtime controls and reference business tests. Does not establish final verifier security, hosted review or model difficulty.",
+  "final_summary": "Ran 61 tests in 122.014s\n\nOK"
+}

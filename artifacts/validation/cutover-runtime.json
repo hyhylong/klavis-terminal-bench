@@ -1,0 +1,154 @@
+{
+  "recorded_at": "2026-09-26T20:54:42.316068+00:00",
+  "scope": "Sanitized local authoring runtime and isolated privilege evidence. Not a model trial, Harbor task qualification, or security proof.",
+  "runtime": {
+    "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+    "base_image": "postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652",
+    "python": "3.13.15",
+    "psycopg": "3.3.6",
+    "development_image": "klavis-cutover-runtime:dev",
+    "development_image_manifest": "sha256:27aa0360e7b5f5dac72852f6f99883299578d9f7d9d36ecd396b21ac4354d3a8",
+    "supported_postgres_major_until": "2029-11-08",
+    "driver_public_packages": [
+      {
+        "name": "psycopg",
+        "version": "3.3.6",
+        "filename": "psycopg-3.3.6-py3-none-any.whl",
+        "url": "https://files.pythonhosted.org/packages/4e/de/748bd7609c71cae5d737f0ba9192f19329f70180ecda8fff3cac02c5abe3/psycopg-3.3.6-py3-none-any.whl",
+        "sha256": "a1db9f7148b06a28606767efaca51fa6f9398c5c0a3810519be69d7000bdb631",
+        "bytes": 215490
+      },
+      {
+        "name": "psycopg-binary",
+        "version": "3.3.6",
+        "filename": "psycopg_binary-3.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "url": "https://files.pythonhosted.org/packages/de/b0/c6f8a0585a5dacbea74e130bcfc66629390e8f5bbc79d2a8e806e8952150/psycopg_binary-3.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "cec5ea900390897d0b46130f60bc2883bf19c314f9044235217c8be88b0ef269",
+        "bytes": 5237855
+      }
+    ]
+  },
+  "default_authority": {
+    "databases": "Two fresh administrator-owned databases; application owns app schema and business tables.",
+    "application_os_uid": 65534,
+    "database_privileges": [
+      "CONNECT",
+      "TEMPORARY"
+    ],
+    "superuser": false,
+    "createdb": false,
+    "createrole": false,
+    "replication": false,
+    "bypassrls": false,
+    "application_schema_ddl_and_triggers": true,
+    "administrator_authentication": "Root/PostgreSQL OS peer mapping only; no administrator password.",
+    "application_authentication": "Loopback SCRAM with generated instance-local password; value omitted.",
+    "business_inspection": "Application role with read-only transactions, never the administrator."
+  },
+  "runtime_checks": {
+    "suite_passed": 11,
+    "suite_failed": 0,
+    "transactional_inspector_regression_passed": 1,
+    "coverage": [
+      "Exact public schema and trusted seeding",
+      "Target full initial inventory",
+      "Application-owned schema, tables and triggers",
+      "Database/server privilege denials",
+      "Source retirement terminates connections; target remains available",
+      "UID65534/private0700 test+log dirs/0600 file output",
+      "Fresh process working directories",
+      "File-backed large stdout",
+      "Process-group descendant cleanup and timeout",
+      "Independent cluster identity",
+      "TEMP scratch tables on both databases",
+      "Malicious view runs as app role and cannot read server files"
+    ],
+    "source_artifact": "artifacts/environment/cutover-runtime/runtime-temp-inspect-tests.json"
+  },
+  "fresh_verifier_proof": {
+    "same_code_different_clusters": true,
+    "transferred_files": [
+      "client_probe.py"
+    ],
+    "agent_database_state_transferred": false,
+    "network": "none",
+    "published_ports": [],
+    "initdb_to_ready_seconds": [
+      0.3971999919999689,
+      0.3873050580000381
+    ],
+    "timing_scope": "Tiny standalone proof with512MiB PGDATA tmpfs; not a task performance limit."
+  },
+  "isolated_replication_probe": {
+    "enabled_in_default_runtime": false,
+    "logical_slot_create_consume_drop": "passed",
+    "ordinary_database_create_needed_for_sql_decoding": false,
+    "publication_requires_additional_database_create": "observed denied then passed",
+    "denials": {
+      "alter_database": "denied",
+      "server_file": "denied",
+      "server_program": "denied",
+      "create_role": "denied",
+      "publication_without_db_create": "denied",
+      "read_admin_table": "denied",
+      "logical_slot_create": "logical_probe",
+      "logical_changes_consumed": 6,
+      "logical_slot_drop": "passed",
+      "physical_replication_connection": "denied",
+      "tcp_admin": "denied",
+      "unix_admin": "denied",
+      "logical_replication_connection": "allowed",
+      "server_target_backup_write": "denied"
+    },
+    "physical_slot_over_sql_allowed_with_replication": true,
+    "physical_slot_over_database_mode_protocol_allowed": true,
+    "base_backup_over_database_mode_protocol_allowed": true,
+    "backup_target": "blackhole; zero database bytes saved",
+    "table_select_acl_bypassed_by_logical_decoding": true,
+    "physical_sql_function_execute_revoke_is_not_protocol_boundary": true,
+    "remaining_slots": [],
+    "source_artifact": "artifacts/environment/cutover-runtime/logical-probe.json"
+  },
+  "alternative_solution_probe": {
+    "model_trial": false,
+    "passed_tests": 4,
+    "controller_lines": 19,
+    "controller_plus_reused_helper_lines": 63,
+    "reused_helpers": {
+      "is_active": {
+        "file": "migrate.py",
+        "first_line": 16,
+        "last_line": 18,
+        "physical_lines": 3
+      },
+      "copy_snapshot": {
+        "file": "migrate.py",
+        "first_line": 60,
+        "last_line": 92,
+        "physical_lines": 33
+      },
+      "ensure_routing": {
+        "file": "backend.py",
+        "first_line": 19,
+        "last_line": 26,
+        "physical_lines": 8
+      }
+    },
+    "final_fence_seconds": [
+      0.0101167209995765,
+      0.012545591999696626,
+      0.013521619000130158
+    ],
+    "scope": "Small current fixtures; uses existing unchanged business service and copy helpers, not an independent whole application.",
+    "representation_specific_lock_barrier_bypass_observed": true,
+    "source_artifact": "artifacts/environment/cutover-runtime/review-probe.json"
+  },
+  "public_sources": [
+    "https://www.postgresql.org/support/versioning/",
+    "https://hub.docker.com/_/postgres",
+    "https://www.psycopg.org/psycopg3/docs/basic/install.html",
+    "https://www.postgresql.org/docs/17/logical-replication-security.html",
+    "https://www.postgresql.org/docs/17/auth-pg-hba-conf.html",
+    "https://www.postgresql.org/docs/17/protocol-replication.html"
+  ]
+}

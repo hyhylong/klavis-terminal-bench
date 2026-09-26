@@ -3,7 +3,7 @@
   "requirements_status": "not_assessed",
   "analysis_status": "pending",
   "source_roots": [
-    "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs"
+    "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs"
   ],
   "trials": [
     {
@@ -48,10 +48,10 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v1/durable-ledger-repair__3ZzjuPG/result.json",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v1/durable-ledger-repair__3ZzjuPG/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v1/durable-ledger-repair__3ZzjuPG/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v1/durable-ledger-repair__3ZzjuPG/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v1\\durable-ledger-repair__3ZzjuPG\\result.json",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v1\\durable-ledger-repair__3ZzjuPG\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v1\\durable-ledger-repair__3ZzjuPG\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v1\\durable-ledger-repair__3ZzjuPG\\trial.log"
       }
     },
     {
@@ -88,12 +88,54 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-nop-v2/durable-ledger-repair__xpWP3M7/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v2\\durable-ledger-repair__xpWP3M7\\trial.log"
+      }
+    },
+    {
+      "trial_name": "durable-ledger-repair__WMLmrPi",
+      "task_name": "terminal-bench/durable-ledger-repair",
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "nop",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T20:03:24.700963Z",
+        "finished_at": "2026-09-26T20:04:02.281692Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T20:03:24.782742Z",
+          "finished_at": "2026-09-26T20:03:30.210405Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T20:03:30.210451Z",
+          "finished_at": "2026-09-26T20:03:30.210502Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T20:03:30.210567Z",
+          "finished_at": "2026-09-26T20:03:30.210909Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T20:03:33.762408Z",
+          "finished_at": "2026-09-26T20:04:02.281666Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "nop_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-nop-v3\\durable-ledger-repair__WMLmrPi\\trial.log"
       }
     },
     {
@@ -130,12 +172,12 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v1/durable-ledger-repair__rRUXQqn/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v1\\durable-ledger-repair__rRUXQqn\\trial.log"
       }
     },
     {
@@ -172,12 +214,54 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/durable-oracle-v2/durable-ledger-repair__6fmDZDD/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v2\\durable-ledger-repair__6fmDZDD\\trial.log"
+      }
+    },
+    {
+      "trial_name": "durable-ledger-repair__ZQt2aBh",
+      "task_name": "terminal-bench/durable-ledger-repair",
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "oracle",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T20:02:47.511638Z",
+        "finished_at": "2026-09-26T20:03:42.994484Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T20:02:47.615554Z",
+          "finished_at": "2026-09-26T20:03:03.334380Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T20:03:03.334431Z",
+          "finished_at": "2026-09-26T20:03:03.334486Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T20:03:03.334553Z",
+          "finished_at": "2026-09-26T20:03:04.071880Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T20:03:07.421435Z",
+          "finished_at": "2026-09-26T20:03:42.994459Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "oracle_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\durable-oracle-v3\\durable-ledger-repair__ZQt2aBh\\trial.log"
       }
     },
     {
@@ -210,9 +294,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T160053907869Z/review-task__AGydLRm/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T160053907869Z/review-task__AGydLRm/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T160053907869Z/review-task__AGydLRm/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\trial.log"
       }
     },
     {
@@ -245,9 +329,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T162111561339Z/review-task__mHt7GmF/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T162111561339Z/review-task__mHt7GmF/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T162111561339Z/review-task__mHt7GmF/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\trial.log"
       }
     },
     {
@@ -280,9 +364,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194015674860Z/review-task__89qoR3K/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194015674860Z/review-task__89qoR3K/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194015674860Z/review-task__89qoR3K/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194015674860Z\\review-task__89qoR3K\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194015674860Z\\review-task__89qoR3K\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194015674860Z\\review-task__89qoR3K\\trial.log"
       }
     },
     {
@@ -315,9 +399,53 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194435738194Z/review-task__Q69ZH5w/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194435738194Z/review-task__Q69ZH5w/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/implementation-review-codex-20260926T194435738194Z/review-task__Q69ZH5w/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194435738194Z\\review-task__Q69ZH5w\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194435738194Z\\review-task__Q69ZH5w\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T194435738194Z\\review-task__Q69ZH5w\\trial.log"
+      }
+    },
+    {
+      "trial_name": "review-task__qQXgwB6",
+      "task_name": "review-task",
+      "task_checksum": "20eac021577a9de913478e60980751a88f728706351251133bbf514024d0b319",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T20:03:22.432861Z",
+        "finished_at": "2026-09-26T20:11:55.408891Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T20:03:22.453255Z",
+          "finished_at": "2026-09-26T20:04:34.994888Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T20:04:34.994934Z",
+          "finished_at": "2026-09-26T20:04:35.376090Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T20:04:35.376228Z",
+          "finished_at": "2026-09-26T20:11:47.079008Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T20:11:52.871470Z",
+          "finished_at": "2026-09-26T20:11:53.188048Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "evidence_missing",
+      "exceptions": [],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\result.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T200212311524Z\\review-task__qQXgwB6\\trial.log"
       }
     },
     {
@@ -362,9 +490,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v1/temporal-ledger-repair__9MNhkWH/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v1/temporal-ledger-repair__9MNhkWH/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v1/temporal-ledger-repair__9MNhkWH/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\trial.log"
       }
     },
     {
@@ -401,12 +529,12 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v2-absolute/temporal-ledger-repair__WJaKtqq/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\trial.log"
       }
     },
     {
@@ -443,12 +571,12 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/nop-v3-lf/temporal-ledger-repair__bTWthax/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\trial.log"
       }
     },
     {
@@ -485,13 +613,13 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/artifacts/manifest.json",
-        "reconstruction": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/artifacts/app/output/reconstruction.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v1/temporal-ledger-repair__URV8HeX/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\artifacts\\app\\output\\reconstruction.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\trial.log"
       }
     },
     {
@@ -528,13 +656,13 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/artifacts/manifest.json",
-        "reconstruction": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/artifacts/app/output/reconstruction.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/oracle-v2-lf/temporal-ledger-repair__Qye4RPJ/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\artifacts\\app\\output\\reconstruction.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\trial.log"
       }
     },
     {
@@ -571,9 +699,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__3kSc4Wc/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__3kSc4Wc/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__3kSc4Wc/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\trial.log"
       }
     },
     {
@@ -610,9 +738,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__eGuCtCT/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__eGuCtCT/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T153957145487Z/temporal-ledger-repair__eGuCtCT/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\trial.log"
       }
     },
     {
@@ -649,9 +777,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__3pcqKRZ/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__3pcqKRZ/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__3pcqKRZ/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\trial.log"
       }
     },
     {
@@ -688,9 +816,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__9STMLwU/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__9STMLwU/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__9STMLwU/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\trial.log"
       }
     },
     {
@@ -727,9 +855,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__bF4AKQH/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__bF4AKQH/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T155011218646Z/temporal-ledger-repair__bF4AKQH/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\trial.log"
       }
     },
     {
@@ -766,9 +894,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__5uSgLxC/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__5uSgLxC/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__5uSgLxC/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\trial.log"
       }
     },
     {
@@ -805,9 +933,9 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__YmK9uVo/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__YmK9uVo/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__YmK9uVo/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\trial.log"
       }
     },
     {
@@ -844,14 +972,14 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/artifacts/manifest.json",
-        "reconstruction": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/artifacts/app/output/reconstruction.json",
-        "trajectory": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/agent/trajectory.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T161802172565Z/temporal-ledger-repair__eJReGSd/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\trial.log"
       }
     },
     {
@@ -888,9 +1016,52 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T194253144614Z/durable-ledger-repair__EjuCs4H/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T194253144614Z/durable-ledger-repair__EjuCs4H/artifacts/manifest.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-codex-20260926T194253144614Z/durable-ledger-repair__EjuCs4H/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T194253144614Z\\durable-ledger-repair__EjuCs4H\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T194253144614Z\\durable-ledger-repair__EjuCs4H\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T194253144614Z\\durable-ledger-repair__EjuCs4H\\trial.log"
+      }
+    },
+    {
+      "trial_name": "durable-ledger-repair__Z3p4gpg",
+      "task_name": "terminal-bench/durable-ledger-repair",
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T20:04:21.203908Z",
+        "finished_at": "2026-09-26T20:12:23.699395Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T20:04:21.333309Z",
+          "finished_at": "2026-09-26T20:04:26.391303Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T20:04:26.391363Z",
+          "finished_at": "2026-09-26T20:04:26.826193Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T20:04:26.826329Z",
+          "finished_at": "2026-09-26T20:11:16.856331Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T20:11:24.001141Z",
+          "finished_at": "2026-09-26T20:12:23.699378Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "solved",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T200419294708Z\\durable-ledger-repair__Z3p4gpg\\trial.log"
       }
     },
     {
@@ -927,14 +1098,14 @@
       "missing_evidence": [],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/result.json",
-        "ctrf": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/verifier/ctrf.json",
-        "reward_text": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/verifier/reward.txt",
-        "verifier_stdout": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/verifier/test-stdout.txt",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/artifacts/manifest.json",
-        "reconstruction": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/artifacts/app/output/reconstruction.json",
-        "trajectory": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/agent/trajectory.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__SAk7yaT/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\trial.log"
       }
     },
     {
@@ -975,15 +1146,22 @@
       ],
       "analysis_status": "pending",
       "paths": {
-        "result": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__sztXbQk/result.json",
-        "artifact_manifest": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__sztXbQk/artifacts/manifest.json",
-        "reconstruction": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__sztXbQk/artifacts/app/output/reconstruction.json",
-        "trajectory": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__sztXbQk/agent/trajectory.json",
-        "trial_log": "/mnt/e/JOB/klavis-terminal-bench/artifacts/jobs/standard-deepseek-20260926T154101662393Z/temporal-ledger-repair__sztXbQk/trial.log"
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\trial.log"
       }
     }
   ],
   "observations": [
+    {
+      "task_checksum": "20eac021577a9de913478e60980751a88f728706351251133bbf514024d0b319",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "evidence_missing",
+      "count": 1
+    },
     {
       "task_checksum": "216ef3c962fc773c7e2ad983160981144c9a58d22e636206acb018ba10c0633e",
       "agent": "codex",
@@ -1052,6 +1230,27 @@
       "agent": "terminus-2",
       "model": "deepseek-flash",
       "classification": "solved",
+      "count": 1
+    },
+    {
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "solved",
+      "count": 1
+    },
+    {
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "nop",
+      "model": null,
+      "classification": "nop_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "52200606da8644eb9d948784f20b1369bafcaea4702d0190f0e03f1a4708b957",
+      "agent": "oracle",
+      "model": null,
+      "classification": "oracle_pass",
       "count": 1
     },
     {

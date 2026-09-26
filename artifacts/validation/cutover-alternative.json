@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "model_trial": false,
+  "implementation": "experiments/online_cutover/alternate_double_copy.py",
+  "purpose": "Development-only callable/CLI legitimate-alternative regression; excluded from task starter.",
+  "algorithm": "Copy once while source serves writes; acquire participating service's exclusive source fence; copy again; commit target activation before releasing fence. Serialize concurrent migrators using a target session advisory lock.",
+  "dependencies": [
+    "Existing orderbridge service and source-fence/target-router protocol",
+    "orderbridge.migrate.copy_snapshot",
+    "orderbridge.migrate.is_active",
+    "orderbridge.backend.ensure_routing"
+  ],
+  "observed_original_line_counts": {
+    "inline_controller": 19,
+    "reused_helpers": {
+      "copy_snapshot": 33,
+      "is_active": 3,
+      "ensure_routing": 8
+    },
+    "total": 63,
+    "scope": "Historical inline controller plus helper physical lines; excludes exported documentation/CLI and existing service/API/transaction handling."
+  },
+  "original_proof": "artifacts/environment/cutover-runtime/review-probe.json",
+  "export_regression": {
+    "driver": "artifacts/environment/cutover-runtime/alternate_export_probe.py",
+    "image": "klavis-cutover-runtime:dev",
+    "network": "none",
+    "cpus": 2,
+    "memory": "4 GiB",
+    "tests": [
+      {
+        "test": "test_migration_preserves_business_and_receipts_after_source_retirement",
+        "passed": true
+      },
+      {
+        "test": "test_blocked_backfill_allows_live_changes_delete_recreate_and_retry",
+        "passed": true
+      },
+      {
+        "test": "test_killed_blocked_migration_and_concurrent_restart_converge",
+        "passed": true
+      },
+      {
+        "test": "test_delayed_commit_preserves_all_business_state",
+        "passed": true
+      }
+    ],
+    "final_fence_seconds": [
+      0.011534823999681976,
+      0.011859154000376293,
+      0.011934728000596806
+    ]
+  },
+  "timing_scope": "From successful source-fence acquisition through committed target activation; excludes acquisition waiting, fence release, HTTP latency, process startup, larger production workload and safety margin.",
+  "limitations": [
+    "Four small real-PostgreSQL schedules, not a model trial or a proof of production performance.",
+    "This result does not establish task difficulty.",
+    "No change queue, watermark or required migration strategy is imposed on valid alternatives."
+  ],
+  "cli_template": "PYTHONPATH=experiments/online_cutover python -m alternate_double_copy --source \"<application source DSN>\" --target \"<application target DSN>\""
+}

@@ -4,6 +4,8 @@
 
 **第一版被 Codex 和 DeepSeek 各成功解出；第二版也已被 Codex 正常试做成功解出。两版均不满足所需难度，保留全部真实结果作为反证，当前任务尚未完成。**
 
+第三版正在实现在线订单服务迁移：真实 PostgreSQL 原型最新 68 项检查全部通过，包含提交确认丢失、晚提交事务漏记和旧路由误写的验证。一个更简单的双次复制方案也通过了关键场景，已保留为合法对照。正在整理独立评测任务包，尚未进行第三版模型试做，详见[当前进度](docs/online-cutover-progress.md)。
+
 第二版 `tasks/durable-ledger-repair` 修复持久化账本的修订依赖和缓存恢复。冻结版本的参考解 26/26 通过，初始代码有 6 项语义错误，控制试验均无执行异常。随后 Codex / GPT-6 Astra / xhigh 获得真实 reward 1，26/26 通过，无异常；整个 job 约 8 分 3 秒，stream 中位数 0.365 秒，低于公开的 3 秒上限。它保留正确的源存储层，修复两处索引错误，并合法丢弃可选缓存。该候选的难度假设已被否证，不再为它继续六次失败和两次对抗的完整评测。首次安装网络错误仍保留为基础设施失败。见 [试做分析](docs/durable-pilot-analysis.md)、[过滤后的证据](artifacts/validation/durable-codex-pilot.json)和[第二版记录](docs/durable-progress.md)。
 
 ## 已验证与待完成

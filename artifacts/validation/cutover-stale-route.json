@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-26T21:04:27Z",
+  "purpose": "Authoring-only implementation-independent connection-gate discrimination proof; no model evaluation or task-difficulty claim.",
+  "provenance": {
+    "source": "Exact selected outcomes from the completed Docker unittest output in this authoring session; no DSNs, credentials, query payloads or raw configuration copied.",
+    "command": "docker run --rm --network none --cpus 2 --memory 4g -e RUN_PG_PROXY_INTEGRATION=1 --mount type=bind,source=/mnt/e/JOB/klavis-terminal-bench,target=/workspace,readonly --workdir /workspace klavis-cutover-runtime:dev python -B -m unittest experiments.online_cutover.test_cutover_route -v",
+    "image_tag": "klavis-cutover-runtime:dev",
+    "docker_exit_code": 0,
+    "unittest_elapsed_seconds": 6.078,
+    "test_count": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "source_sha256": {
+      "experiments/online_cutover/connection_gate.py": "017702ff087aba008717778375f4dab094cd3b45ffdf804de9130899565673e7",
+      "experiments/online_cutover/test_cutover_route.py": "61101510c02e48924a3d6bf7bb31ccc7d7e98b6057718a7d8818eed83f5f4e5f"
+    }
+  },
+  "tests": [
+    {
+      "name": "ConnectionGateTests.test_close_unblocks_held_connection_and_is_bounded_and_idempotent",
+      "outcome": "passed"
+    },
+    {
+      "name": "ConnectionGateTests.test_one_shot_arm_and_metadata_do_not_contain_payload",
+      "outcome": "passed"
+    },
+    {
+      "name": "ConnectionGateTests.test_only_next_new_connection_waits_existing_and_later_streams_pass",
+      "outcome": "passed"
+    },
+    {
+      "name": "ConnectionGateTests.test_release_before_interception_cancels_pending_arm",
+      "outcome": "passed"
+    },
+    {
+      "name": "StaleRouteScheduleTests.test_author_only_missing_recheck_mutant_is_discriminated",
+      "outcome": "passed",
+      "meaning": "The intended source-only acknowledged-write counterexample was observed."
+    },
+    {
+      "name": "StaleRouteScheduleTests.test_reference_rechecks_a_source_route_delayed_across_activation",
+      "outcome": "passed"
+    }
+  ],
+  "integration_cases": [
+    {
+      "implementation": "temporary_copy_of_author_reference_with_second_routing_recheck_removed",
+      "coverage": "held_source_connection_across_activation",
+      "elapsed_seconds": 2.342372,
+      "first_response_ok": true,
+      "gate_events": [
+        {
+          "connection": 1,
+          "event": "accepted",
+          "held": false
+        },
+        {
+          "connection": 2,
+          "event": "accepted",
+          "held": true
+        },
+        {
+          "connection": 2,
+          "event": "released"
+        }
+      ],
+      "source_matches_model": true,
+      "status": "acknowledged_write_missing_from_target",
+      "target_matches_model": false,
+      "target_order_count": 0
+    },
+    {
+      "implementation": "author_reference",
+      "coverage": "held_source_connection_across_activation",
+      "elapsed_seconds": 3.14771,
+      "first_response_ok": true,
+      "gate_events": [
+        {
+          "connection": 1,
+          "event": "accepted",
+          "held": false
+        },
+        {
+          "connection": 2,
+          "event": "accepted",
+          "held": true
+        },
+        {
+          "connection": 2,
+          "event": "released"
+        }
+      ],
+      "receipt_count": 1,
+      "source_retired": true,
+      "status": "passed",
+      "target_matches_model": true
+    }
+  ],
+  "limits": [
+    "The gate observes TCP connection boundaries, not ownership of an application request or private routing state.",
+    "No newly intercepted connection, an already completed request, or failure to activate during the observation window produces coverage_absent rather than rejecting a valid pooling or locking strategy.",
+    "The three-second authoring activation observation window is not a task performance requirement.",
+    "The generic schedule does not parse SQL or identify private tables, lock IDs or routing fields.",
+    "Only the temporary author-reference mutation is implementation-specific; it is outside the submitted task and was never applied to the real reference files.",
+    "Target SQL was checked against the independent model before retrying an acknowledged request, so a retry could not conceal the counterexample.",
+    "This establishes discrimination for one concrete stale-route defect, not model difficulty or coverage of every implementation strategy."
+  ]
+}

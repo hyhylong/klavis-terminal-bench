@@ -1,0 +1,121 @@
+{
+  "skipped": 0,
+  "kind": "authoring_suite",
+  "image": "klavis-cutover-runtime:dev",
+  "cpus": 2,
+  "exit_code": 0,
+  "source_files": [
+    {
+      "sha256": "28f00720b4b77b1fc976e033fe57e754afd33120012bbf2e7e9cb2ca44796622",
+      "path": "experiments/online_cutover/alternate_double_copy.py"
+    },
+    {
+      "sha256": "89a6a7f7750955c2ef965ddfaa4127175885f7cad9ece2ef53e850ae72569300",
+      "path": "experiments/online_cutover/calibrate_progress.py"
+    },
+    {
+      "sha256": "017702ff087aba008717778375f4dab094cd3b45ffdf804de9130899565673e7",
+      "path": "experiments/online_cutover/connection_gate.py"
+    },
+    {
+      "sha256": "30d355d5771d8949a48495e680c21d368661b90d9c3028d6c52a2d723fe4ea72",
+      "path": "experiments/online_cutover/CONTRACT.md"
+    },
+    {
+      "sha256": "722fa33536fefc3adcc999a1ca0077db882c7bf8b9bf1843f70514f24d4f875c",
+      "path": "experiments/online_cutover/Dockerfile"
+    },
+    {
+      "sha256": "e68e475ad14cab177c13a6072020b394f7ee9b416cb638517d17984ab30e2b28",
+      "path": "experiments/online_cutover/model.py"
+    },
+    {
+      "sha256": "69902b4f95216510cc9f6c8b381f5c17b33345840827776f6b5828455607f026",
+      "path": "experiments/online_cutover/orderbridge/__init__.py"
+    },
+    {
+      "sha256": "451433380d290b2a888034a3d3b7ca0e733598057e2dbe8aa84306eb37595865",
+      "path": "experiments/online_cutover/orderbridge/__main__.py"
+    },
+    {
+      "sha256": "3762e0c775b02e7f99832007deb567667a32bac2e074c0e375d571c42e35e27e",
+      "path": "experiments/online_cutover/orderbridge/api.py"
+    },
+    {
+      "sha256": "dd4fc6de004f3a864da1b0a53a4c814cd97065219711f9bcf82e0239d2ed43fc",
+      "path": "experiments/online_cutover/orderbridge/backend.py"
+    },
+    {
+      "sha256": "c678fc224b6a57d29f6ae26cd1805441d9906d0f7f10beace7a17ca17048ae69",
+      "path": "experiments/online_cutover/orderbridge/migrate.py"
+    },
+    {
+      "sha256": "92e7a9c893a2fb215922fa4e1f4a07d9ef9a7f9314572c18761f2fe4fe8d0348",
+      "path": "experiments/online_cutover/orderbridge/service.py"
+    },
+    {
+      "sha256": "1f9d53aa4ae5fb6065cd6b607c751490afed45e0aa6d32c3a6024ec03d7d7b02",
+      "path": "experiments/online_cutover/pg_fault_proxy.py"
+    },
+    {
+      "sha256": "64b99366b2ed50eb080e2939b2b8f0b4b93cc61b0981ebb00f5fb9a2c7f02ffd",
+      "path": "experiments/online_cutover/runtime.py"
+    },
+    {
+      "sha256": "50367dfcd7c831fc911d91bf9399c5d1bb0e386ba54c02eb89903c38bafd2ee2",
+      "path": "experiments/online_cutover/schema.sql"
+    },
+    {
+      "sha256": "d2287d8d69f1f17ad75e0d8664a80b9650810b1732607f792607640d72efc99a",
+      "path": "experiments/online_cutover/test_cutover_ack.py"
+    },
+    {
+      "sha256": "a6c7459b097840af9144288aec1c01cdc2c905f70add477e488c79bbc1494623",
+      "path": "experiments/online_cutover/test_cutover_mutations.py"
+    },
+    {
+      "sha256": "5b53e7235aff54869347dca44b2629a616b177ade7eee0cfba63012d96d2c327",
+      "path": "experiments/online_cutover/test_cutover_ordering.py"
+    },
+    {
+      "sha256": "61101510c02e48924a3d6bf7bb31ccc7d7e98b6057718a7d8818eed83f5f4e5f",
+      "path": "experiments/online_cutover/test_cutover_route.py"
+    },
+    {
+      "sha256": "e81eec4652009b0c695b8567f03c9c58a4645570c52f4a1e79b8a5e5bb7d53ca",
+      "path": "experiments/online_cutover/test_cutover.py"
+    },
+    {
+      "sha256": "7d971d7791e81e46bf8f010977fa266242311795a386206c958a2cc969e56b6e",
+      "path": "experiments/online_cutover/test_model.py"
+    },
+    {
+      "sha256": "5c88856d33fd5355514de0acfb88a655e9424f9399aedd64855c9d5c61b1c983",
+      "path": "experiments/online_cutover/test_pg_fault_proxy.py"
+    },
+    {
+      "sha256": "77876e866f9421f05ce3c99a6cf4795e49dff2a36dbc743cf1cd4ec9093d472e",
+      "path": "experiments/online_cutover/test_runtime.py"
+    },
+    {
+      "sha256": "25e65fcc8e5bd25d4f21211fd0e57c76db3a84627c4c89877e92a0965444309a",
+      "path": "experiments/online_cutover/test_service.py"
+    }
+  ],
+  "tests": 68,
+  "failed": 0,
+  "memory_gib": 4,
+  "scope": "Authoring checks with reference and intentional mutants. No model call, packaged verifier reward or formal qualification.",
+  "network": "none",
+  "log_sha256": "bdfb45ae7433b750315c433d1e31bf000468a2aa1fd17ff99f4db0988858ca14",
+  "errors": 0,
+  "log": "artifacts/validation/cutover-authoring-final.log",
+  "environment": {
+    "RUN_PG_PROXY_INTEGRATION": "1",
+    "PYTHONPATH": "/workspace/experiments/online_cutover"
+  },
+  "command": "python -B -m unittest discover -s experiments/online_cutover -v",
+  "unittest_seconds": 132.638,
+  "model_trial": false,
+  "log_encoding": "UTF-8; captured line endings normalized to LF, content otherwise unchanged"
+}

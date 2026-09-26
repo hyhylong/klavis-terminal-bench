@@ -1,0 +1,246 @@
+{
+  "kind": "authoring_progress_control",
+  "model_trial": false,
+  "reference_runs": [
+    {
+      "passed": true,
+      "test_count": 1,
+      "failure_count": 0,
+      "error_count": 0,
+      "elapsed_seconds": 3.680801,
+      "requests": [
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.022715
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.019101
+        },
+        {
+          "op": "delete",
+          "returned": true,
+          "elapsed_seconds": 0.022238
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.022447
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.022161
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.019577
+        },
+        {
+          "op": "get",
+          "returned": true,
+          "elapsed_seconds": 0.018742
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.012551
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.014585
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.016632
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.013609
+        }
+      ]
+    },
+    {
+      "passed": true,
+      "test_count": 1,
+      "failure_count": 0,
+      "error_count": 0,
+      "elapsed_seconds": 3.822595,
+      "requests": [
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.023284
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.019889
+        },
+        {
+          "op": "delete",
+          "returned": true,
+          "elapsed_seconds": 0.023194
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.023791
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.024593
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.021288
+        },
+        {
+          "op": "get",
+          "returned": true,
+          "elapsed_seconds": 0.020793
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.012957
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.014588
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.016519
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.014041
+        }
+      ]
+    },
+    {
+      "passed": true,
+      "test_count": 1,
+      "failure_count": 0,
+      "error_count": 0,
+      "elapsed_seconds": 3.873754,
+      "requests": [
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.023782
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.020297
+        },
+        {
+          "op": "delete",
+          "returned": true,
+          "elapsed_seconds": 0.023429
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.02395
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.023877
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.022661
+        },
+        {
+          "op": "get",
+          "returned": true,
+          "elapsed_seconds": 0.021231
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.012627
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.025251
+        },
+        {
+          "op": "create",
+          "returned": true,
+          "elapsed_seconds": 0.027693
+        },
+        {
+          "op": "health",
+          "returned": true,
+          "elapsed_seconds": 0.013743
+        }
+      ]
+    }
+  ],
+  "global_pause_control": {
+    "passed": false,
+    "test_count": 1,
+    "failure_count": 0,
+    "error_count": 1,
+    "elapsed_seconds": 7.383267,
+    "requests": [
+      {
+        "op": "create",
+        "returned": true,
+        "elapsed_seconds": 0.024806
+      },
+      {
+        "op": "health",
+        "returned": false,
+        "exception": "TimeoutError",
+        "database_waits": [
+          {
+            "database": "source_db",
+            "wait_type": "Lock",
+            "wait": "advisory",
+            "count": 1
+          },
+          {
+            "database": "target_db",
+            "wait_type": "Lock",
+            "wait": "relation",
+            "count": 1
+          }
+        ],
+        "elapsed_seconds": 5.02186
+      }
+    ]
+  },
+  "known_pause_detected": true,
+  "successful_request_count": 33,
+  "reference_request_median_seconds": 0.021231,
+  "reference_request_max_seconds": 0.027693,
+  "existing_per_request_guard_seconds": 5,
+  "scope": "Small synthetic fixture; measures a deterministic held-lock schedule, not production throughput or model difficulty.",
+  "container": {
+    "image": "klavis-cutover-runtime:dev",
+    "cpu_limit": 2,
+    "memory_gib": 4,
+    "network": "none"
+  },
+  "command": "python -B -m experiments.online_cutover.calibrate_progress",
+  "exit_code": 0
+}
