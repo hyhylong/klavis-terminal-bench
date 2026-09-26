@@ -1,0 +1,776 @@
+{
+  "schema_version": 1,
+  "requirements_status": "not_assessed",
+  "analysis_status": "pending",
+  "source_roots": [
+    "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs"
+  ],
+  "trials": [
+    {
+      "trial_name": "review-task__AGydLRm",
+      "task_name": "review-task",
+      "task_checksum": "f44d8dbdf730d5427001947495a7f45c88a1602cc1ba6c8a9eb9e5223ffe02f7",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T16:02:41.902702Z",
+        "finished_at": "2026-09-26T16:03:59.961691Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T16:02:42.001257Z",
+          "finished_at": "2026-09-26T16:03:58.536372Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "RuntimeError",
+          "occurred_at": "2026-09-26T16:03:58.537770Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T160053907869Z\\review-task__AGydLRm\\trial.log"
+      }
+    },
+    {
+      "trial_name": "review-task__mHt7GmF",
+      "task_name": "review-task",
+      "task_checksum": "f44d8dbdf730d5427001947495a7f45c88a1602cc1ba6c8a9eb9e5223ffe02f7",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T16:22:39.792813Z",
+        "finished_at": "2026-09-26T16:27:26.573721Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T16:22:39.895076Z",
+          "finished_at": "2026-09-26T16:27:25.267402Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "RuntimeError",
+          "occurred_at": "2026-09-26T16:27:25.273227Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\implementation-review-codex-20260926T162111561339Z\\review-task__mHt7GmF\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__9MNhkWH",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "nop",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T15:26:37.040141Z",
+        "finished_at": "2026-09-26T15:26:45.590508Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:26:37.207082Z",
+          "finished_at": "2026-09-26T15:26:42.036317Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:26:42.036359Z",
+          "finished_at": "2026-09-26T15:26:42.036405Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:26:42.036466Z",
+          "finished_at": "2026-09-26T15:26:42.036888Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T15:26:45.433677Z",
+          "finished_at": "2026-09-26T15:26:45.587546Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "FileNotFoundError",
+          "occurred_at": "2026-09-26T15:26:45.588804Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v1\\temporal-ledger-repair__9MNhkWH\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__WJaKtqq",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "nop",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T15:28:14.348233Z",
+        "finished_at": "2026-09-26T15:28:29.257190Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:28:14.426850Z",
+          "finished_at": "2026-09-26T15:28:18.325876Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:28:18.325947Z",
+          "finished_at": "2026-09-26T15:28:18.326009Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:28:18.326090Z",
+          "finished_at": "2026-09-26T15:28:18.326532Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T15:28:22.039262Z",
+          "finished_at": "2026-09-26T15:28:29.257165Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "nop_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v2-absolute\\temporal-ledger-repair__WJaKtqq\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__bTWthax",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "nop",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T15:39:16.762013Z",
+        "finished_at": "2026-09-26T15:39:36.606197Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:39:16.836717Z",
+          "finished_at": "2026-09-26T15:39:25.924212Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:39:25.924261Z",
+          "finished_at": "2026-09-26T15:39:25.924311Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:39:25.924378Z",
+          "finished_at": "2026-09-26T15:39:25.924724Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T15:39:29.496777Z",
+          "finished_at": "2026-09-26T15:39:36.606182Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "nop_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\nop-v3-lf\\temporal-ledger-repair__bTWthax\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__URV8HeX",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "oracle",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T15:24:41.362215Z",
+        "finished_at": "2026-09-26T15:24:59.256388Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:24:41.494619Z",
+          "finished_at": "2026-09-26T15:24:45.599324Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:24:45.599375Z",
+          "finished_at": "2026-09-26T15:24:45.599430Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:24:45.599500Z",
+          "finished_at": "2026-09-26T15:24:46.301733Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T15:24:50.092809Z",
+          "finished_at": "2026-09-26T15:24:59.256369Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "oracle_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\artifacts\\app\\output\\reconstruction.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v1\\temporal-ledger-repair__URV8HeX\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__Qye4RPJ",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "oracle",
+      "agent_version": "1.0.0",
+      "model": null,
+      "model_provider": null,
+      "times": {
+        "started_at": "2026-09-26T15:34:17.195935Z",
+        "finished_at": "2026-09-26T15:34:34.087332Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:34:17.266840Z",
+          "finished_at": "2026-09-26T15:34:21.136024Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:34:21.136065Z",
+          "finished_at": "2026-09-26T15:34:21.136114Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:34:21.136190Z",
+          "finished_at": "2026-09-26T15:34:21.812015Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T15:34:25.215311Z",
+          "finished_at": "2026-09-26T15:34:34.087309Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "oracle_pass",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\artifacts\\app\\output\\reconstruction.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\oracle-v2-lf\\temporal-ledger-repair__Qye4RPJ\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__3kSc4Wc",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T15:39:58.820132Z",
+        "finished_at": "2026-09-26T15:46:20.815606Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:39:58.909498Z",
+          "finished_at": "2026-09-26T15:40:02.573993Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:40:02.574036Z",
+          "finished_at": "2026-09-26T15:46:17.264943Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "AgentSetupTimeoutError",
+          "occurred_at": "2026-09-26T15:46:17.267715Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__3kSc4Wc\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__eGuCtCT",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T15:46:21.216916Z",
+        "finished_at": "2026-09-26T15:48:48.088587Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:46:21.292893Z",
+          "finished_at": "2026-09-26T15:46:24.894832Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:46:24.894861Z",
+          "finished_at": "2026-09-26T15:48:44.607065Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "CancelledError",
+          "occurred_at": "2026-09-26T15:48:44.608379Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T153957145487Z\\temporal-ledger-repair__eGuCtCT\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__3pcqKRZ",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T15:57:39.231936Z",
+        "finished_at": "2026-09-26T15:57:57.187250Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:57:39.294854Z",
+          "finished_at": "2026-09-26T15:57:43.433937Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:57:43.433964Z",
+          "finished_at": "2026-09-26T15:57:52.170142Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "NonZeroAgentExitCodeError",
+          "occurred_at": "2026-09-26T15:57:52.170863Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__3pcqKRZ\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__9STMLwU",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T15:57:57.556155Z",
+        "finished_at": "2026-09-26T15:58:14.639403Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:57:57.618298Z",
+          "finished_at": "2026-09-26T15:58:01.606820Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:58:01.606841Z",
+          "finished_at": "2026-09-26T15:58:10.295607Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "NonZeroAgentExitCodeError",
+          "occurred_at": "2026-09-26T15:58:10.296681Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__9STMLwU\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__bF4AKQH",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T15:50:12.795574Z",
+        "finished_at": "2026-09-26T15:57:38.868909Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:50:12.873790Z",
+          "finished_at": "2026-09-26T15:50:16.640408Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:50:16.640519Z",
+          "finished_at": "2026-09-26T15:57:34.922911Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "NonZeroAgentExitCodeError",
+          "occurred_at": "2026-09-26T15:57:34.924944Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T155011218646Z\\temporal-ledger-repair__bF4AKQH\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__5uSgLxC",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T17:59:14.377726Z",
+        "finished_at": "2026-09-26T18:01:51.430659Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T17:59:14.436482Z",
+          "finished_at": "2026-09-26T17:59:18.276986Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T17:59:18.277020Z",
+          "finished_at": "2026-09-26T18:01:47.494564Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "NonZeroAgentExitCodeError",
+          "occurred_at": "2026-09-26T18:01:47.498782Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__5uSgLxC\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__YmK9uVo",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "unknown",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T18:01:51.840815Z",
+        "finished_at": "2026-09-26T18:02:09.315981Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T18:01:51.902373Z",
+          "finished_at": "2026-09-26T18:01:55.769245Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T18:01:55.769266Z",
+          "finished_at": "2026-09-26T18:02:04.612997Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "NonZeroAgentExitCodeError",
+          "occurred_at": "2026-09-26T18:02:04.614160Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\artifacts\\manifest.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__YmK9uVo\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__eJReGSd",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-astra",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-26T16:18:04.775143Z",
+        "finished_at": "2026-09-26T17:59:14.031532Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T16:18:04.830462Z",
+          "finished_at": "2026-09-26T16:18:42.640864Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T16:18:42.640909Z",
+          "finished_at": "2026-09-26T16:22:15.769339Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T16:22:15.769476Z",
+          "finished_at": "2026-09-26T17:58:50.241800Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T17:58:57.813333Z",
+          "finished_at": "2026-09-26T17:59:14.031505Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "solved",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-codex-20260926T161802172565Z\\temporal-ledger-repair__eJReGSd\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__SAk7yaT",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "terminus-2",
+      "agent_version": "2.0.0",
+      "model": "deepseek-flash",
+      "model_provider": "deepseek",
+      "times": {
+        "started_at": "2026-09-26T15:41:10.558489Z",
+        "finished_at": "2026-09-26T16:20:14.173873Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T15:41:10.636986Z",
+          "finished_at": "2026-09-26T15:41:15.406601Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T15:41:15.406644Z",
+          "finished_at": "2026-09-26T15:43:00.611767Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T15:43:00.612014Z",
+          "finished_at": "2026-09-26T16:20:02.703250Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-26T16:20:06.361461Z",
+          "finished_at": "2026-09-26T16:20:14.173842Z"
+        }
+      },
+      "reward": 1.0,
+      "classification": "solved",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__SAk7yaT\\trial.log"
+      }
+    },
+    {
+      "trial_name": "temporal-ledger-repair__sztXbQk",
+      "task_name": "terminal-bench/temporal-ledger-repair",
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "terminus-2",
+      "agent_version": "2.0.0",
+      "model": "deepseek-flash",
+      "model_provider": "deepseek",
+      "times": {
+        "started_at": "2026-09-26T16:20:14.381990Z",
+        "finished_at": "2026-09-26T16:25:30.113112Z",
+        "environment_setup": {
+          "started_at": "2026-09-26T16:20:14.422194Z",
+          "finished_at": "2026-09-26T16:20:19.283799Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-26T16:20:19.283830Z",
+          "finished_at": "2026-09-26T16:21:05.163958Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-26T16:21:05.164038Z",
+          "finished_at": "2026-09-26T16:25:25.449580Z"
+        }
+      },
+      "reward": null,
+      "classification": "infrastructure_error",
+      "exceptions": [
+        {
+          "scope": "trial",
+          "type": "CancelledError",
+          "occurred_at": "2026-09-26T16:25:26.371390Z"
+        }
+      ],
+      "missing_evidence": [
+        "ctrf"
+      ],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\result.json",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\artifacts\\manifest.json",
+        "reconstruction": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\artifacts\\app\\output\\reconstruction.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260926T154101662393Z\\temporal-ledger-repair__sztXbQk\\trial.log"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "infrastructure_error",
+      "count": 7
+    },
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "solved",
+      "count": 1
+    },
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "nop",
+      "model": null,
+      "classification": "nop_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "oracle",
+      "model": null,
+      "classification": "oracle_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "terminus-2",
+      "model": "deepseek-flash",
+      "classification": "infrastructure_error",
+      "count": 1
+    },
+    {
+      "task_checksum": "44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51",
+      "agent": "terminus-2",
+      "model": "deepseek-flash",
+      "classification": "solved",
+      "count": 1
+    },
+    {
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "nop",
+      "model": null,
+      "classification": "infrastructure_error",
+      "count": 1
+    },
+    {
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "nop",
+      "model": null,
+      "classification": "nop_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "c84577d3533a5906facf6bdb3ef031427e770b5908ae3659c0f8a714967ac2b3",
+      "agent": "oracle",
+      "model": null,
+      "classification": "oracle_pass",
+      "count": 1
+    },
+    {
+      "task_checksum": "f44d8dbdf730d5427001947495a7f45c88a1602cc1ba6c8a9eb9e5223ffe02f7",
+      "agent": "codex",
+      "model": "gpt-6-astra",
+      "classification": "infrastructure_error",
+      "count": 2
+    }
+  ],
+  "scan_issues": []
+}

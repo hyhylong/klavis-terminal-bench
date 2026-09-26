@@ -1,0 +1,81 @@
+# Klavis Terminal-Bench: temporal-ledger-repair
+
+原创任务实现工作区。题目从乱序 CDC 事件恢复双时间账本，处理原子事务、重复冲突、schema 延迟、历史修正、半开区间、删除和字段来源。输入为合成数据：1,010 条事件、21 个交付检查点。
+
+**第一版可运行，但已被 Codex 和 DeepSeek 各成功解出，尚不满足作业的难度要求。保留全部真实结果，正在开发第二个候选版本。**
+
+## 已验证与待完成
+
+| 验收项 | 当前证据 |
+| --- | --- |
+| 本地环境 | WSL2、Docker、Python 3.12.12、Harbor 0.23.1.dev202609170426 可用 |
+| 开发测试 | 47 项通过；含 8 个种子的独立算法交叉验证、错误产物拒绝和证据分类测试 |
+| Docker 构建 | agent 与独立 verifier 镜像均构建成功 |
+| Harbor oracle | oracle-v2-lf：reward 1，22 项容器验证通过，无执行异常 |
+| Harbor nop | nop-v3-lf：reward 0，无执行异常，验证器独立运行 |
+| 上游静态检查 | 24/25 通过；作者 GitHub 用户名尚未提供 |
+| 作者信息与人工说明 | 待作者补充，详见 [中文作者指南](docs/author-guide.zh-CN.md) |
+| Implementation rubric | 两次本地审查因镜像构建网络错误未完成；未声称通过 |
+| Codex + DeepSeek 正常试验 | 两个模型均有真实 reward 1；第一版不满足难度要求 |
+| 对抗试验与轨迹分析 | 尚未完成 |
+| GitHub 交付 | 当前为本地 Git 仓库，尚未发布 |
+
+最新 oracle 与有效 nop 使用同一 Harbor task checksum：`44dd9c660becb8d373dd1bfbaa5bf42573dd938c31cb02e1411266ba481a2d51`。跨平台生成器现统一写入 LF，之后已重跑两项控制验证。首次 nop-v1 因 Harbor 相对路径处理报 FileNotFoundError，已保留为基础设施失败；这次失败不计作题目难度证据。后续运行使用绝对任务路径和 jobs 路径，并在每次调用前重新进入项目目录。
+
+## 本地运行
+
+在 Windows PowerShell 安装或复核独立运行环境：
+
+```powershell
+wsl -d Ubuntu-22.04 -- bash /mnt/e/JOB/klavis-terminal-bench/scripts/setup-local.sh
+```
+
+在 WSL shell 中：
+
+```bash
+cd /mnt/e/JOB/klavis-terminal-bench
+source artifacts/environment/runtime-env.sh
+python -m unittest discover -s dev_tests -v
+python tools/generate_corpus.py
+bash scripts/fetch-upstream.sh
+python scripts/check_static.py
+```
+
+静态检查目前会因真实作者信息缺失而返回失败；请补全 task.toml 中的三个作者字段，不要填虚构身份来绕过。
+
+用新的 job-name 重跑容器验证，始终使用绝对路径（这些命令不调用模型）：
+
+```bash
+root=$(pwd)
+cd "$root"
+harbor run --path "$root/tasks/temporal-ledger-repair" --agent oracle --env docker --jobs-dir "$root/artifacts/jobs" --job-name oracle-recheck --n-concurrent 1 --yes
+cd "$root"
+harbor run --path "$root/tasks/temporal-ledger-repair" --agent nop --env docker --jobs-dir "$root/artifacts/jobs" --job-name nop-recheck --n-concurrent 1 --yes
+```
+
+不要仅凭 Harbor 进程退出码判断通过；检查每个 trial 的 `exception_info`、`verifier_result`、CTRF 和轨迹。
+
+## 仓库结构
+
+- `tasks/temporal-ledger-repair/environment/`：agent 可见的协议和数据。
+- `tasks/temporal-ledger-repair/solution/`：使用区间拆分的参考解法。
+- `tasks/temporal-ledger-repair/tests/`：独立镜像；按全部端点划分后逐点重放的验证器，严格解析 JSON。
+- `dev_tests/`：手工核算、差分、变形和错误输出测试。
+- `tools/generate_corpus.py`：可复现数据生成器，同时更新公开数据和验证器内的可信副本；不生成答案。
+- `scripts/`：环境、静态检查和证据工具。
+- `docs/upstream-contract.md`：固定版本的 25 项静态检查、35 项 rubric 和评测约定。
+- `docs/runtime.md`：实际运行环境和安装证据。
+- `docs/local-review.md`：使用 Codex 进行本地 implementation rubric 审查的方式与差异。
+- `artifacts/static/`：静态检查日志；完整运行轨迹在被 Git 忽略的 `artifacts/jobs/`。
+
+验证器只解析声明的 JSON 文件，不执行 agent 提交的程序，也不从 agent 容器导入测试或参考数据。
+
+## 评测口径
+
+固定上游：`harbor-framework/terminal-bench` 提交 `4def1f367467b34b18e0dbdc086400ba71c3e037`。附件的旧仓库链接重定向到该项目；当前默认 Codex 模型已是 GPT-6 Astra，与附件示例 GPT-6 Sol 不同。用户已选择 Codex 加附件允许的 DeepSeek V4.1 Flash 替代组合；配置、启动命令与已核对的请求参数见 [评测说明](docs/evaluation.md)。离线凭据存在检查不代表服务端认证或额度验证。
+
+正常试验需要每个模型 3 次真正未通过验证器，对抗试验每个模型 1 次零奖励。超时、鉴权、限流、容器或接口错误都不能当成模型失败。即使 reward 为 0，也要检查轨迹和验证器证据后才能归类。
+
+作者身份、人工说明、全部 rubric/轨迹审查和真实试验结果都属于剩余门槛。Codex 本地审查可按相同标准生成证据，但应明确它与未修改的上游 hosted review 使用了不同模型；附件没有单独指定审查模型。凭据仅存于本地忽略配置，没有把未运行的检查标为通过。
+
+第一版成功解题记录：DeepSeek `temporal-ledger-repair__SAk7yaT`、Codex `temporal-ledger-repair__eJReGSd`。前者的 22 项验证全部通过。安装超时、DNS 错误以及主动取消的后续试验分别保留，均不计作模型失败。后续方向和资料依据见 [难度研究](docs/research/task-difficulty-2026-09-27.md)。

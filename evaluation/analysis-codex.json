@@ -1,0 +1,4 @@
+{
+  "retry": {"max_retries": 0},
+  "agent_setup_timeout_multiplier": 5.0
+}

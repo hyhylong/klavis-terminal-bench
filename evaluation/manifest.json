@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://github.com/harbor-framework/terminal-bench",
+  "upstream_commit": "4def1f367467b34b18e0dbdc086400ba71c3e037",
+  "harbor_version": "0.23.1.dev202609170426",
+  "cheat_prompt_sha256": "bd04d3b53d473270f69bad69a3702cc11949b25eb561df59234a65e92cf45ff3",
+  "current_ci_trial_pair": [
+    "claude-code / anthropic/claude-fable-5-1 / max",
+    "codex / openai/gpt-6-astra / xhigh"
+  ],
+  "selected_substitution": "terminus-2 / deepseek/deepseek-flash / max replaces Claude trial slot; this is not an identical CI agent matrix",
+  "upstream_implementation_reviewer": "claude-code / anthropic/claude-sonnet-5",
+  "upstream_trajectory_analyzer": "claude-code / anthropic/claude-sonnet-5",
+  "reviewed_date": "2026-09-26"
+}

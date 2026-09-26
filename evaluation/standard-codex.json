@@ -1,0 +1,26 @@
+{
+  "n_attempts": 3,
+  "n_concurrent_trials": 1,
+  "retry": {
+    "max_retries": 0
+  },
+  "environment": {
+    "type": "docker"
+  },
+  "jobs_dir": "artifacts/jobs",
+  "tasks": [
+    {
+      "path": "tasks/temporal-ledger-repair"
+    }
+  ],
+  "agents": [
+    {
+      "name": "codex",
+      "kwargs": {
+        "reasoning_effort": "xhigh"
+      },
+      "model_name": "openai/gpt-6-astra",
+      "override_setup_timeout_sec": 1800
+    }
+  ]
+}

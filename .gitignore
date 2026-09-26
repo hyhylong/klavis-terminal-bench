@@ -1,0 +1,13 @@
+.cache/
+.venv*/
+tmp/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+!.env.example
+auth.json
+artifacts/jobs/
+artifacts/environment/
+artifacts/local/

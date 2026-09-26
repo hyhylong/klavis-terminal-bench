@@ -1,0 +1,35 @@
+{
+  "n_attempts": 3,
+  "n_concurrent_trials": 1,
+  "retry": {
+    "max_retries": 0
+  },
+  "environment": {
+    "type": "docker"
+  },
+  "jobs_dir": "artifacts/jobs",
+  "tasks": [
+    {
+      "path": "tasks/temporal-ledger-repair"
+    }
+  ],
+  "agents": [
+    {
+      "name": "terminus-2",
+      "kwargs": {
+        "reasoning_effort": "max",
+        "llm_call_kwargs": {
+          "extra_body": {
+            "reasoning_effort": "max",
+            "thinking": {
+              "type": "enabled"
+            }
+          }
+        },
+        "api_base": "https://api.deepseek.com",
+        "interleaved_thinking": true
+      },
+      "model_name": "deepseek/deepseek-flash"
+    }
+  ]
+}
