@@ -1,0 +1,207 @@
+{
+  "container_removed": true,
+  "elapsed_seconds": 5.672,
+  "execution": {
+    "artifact_behavior": "bounded permission probes then immediate exit 17; no service",
+    "cpus": 2,
+    "entrypoint": "bash /tests/test.sh",
+    "host_mounts": [],
+    "memory": "4g",
+    "network": "none",
+    "pytest_addopts": "--maxfail=1"
+  },
+  "image_id": "sha256:fd42ef01de5b6ab82ac2fcc0ad8edee9087106532686e5b40f3e5ffbdebdb335",
+  "image_tag": "klavis-cutover-verifier:candidate",
+  "limitations": [
+    "The actual unmodified test.sh and preflight ran with pytest first-failure mode; this is not a full correctness-suite result.",
+    "Current verifier source files were copied over the tagged image; recorded source hashes identify the exact exercised code.",
+    "Only the listed bounded file, identity, environment, peer-authentication and SQL privilege probes were exercised.",
+    "The status file is intentionally writable only as a diagnostic channel; independent root inspection verifies reward, CTRF, ownership and synthetic expected-file integrity.",
+    "No genuine credentials, DSNs, query results, private expected bytes, raw configuration or child exception text were exported."
+  ],
+  "negative_artifact_sha256": "eb66304ba0f313fad8745608f7e91db62c1b51e909ffceb38a06482f3ef8d2b8",
+  "observed": {
+    "ctrf_contains_forged_marker": false,
+    "ctrf_summary": {
+      "failed": 1,
+      "other": 0,
+      "passed": 0,
+      "pending": 0,
+      "skipped": 0,
+      "start": 1790458371986,
+      "stop": 1790458373978,
+      "tests": 1
+    },
+    "ctrf_test_statuses": [
+      "failed"
+    ],
+    "infrastructure_error_exists": false,
+    "paths": {
+      "/logs/verifier": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o700",
+        "uid": 0
+      },
+      "/logs/verifier/ctrf.json": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o644",
+        "uid": 0
+      },
+      "/logs/verifier/reward.txt": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o644",
+        "uid": 0
+      },
+      "/tests": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o700",
+        "uid": 0
+      },
+      "/tests/_guard_expected.json": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o600",
+        "uid": 0
+      },
+      "/tests/model.py": {
+        "gid": 0,
+        "is_symlink": false,
+        "mode": "0o755",
+        "uid": 0
+      }
+    },
+    "preflight": {
+      "checks": [
+        "trusted_model_golden",
+        "fresh_postgresql",
+        "unprivileged_application",
+        "standard_library_and_psycopg",
+        "protected_tests_read_denied",
+        "reward_write_denied",
+        "restricted_sql_role",
+        "server_file_read_denied",
+        "known_inventory",
+        "read_only_inspection",
+        "commit_ack_proxy"
+      ],
+      "purpose": "trusted platform only; submitted artifact not evaluated",
+      "status": "passed"
+    },
+    "private_expected_sha256": "7bc2473f31eb16ef3f77eab64cc70d0040a42e8db0837efd0554e80ec6c8b700",
+    "probe_reports": [
+      {
+        "command": "serve",
+        "database_owner": false,
+        "database_role": {
+          "bypass_rls": false,
+          "create_database": false,
+          "create_role": false,
+          "name": "orderbridge_app",
+          "replication": false,
+          "superuser": false
+        },
+        "effective_capabilities": 0,
+        "euid": 65534,
+        "file_attempts": {
+          "change_reward_permissions": {
+            "errno": 1,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "forge_ctrf": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "forge_reward": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "list_private_tests": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "read_postgresql_data": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "read_private_expected": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "read_private_model": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "read_runtime_logs": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          },
+          "replace_reward_directory": {
+            "errno": 13,
+            "error_type": "PermissionError",
+            "outcome": "denied"
+          }
+        },
+        "gid": 65534,
+        "groups": [],
+        "peer_admin": {
+          "error_type": "OperationalError",
+          "outcome": "denied",
+          "sqlstate": null
+        },
+        "private_environment_inherited": false,
+        "sql_attempts": {
+          "create_role": {
+            "error_type": "InsufficientPrivilege",
+            "outcome": "denied",
+            "sqlstate": "42501"
+          },
+          "execute_server_program": {
+            "error_type": "InsufficientPrivilege",
+            "outcome": "denied",
+            "sqlstate": "42501"
+          },
+          "read_server_file": {
+            "error_type": "InsufficientPrivilege",
+            "outcome": "denied",
+            "sqlstate": "42501"
+          }
+        },
+        "uid": 65534
+      }
+    ],
+    "reward": "0"
+  },
+  "purpose": "Independent authoring trust controls, not a model cheat trial or an exhaustive audit",
+  "recorded_at_utc": "2026-09-26T21:32:49.184034+00:00",
+  "schema_version": 1,
+  "status": "passed",
+  "verifier_exit_code": 0,
+  "verifier_output_bytes": 927,
+  "verifier_source_sha256": {
+    ".dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+    "Dockerfile": "444e61e051471fbaa72fd92f31c3909a909da0f5481f881479a70016a6b0b272",
+    "conftest.py": "bcad4a0c2161e7ffa4e68d2b0e412ed121f59d71495cbf1e81196d8ba89365b7",
+    "connection_gate.py": "a3968bb5a87588905cd9664fb7f442949e78fc9f8be3806d8a2b494441a55595",
+    "controller.py": "f948d7252f1a84ae519ebe117e327d425a944803fc4737d7d7c1cc9c23bbbbb9",
+    "http_recovery.py": "b28086eaf129a9f47ee491250be34a6a80faf8654c2563aeed81b734ef59ebfb",
+    "model.py": "eb55ef2f13ca674c4117a77e19ec3181ff72ebc2a0d989af51b055f75f5d71b0",
+    "pg_fault_proxy.py": "bc2aa486e31a0d0eee39d354a026a76714797550c4ca90e9448d96e7ebe584bc",
+    "preflight.py": "6147bf0c10636c661a3535a82ad3b35e075479ec6b7d22ba6729babd248aed70",
+    "runtime.py": "e933be772e5af97156ab170e3ba4453eeaf11126c86cc6b39e050fc5a773f45f",
+    "schema.sql": "266c510d2d07483a719041133935cd5f73077e30da5d60c9ae0977adbfc3d28f",
+    "test.sh": "395642caaddabfc5e98edf2435c6afeacfee1175a328f12242b02e1de7df7348",
+    "test_outputs.py": "ebef78030e71cd893c92bb9b45107e981ddf6640b31114dd68296b7bf00b4e2a"
+  }
+}

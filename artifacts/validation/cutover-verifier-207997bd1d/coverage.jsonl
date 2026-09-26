@@ -1,0 +1,5 @@
+{"coverage": "baseline", "fault_observed": false, "initial_commit_count": 3, "initial_exit_code": 0, "schedule": "commit_ack", "selected_ordinal": null}
+{"coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 1, "initial_exit_code": 1, "schedule": "commit_ack", "selected_ordinal": 1}
+{"coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 2, "initial_exit_code": 1, "schedule": "commit_ack", "selected_ordinal": 2}
+{"coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 3, "initial_exit_code": 1, "schedule": "commit_ack", "selected_ordinal": 3}
+{"coverage": "held_across_activation", "schedule": "connection_gate"}

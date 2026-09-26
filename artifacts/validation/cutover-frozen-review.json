@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-09-26T21:32:40Z",
+  "review_kind": "independent bounded read-only package review, not a formal rubric or model evaluation",
+  "frozen_task": "artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover",
+  "integrity": {
+    "inventory_files": 35,
+    "all_file_sizes_and_sha256_match_manifest": true,
+    "snapshot_tree_sha256": "1aac8e715145982a0dd45ccb13e5e602cc3888142ff5de1f9f61af95a41f3c3f",
+    "source_manifest_sha256": "f003306b37be2a0b48ef13f72487c7e585e125302ecad4d418576a9c01ff9aee",
+    "python_files_parsed_without_execution": 23,
+    "frozen_files_edited": false
+  },
+  "conclusion": "No additional concrete contract/test mismatch or false-failure was identified in the reviewed frozen files. A substantial lawful implementation simplification remains; model difficulty is unproven.",
+  "new_correctness_findings": [],
+  "alignment_checks": [
+    {
+      "topic": "Shared runtime and schema",
+      "result": "Environment dev_runtime.py and tests/runtime.py are byte-identical; environment/schema.sql and tests/schema.sql are byte-identical."
+    },
+    {
+      "topic": "Starter and reference separation",
+      "result": "Starter Router uses only the source, with genuine transaction-scoped inventory and historical receipts; migrate exits 2 descriptively. Target routing, capture, normalized backend and migration exist only in solution. Public api.py, service.py and __main__.py are byte-identical to their solution counterparts.",
+      "references": ["environment/orderbridge/backend.py:95", "environment/orderbridge/migrate.py:7", "solution/solve.sh:4"]
+    },
+    {
+      "topic": "Previously identified semantic gaps",
+      "result": "Frozen tests now check initial source health, full-body receipt identity including array order and object-key reordering, strict retry payloads, sequential no-effect retries with an unknown-outcome exception, and service restart after an unread mutation response.",
+      "references": ["tests/controller.py:77", "tests/controller.py:193", "tests/controller.py:214", "tests/test_outputs.py:42", "tests/test_outputs.py:147", "tests/http_recovery.py:57"]
+    },
+    {
+      "topic": "Adaptive schedules and legal alternatives",
+      "result": "Public phase observations and missing applicability are metadata; observed target activation releases the held relation fixture. Dynamic COMMIT sampling, connection pools, the three-column receipt INSERT and full recopy remain compatible with the published contract. No reference routing-table names or advisory-lock IDs were found in tests.",
+      "references": ["environment/CONTRACT.md:104", "environment/CONTRACT.md:179", "tests/test_outputs.py:167", "tests/test_outputs.py:254"]
+    },
+    {
+      "topic": "Public limits and comparison",
+      "result": "Declared 30-second startup, 15-second RPC, post-fixture 60-second migration wait, 5-second SQL inspection, row/body bounds and role restrictions agree with the controller/runtime. JSON comparisons preserve boolean/integer distinctions; SQL comparison uses bounded declared-column row multisets."
+    },
+    {
+      "topic": "Package trust boundary",
+      "result": "Agent Dockerfile copies public helpers and starter only. Separate verifier keeps tests and scoring under root-owned 0700 directories; submitted modules run through the unprivileged process controller and are not imported by root. This review inspected the frozen configuration and did not rerun the earlier dynamic trust controls."
+    }
+  ],
+  "difficulty_risks": [
+    {
+      "status": "legal design inference, not an executed full-pass result",
+      "summary": "Retain a JSON lines column on target orders and maintain the normalized line interface transactionally, reusing the complete supplied source business implementation.",
+      "detail": "The contract explicitly allows extra columns and leaves physical relation layout unspecified. A target orders.lines JSONB column plus an order_lines expansion view may satisfy that interface; a real normalized order_lines table maintained by a transactional trigger is an unambiguous alternative even if a view is judged inconsistent with the task's wording. Both avoid implementing an independent target business backend. Combine this with durable target activation, a rechecked source writer fence, and the expressly permitted final full recopy to reduce the remaining work substantially.",
+      "references": ["environment/CONTRACT.md:104", "environment/CONTRACT.md:179", "environment/CONTRACT.md:222", "environment/orderbridge/backend.py:24", "environment/orderbridge/backend.py:95"],
+      "implication": "Treat this as a reason to obtain and preserve the genuine pilot outcome. Do not claim that strong models fail, or add restrictions merely to exclude this lawful approach."
+    }
+  ],
+  "limitations": [
+    "No model was invoked, and no solution or task file was edited.",
+    "No frozen oracle, nop, double-copy or security run was duplicated during this review; those results must be reported from their own completed controls.",
+    "Read-only review cannot establish that every valid implementation passes or every incorrect implementation fails.",
+    "The fast-path design above is not proof of an actual model solving the task, nor proof of a completed alternative implementation passing the frozen verifier.",
+    "Author metadata and the README's four human-authored sections remain explicitly pending, as already documented in the frozen package."
+  ]
+}

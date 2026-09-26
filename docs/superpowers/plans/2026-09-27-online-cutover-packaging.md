@@ -44,30 +44,39 @@ mutants and research evidence outside the task directory.
 
 ## Before a pilot
 
-- [ ] Adapt target-lock observation: completed correct alternatives are accepted;
+- [x] Adapt target-lock observation: completed correct alternatives are accepted;
   missing observed phases lower coverage rather than fail correct solutions.
-- [ ] Specify the SQL fixture interface explicitly, including a rolled-back
+- [x] Specify the SQL fixture interface explicitly, including a rolled-back
   receipt INSERT, or exclude that schedule from scoring until supported fairly.
-- [ ] Preserve all normal valid alternatives, including full double copy.
-- [ ] Publish generous process/request bounds and exact available dependencies.
-- [ ] Run submitted code only as the application UID; protect `/tests` and
+- [x] Preserve all normal valid alternatives, including full double copy.
+- [x] Publish generous process/request bounds and exact available dependencies.
+- [x] Run submitted code only as the application UID; protect `/tests` and
   `/logs/verifier` with 0700 before any execution and use private file capture.
-- [ ] Inspect application SQL as the application role, with read-only bounded
+- [x] Inspect application SQL as the application role, with read-only bounded
   queries; never execute an application view/function with admin privileges.
-- [ ] Use only independent public-contract tests for reward. Reference-specific
+- [x] Use only independent public-contract tests for reward. Reference-specific
   routing activations and direct Python validation-unit imports stay in authoring.
-- [ ] Build both images, run reference and starter directly, prove hostile
-  artifacts cannot read expected results or forge reward, and run the legitimate
+- [x] Build both images, run reference and starter directly, verify listed hostile
+  artifact probes cannot read expected results or forge reward, and run the legitimate
   double-copy alternative through the packaged verifier.
-- [ ] Run pinned static checks; missing real author data remains a reported fail.
-- [ ] Freeze exact files, then run Harbor oracle/nop on the same snapshot.
-- [ ] Launch one genuine Codex pilot. Preserve any success or infrastructure
+- [x] Run pinned static checks; missing real author data remains a reported fail.
+- [x] Freeze exact files, then run Harbor oracle/nop on the same snapshot.
+- [x] Launch one genuine Codex pilot. Preserve any success or infrastructure
   failure; do not reinterpret it as a model failure or alter the frozen task.
 
 ## Remaining qualification
 
 A passing oracle and failing starter are implementation checks, not difficulty.
 Only after a genuine task failure has been analyzed should the two-model
-three-attempt matrix, meaningful cheat attempts and 35-criterion review proceed.
+three-attempt matrix and meaningful cheat attempts proceed. The 35-criterion
+implementation review can run alongside the first pilot to identify independent
+contract/verifier problems before any further model trials.
 Author identity and four human-authored README sections remain human input.
 No current evidence resolves those requirements.
+
+2026-09-27 checkpoint: frozen Harbor checksum
+`96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a`;
+oracle23/23 reward1, nop9/23 reward0, both no exceptions. Packaged legal
+double-copy23/23 reward1. Frozen permission probes passed; missing trusted model
+produced infrastructure exit70 with no reward. Static24/25 (real author GitHub
+missing). Pilot and independent rubric review running; difficulty unassessed.

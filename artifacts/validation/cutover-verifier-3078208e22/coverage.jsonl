@@ -1,0 +1,8 @@
+{"fault_observed": true, "phase": "blocked", "schedule": "backfill"}
+{"crash_observed": true, "phase": "blocked", "schedule": "restart"}
+{"initial_phase": "blocked", "release_reason": "migration_waits_on_writer", "schedule": "delayed_commit"}
+{"fault_observed": false, "initial_commit_count": 3, "schedule": "commit_ack", "selected_ordinal": null}
+{"fault_observed": true, "initial_commit_count": 1, "schedule": "commit_ack", "selected_ordinal": 1}
+{"fault_observed": true, "initial_commit_count": 2, "schedule": "commit_ack", "selected_ordinal": 2}
+{"fault_observed": true, "initial_commit_count": 3, "schedule": "commit_ack", "selected_ordinal": 3}
+{"coverage": "held_across_activation", "schedule": "connection_gate"}

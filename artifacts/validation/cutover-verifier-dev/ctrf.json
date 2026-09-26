@@ -1,0 +1,243 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-09-26T21:11:00.740231+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 21,
+            "passed": 0,
+            "failed": 21,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790457025255,
+            "stop": 1790457060740
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+                "status": "failed",
+                "duration": 1762,
+                "start": 1790457025341,
+                "stop": 1790457027103,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+                "status": "failed",
+                "duration": 1724,
+                "start": 1790457027103,
+                "stop": 1790457028827,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+                "status": "failed",
+                "duration": 1718,
+                "start": 1790457028827,
+                "stop": 1790457030545,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+                "status": "failed",
+                "duration": 1713,
+                "start": 1790457030546,
+                "stop": 1790457032259,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_validation_does_not_create_receipts",
+                "status": "failed",
+                "duration": 1775,
+                "start": 1790457032259,
+                "stop": 1790457034034,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_validation_does_not_create_receipts",
+                "status": "failed",
+                "duration": 1781,
+                "start": 1790457034034,
+                "stop": 1790457035815,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+                "status": "failed",
+                "duration": 1794,
+                "start": 1790457035815,
+                "stop": 1790457037609,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+                "status": "failed",
+                "duration": 209,
+                "start": 1790457037609,
+                "stop": 1790457037818,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+                "status": "failed",
+                "duration": 1774,
+                "start": 1790457037818,
+                "stop": 1790457039592,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+                "status": "failed",
+                "duration": 1729,
+                "start": 1790457039593,
+                "stop": 1790457041322,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+                "status": "failed",
+                "duration": 1755,
+                "start": 1790457041322,
+                "stop": 1790457043077,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+                "status": "failed",
+                "duration": 1758,
+                "start": 1790457043078,
+                "stop": 1790457044836,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+                "status": "failed",
+                "duration": 1723,
+                "start": 1790457044836,
+                "stop": 1790457046559,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+                "status": "failed",
+                "duration": 1743,
+                "start": 1790457046559,
+                "stop": 1790457048302,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_http_transport_rejects_invalid_payloads",
+                "status": "failed",
+                "duration": 1752,
+                "start": 1790457048303,
+                "stop": 1790457050055,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_seeded_migration_restart_and_source_retirement",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1756,
+                "start": 1790457050055,
+                "stop": 1790457051811,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:144: in test_seeded_migration_restart_and_source_retirement\n    with Harness(model=seeded_model()) as value:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_live_changes_during_adaptive_backfill",
+                "status": "failed",
+                "duration": 1797,
+                "start": 1790457051812,
+                "stop": 1790457053609,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_killed_migration_and_concurrent_restarts",
+                "status": "failed",
+                "duration": 1807,
+                "start": 1790457053609,
+                "stop": 1790457055416,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_delayed_commit_preserves_order_stock_and_receipt",
+                "status": "failed",
+                "duration": 1765,
+                "start": 1790457055416,
+                "stop": 1790457057181,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            },
+            {
+                "name": "test_outputs.py::test_lost_target_commit_acknowledgements",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1774,
+                "start": 1790457057182,
+                "stop": 1790457058956,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:262: in test_lost_target_commit_acknowledgements\n    ordinals = run(None)\n               ^^^^^^^^^\ntest_outputs.py:242: in run\n    with Harness(model=seeded_model()) as value, PostgresFaultProxy(\"127.0.0.1\", value.rt.port, fail_commit=fail_commit) as proxy:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_delayed_source_connection_across_routing",
+                "status": "failed",
+                "duration": 1782,
+                "start": 1790457058957,
+                "stop": 1790457060739,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "test_outputs.py:20: in harness\n    with Harness() as value:\n         ^^^^^^^^^\ncontroller.py:75: in __enter__\n    self.port, self.serving = self.start_server()\n                              ^^^^^^^^^^^^^^^^^^^\ncontroller.py:108: in start_server\n    raise AssertionError(\"Submitted service exited during startup; private process logs retained until fixture cleanup\")\nE   AssertionError: Submitted service exited during startup; private process logs retained until fixture cleanup"
+            }
+        ]
+    }
+}

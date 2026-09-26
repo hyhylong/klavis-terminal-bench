@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-26T21:34:40.697878+00:00",
+  "status": "final_amd64_images_rebuilt_with_historical_smoke_and_separate_final_controls",
+  "model_trial": false,
+  "images": {
+    "agent": {
+      "tag": "klavis-cutover-agent:candidate",
+      "manifest": "sha256:90a3bd30f94dc88f0c069d8f62d0c0d16beb1ff2c85abb0d61032a11fffb6bb7",
+      "digest_kind": "Docker build manifest-list/index digest",
+      "final_rebuild_log": "artifacts/environment/cutover-runtime/agent-final-build.log",
+      "final_rebuild_log_last_written_at": "2026-09-26T21:32:28.861319+00:00",
+      "rebuild_time_source": "UTC filesystem last-write time of the completed build log; the log contains no independent absolute Docker execution timestamp."
+    },
+    "verifier": {
+      "tag": "klavis-cutover-verifier:candidate",
+      "manifest": "sha256:fd42ef01de5b6ab82ac2fcc0ad8edee9087106532686e5b40f3e5ffbdebdb335",
+      "note": "Final complete baked verifier; legal double-copy control passed 23/23 with reward 1, and the missing-model infrastructure control passed.",
+      "digest_kind": "Docker build manifest-list/index digest",
+      "final_rebuild_log": "artifacts/environment/cutover-runtime/verifier-final-build.log",
+      "final_rebuild_log_last_written_at": "2026-09-26T21:28:45.206523+00:00",
+      "rebuild_time_source": "UTC filesystem last-write time of the completed build log; the log contains no independent absolute Docker execution timestamp."
+    }
+  },
+  "versions": {
+    "python": "3.13.15",
+    "postgresql": "17.11",
+    "psycopg": "3.3.6",
+    "pytest": "9.1.1",
+    "pytest-json-ctrf": "0.5.2",
+    "codex": "0.157.1",
+    "ripgrep": "15.2.0"
+  },
+  "architectures": {
+    "amd64": "built_and_executed",
+    "arm64": "Docker stages and official package hashes prepared; build blocked before base-image download by Docker Hub anonymous-token network route (IPv6 network unreachable). Not executed."
+  },
+  "runtime_regression": {
+    "red": "New inspection-timeout test failed because statement_timeout was0.",
+    "green": {
+      "tests_passed": 12,
+      "tests_failed": 0,
+      "seconds": 27.506
+    },
+    "malicious_view": "App-owned SECURITY INVOKER pg_sleep(6) view canceled by5s statement timeout.",
+    "shared_runtime_bytes_identical": true,
+    "shared_schema_bytes_identical": true,
+    "execution_scope": "Pre-packaging experiment runtime tests in klavis-cutover-runtime:dev; not a new invocation on either final image.",
+    "execution_timestamp_utc": null,
+    "observed_before": "2026-09-26T21:10:37.797005+00:00"
+  },
+  "agent_offline_smoke": {
+    "network": "none",
+    "cpus": 2,
+    "memory": "4GiB",
+    "source_only_checks": 28,
+    "source_only_seconds": 2.711,
+    "fresh_database_ready_seconds": 0.9847555700007433,
+    "codex_install_check_found": true,
+    "auth_file_absent": true,
+    "private_test_absent": true,
+    "inspection_role": "orderbridge_app",
+    "inspection_statement_timeout": "5s",
+    "rechecked_after_schema_canary_change": true,
+    "scope": "Historical checks on earlier agent builds, not a smoke invocation on the final 90a3bd image. Final rebuild success is evidenced separately by its build log.",
+    "runtime_and_cli_observation": {
+      "image_manifest": "sha256:ebd9f470a09f6f3e2695373b7d5a68660354bfa0892b520bdafbaad2bc4f8935",
+      "execution_timestamp_utc": null,
+      "observed_before": "2026-09-26T21:10:37.797005+00:00",
+      "source": "Original successful offline container tool output; exact invocation timestamp was not independently recorded.",
+      "applies_to_fields": [
+        "fresh_database_ready_seconds",
+        "codex_install_check_found",
+        "auth_file_absent",
+        "private_test_absent",
+        "inspection_role",
+        "inspection_statement_timeout"
+      ]
+    },
+    "source_only_observation": {
+      "image_manifest": "sha256:60fadf46b4486b455cfbe1fcebfa1b94041f118099f9e65ec9ba9a9456b0f7a6",
+      "execution_timestamp_utc": null,
+      "observed_after": "2026-09-26T21:12:32.797029+00:00",
+      "source": "Successful post-canary offline public smoke tool output: 28 checks in 2.711 s; exact invocation timestamp was not independently recorded.",
+      "applies_to_fields": [
+        "source_only_checks",
+        "source_only_seconds",
+        "rechecked_after_schema_canary_change"
+      ]
+    },
+    "initial_source_only_observation": {
+      "image_manifest": "sha256:ebd9f470a09f6f3e2695373b7d5a68660354bfa0892b520bdafbaad2bc4f8935",
+      "checks": 28,
+      "elapsed_seconds": 1.821,
+      "observed_before": "2026-09-26T21:10:37.797005+00:00",
+      "execution_timestamp_utc": null
+    }
+  },
+  "agent_build_initial_failure": {
+    "cause": "Pinned PostgreSQLbase omits CA certificate bundle; first HTTPS APT attempt failed TLS validation.",
+    "fix": "Copy public CA roots from pinned Pythonbase before HTTPS APT; subsequent build completed. No certificate checks disabled and no global settings changed."
+  },
+  "app_process_defaults": {
+    "uid": 65534,
+    "gid": 65534,
+    "cpu_seconds": 180,
+    "address_space_mb": 1024,
+    "file_size_limit_bytes": 16777216,
+    "open_files": 256,
+    "core_bytes": 0,
+    "output": "private root-owned files; separate process group"
+  },
+  "files": {
+    "tasks/online-order-cutover/environment/Dockerfile": "165db6857557ccc5037c7c3ce978413a64c6b3e435340b803cab7db1b9fbb359",
+    "tasks/online-order-cutover/environment/dev_runtime.py": "e933be772e5af97156ab170e3ba4453eeaf11126c86cc6b39e050fc5a773f45f",
+    "tasks/online-order-cutover/environment/schema.sql": "266c510d2d07483a719041133935cd5f73077e30da5d60c9ae0977adbfc3d28f",
+    "tasks/online-order-cutover/tests/Dockerfile": "444e61e051471fbaa72fd92f31c3909a909da0f5481f881479a70016a6b0b272",
+    "tasks/online-order-cutover/tests/runtime.py": "e933be772e5af97156ab170e3ba4453eeaf11126c86cc6b39e050fc5a773f45f",
+    "tasks/online-order-cutover/tests/schema.sql": "266c510d2d07483a719041133935cd5f73077e30da5d60c9ae0977adbfc3d28f"
+  },
+  "dependency_metadata": "artifacts/environment/cutover-runtime/package-metadata.json",
+  "arm64_codex_provenance": "artifacts/environment/cache/codex-0.157.1-linux-arm64.verified.json",
+  "arm64_build_log": "artifacts/environment/cutover-runtime/verifier-arm64-build.log",
+  "build_logs": [
+    "artifacts/environment/cutover-runtime/agent-final-build.log",
+    "artifacts/environment/cutover-runtime/verifier-final-build.log"
+  ],
+  "shared_assets_checked_at": "2026-09-26T21:12:32.797029+00:00",
+  "base_manifest_evidence": {
+    "python": {
+      "amd64": "sha256:3e2de9c40ca4e3d73240059f9d48baff27908f10293e985a2f382a0378e6df4a",
+      "arm64": "sha256:ad4c34ff79289506e235b40dce75d629e25f226b597a2455804220f037e07531"
+    },
+    "postgres": {
+      "amd64": "sha256:91eb910c44c7ed13f7f1a4ccadaa9ca72ef14cddc04cacb6e070e48eb44731a3",
+      "arm64": "sha256:75731e2765e7d0c8bb7dea960ef3bdcde68d16314991ab2057a2a74ea0fff257"
+    }
+  },
+  "verifier_offline_platform_preflight": {
+    "status": "passed",
+    "exit_code": 0,
+    "network": "none",
+    "cpus": 2,
+    "memory": "4GiB",
+    "entrypoint": "python -B /tests/preflight.py",
+    "submitted_artifact_evaluated": false,
+    "scope": "Historical standalone platform preflight on the earlier 63f4aa image. The final fd42ef image preflight is recorded with the complete alternative control.",
+    "image_manifest": "sha256:63f4aa7b43f0e02c66c2870633c4fff8fe9385f459db7ec36983847a08e33de1",
+    "execution_timestamp_utc": null,
+    "observed_after": "2026-09-26T21:12:32.797029+00:00",
+    "final_image_evidence": "artifacts/validation/cutover-alternative-package.json"
+  },
+  "build_control_file_sha256": {
+    "environment/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+    "tests/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b"
+  },
+  "final_controls": [
+    "artifacts/validation/cutover-alternative-package.json",
+    "artifacts/validation/cutover-infrastructure-control.json"
+  ],
+  "first_recorded_at": "2026-09-26T21:10:37.797005+00:00",
+  "recorded_at_scope": "Time of this metadata revision, not the execution time of every recorded observation."
+}

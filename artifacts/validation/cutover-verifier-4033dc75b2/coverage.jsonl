@@ -1,0 +1,7 @@
+{"backend_at_barrier": "source", "fault_observed": true, "phase": "blocked", "schedule": "backfill"}
+{"backend_at_barrier": "source", "initial_phase": "blocked", "release_reason": "migration_waits_on_writer", "schedule": "delayed_commit"}
+{"backend_at_barrier": "source", "coverage": "baseline", "fault_observed": false, "initial_commit_count": 4, "initial_exit_code": 0, "initial_phase": "blocked", "live_source_changes": true, "schedule": "commit_ack", "selected_ordinal": null}
+{"backend_at_barrier": "source", "coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 1, "initial_exit_code": 1, "initial_phase": "selected_ack_lost", "live_source_changes": false, "schedule": "commit_ack", "selected_ordinal": 1}
+{"backend_at_barrier": "source", "coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 2, "initial_exit_code": 1, "initial_phase": "blocked", "live_source_changes": true, "schedule": "commit_ack", "selected_ordinal": 2}
+{"backend_at_barrier": "source", "coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 3, "initial_exit_code": 1, "initial_phase": "blocked", "live_source_changes": true, "schedule": "commit_ack", "selected_ordinal": 3}
+{"backend_at_barrier": "source", "coverage": "fault_observed", "fault_observed": true, "initial_commit_count": 4, "initial_exit_code": 1, "initial_phase": "blocked", "live_source_changes": true, "schedule": "commit_ack", "selected_ordinal": 4}

@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "recorded_at": "20260926T213009692611Z",
+  "model_trial": false,
+  "purpose": "Self-contained legal double-copy alternative against the complete baked verifier",
+  "status": "passed",
+  "artifact_manifest": {
+    "purpose": "development-only legal double-copy alternative, self-contained published CLI",
+    "artifact": "artifacts/local/cutover-double-copy/orderbridge",
+    "outside_package_imports": [
+      "Python standard library",
+      "psycopg3.3.6"
+    ],
+    "historical_controller_lines": 19,
+    "historical_reused_helper_lines": 44,
+    "counts_scope": "Original inline proof count; all physical exported-file lines below include docstrings, imports and wrappers. Complete service/API is part of artifact.",
+    "files": {
+      "__init__.py": {
+        "sha256": "69902b4f95216510cc9f6c8b381f5c17b33345840827776f6b5828455607f026",
+        "physical_lines": 1
+      },
+      "__main__.py": {
+        "sha256": "451433380d290b2a888034a3d3b7ca0e733598057e2dbe8aa84306eb37595865",
+        "physical_lines": 24
+      },
+      "api.py": {
+        "sha256": "3762e0c775b02e7f99832007deb567667a32bac2e074c0e375d571c42e35e27e",
+        "physical_lines": 62
+      },
+      "backend.py": {
+        "sha256": "dd4fc6de004f3a864da1b0a53a4c814cd97065219711f9bcf82e0239d2ed43fc",
+        "physical_lines": 162
+      },
+      "migrate.py": {
+        "sha256": "2d926fb93cd0b134c87ba9a769896d3fe7c198897c628c1e0ed9594696913e94",
+        "physical_lines": 81
+      },
+      "service.py": {
+        "sha256": "92e7a9c893a2fb215922fa4e1f4a07d9ef9a7f9314572c18761f2fe4fe8d0348",
+        "physical_lines": 67
+      }
+    },
+    "total_physical_lines": 397
+  },
+  "image": "klavis-cutover-verifier:candidate",
+  "image_id": "sha256:fd42ef01de5b6ab82ac2fcc0ad8edee9087106532686e5b40f3e5ffbdebdb335",
+  "container_name": "klavis-cutover-alternative-20260926t213009692611z",
+  "network": "none",
+  "cpus": 2,
+  "memory": "4GiB",
+  "copied_artifact_permissions": "Directories0755, regular files0644; no symlinks followed",
+  "elapsed_seconds": 91.45273156800067,
+  "verifier_process_exit": 0,
+  "reward": "1",
+  "preflight": {
+    "purpose": "trusted platform only; submitted artifact not evaluated",
+    "status": "passed",
+    "checks": [
+      "trusted_model_golden",
+      "fresh_postgresql",
+      "unprivileged_application",
+      "standard_library_and_psycopg",
+      "protected_tests_read_denied",
+      "reward_write_denied",
+      "restricted_sql_role",
+      "server_file_read_denied",
+      "known_inventory",
+      "read_only_inspection",
+      "commit_ack_proxy"
+    ]
+  },
+  "ctrf_summary": {
+    "tests": 23,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "pending": 0,
+    "other": 0,
+    "start": 1790458213762,
+    "stop": 1790458296348
+  },
+  "tests": [
+    {
+      "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_validation_does_not_create_receipts",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_validation_does_not_create_receipts",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_http_transport_rejects_invalid_payloads",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_service_unknown_response_recovery",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_service_unknown_response_recovery",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_seeded_migration_restart_and_source_retirement",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_live_changes_during_adaptive_backfill",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_killed_migration_and_concurrent_restarts",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_delayed_commit_preserves_order_stock_and_receipt",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_lost_target_commit_acknowledgements",
+      "status": "passed"
+    },
+    {
+      "name": "test_outputs.py::test_delayed_source_connection_across_routing",
+      "status": "passed"
+    }
+  ],
+  "coverage": [
+    {
+      "backend": "source",
+      "committed_receipt_observed_before_kill": true,
+      "complete_http_request_sent": true,
+      "coverage": "committed_before_kill",
+      "response_read": false,
+      "schedule": "service_unknown_response"
+    },
+    {
+      "backend": "target",
+      "committed_receipt_observed_before_kill": true,
+      "complete_http_request_sent": true,
+      "coverage": "committed_before_kill",
+      "response_read": false,
+      "schedule": "service_unknown_response"
+    },
+    {
+      "backend_at_barrier": "source",
+      "fault_observed": true,
+      "phase": "blocked",
+      "schedule": "backfill"
+    },
+    {
+      "crash_observed": true,
+      "phase": "blocked",
+      "schedule": "restart"
+    },
+    {
+      "backend_at_barrier": "source",
+      "initial_phase": "blocked",
+      "release_reason": "migration_waits_on_writer",
+      "schedule": "delayed_commit"
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "baseline",
+      "fault_observed": false,
+      "initial_commit_count": 4,
+      "initial_exit_code": 0,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": null
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 1,
+      "initial_exit_code": 1,
+      "initial_phase": "selected_ack_lost",
+      "live_source_changes": false,
+      "schedule": "commit_ack",
+      "selected_ordinal": 1
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 2,
+      "initial_exit_code": 1,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": 2
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 3,
+      "initial_exit_code": 1,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": 3
+    },
+    {
+      "backend_at_barrier": "source",
+      "coverage": "fault_observed",
+      "fault_observed": true,
+      "initial_commit_count": 4,
+      "initial_exit_code": 1,
+      "initial_phase": "blocked",
+      "live_source_changes": true,
+      "schedule": "commit_ack",
+      "selected_ordinal": 4
+    },
+    {
+      "coverage": "held_across_activation",
+      "schedule": "connection_gate"
+    }
+  ],
+  "private_files_unchanged": true,
+  "new_pytest_cache_files": [
+    ".pytest_cache/.gitignore",
+    ".pytest_cache/CACHEDIR.TAG",
+    ".pytest_cache/README.md",
+    ".pytest_cache/v/cache/nodeids"
+  ],
+  "baked_private_files_match_workspace": true,
+  "baked_private_files_match_frozen_candidate": true,
+  "frozen_candidate": "artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover",
+  "dockerignore_sha256": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+  "private_file_sha256": {
+    ".dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+    "Dockerfile": "444e61e051471fbaa72fd92f31c3909a909da0f5481f881479a70016a6b0b272",
+    "conftest.py": "bcad4a0c2161e7ffa4e68d2b0e412ed121f59d71495cbf1e81196d8ba89365b7",
+    "connection_gate.py": "a3968bb5a87588905cd9664fb7f442949e78fc9f8be3806d8a2b494441a55595",
+    "controller.py": "f948d7252f1a84ae519ebe117e327d425a944803fc4737d7d7c1cc9c23bbbbb9",
+    "http_recovery.py": "b28086eaf129a9f47ee491250be34a6a80faf8654c2563aeed81b734ef59ebfb",
+    "model.py": "eb55ef2f13ca674c4117a77e19ec3181ff72ebc2a0d989af51b055f75f5d71b0",
+    "pg_fault_proxy.py": "bc2aa486e31a0d0eee39d354a026a76714797550c4ca90e9448d96e7ebe584bc",
+    "preflight.py": "6147bf0c10636c661a3535a82ad3b35e075479ec6b7d22ba6729babd248aed70",
+    "runtime.py": "e933be772e5af97156ab170e3ba4453eeaf11126c86cc6b39e050fc5a773f45f",
+    "schema.sql": "266c510d2d07483a719041133935cd5f73077e30da5d60c9ae0977adbfc3d28f",
+    "test.sh": "395642caaddabfc5e98edf2435c6afeacfee1175a328f12242b02e1de7df7348",
+    "test_outputs.py": "ebef78030e71cd893c92bb9b45107e981ddf6640b31114dd68296b7bf00b4e2a"
+  },
+  "evidence_directory": "artifacts/local/cutover-double-copy/20260926T213009692611Z",
+  "limitations": [
+    "Development control, not a model attempt or production performance proof.",
+    "Historical19-controller+44-helper line count excludes the existing service; exported complete package size is recorded separately."
+  ],
+  "build_control_file_sha256": {
+    "environment/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+    "tests/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b"
+  },
+  "collector_history": [
+    {
+      "run": "artifacts/local/cutover-double-copy/20260926T212514503395Z",
+      "semantic_result": "23 passed, reward1",
+      "collector_issue": "Initial collector compared directory sets and rejected new pytest cache files; trusted source mutation was not established by that failed assertion."
+    },
+    {
+      "followup": "Two pre-run hash guard attempts stopped before artifact execution while reconciling newly added .dockerignore; no semantic trials ran in those attempts."
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-09-26T21:13:26.358550+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 21,
+            "passed": 21,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790457148557,
+            "stop": 1790457206358
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+                "status": "passed",
+                "duration": 2039,
+                "start": 1790457148623,
+                "stop": 1790457150662,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_atomic_history_and_order_recreation",
+                "status": "passed",
+                "duration": 588,
+                "start": 1790457150663,
+                "stop": 1790457151251,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+                "status": "passed",
+                "duration": 2380,
+                "start": 1790457151251,
+                "stop": 1790457153631,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_rejections_precedence_and_receipts",
+                "status": "passed",
+                "duration": 2430,
+                "start": 1790457153631,
+                "stop": 1790457156061,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_validation_does_not_create_receipts",
+                "status": "passed",
+                "duration": 1962,
+                "start": 1790457156061,
+                "stop": 1790457158023,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_validation_does_not_create_receipts",
+                "status": "passed",
+                "duration": 2191,
+                "start": 1790457158024,
+                "stop": 1790457160215,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+                "status": "passed",
+                "duration": 2002,
+                "start": 1790457160216,
+                "stop": 1790457162218,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_exact_integer_endpoints_and_text",
+                "status": "passed",
+                "duration": 2260,
+                "start": 1790457162219,
+                "stop": 1790457164479,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+                "status": "passed",
+                "duration": 2349,
+                "start": 1790457164480,
+                "stop": 1790457166829,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_identical_request_commits_once",
+                "status": "passed",
+                "duration": 2474,
+                "start": 1790457166829,
+                "stop": 1790457169303,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+                "status": "passed",
+                "duration": 2386,
+                "start": 1790457169303,
+                "stop": 1790457171689,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_concurrent_conflicting_ids_and_stock",
+                "status": "passed",
+                "duration": 2867,
+                "start": 1790457171690,
+                "stop": 1790457174557,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+                "status": "passed",
+                "duration": 2157,
+                "start": 1790457174557,
+                "stop": 1790457176714,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_opposite_line_order_replacements_make_progress",
+                "status": "passed",
+                "duration": 1652,
+                "start": 1790457176715,
+                "stop": 1790457178367,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_http_transport_rejects_invalid_payloads",
+                "status": "passed",
+                "duration": 1177,
+                "start": 1790457178368,
+                "stop": 1790457179545,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_seeded_migration_restart_and_source_retirement",
+                "status": "passed",
+                "duration": 3430,
+                "start": 1790457179545,
+                "stop": 1790457182975,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_live_changes_during_adaptive_backfill",
+                "status": "passed",
+                "duration": 2647,
+                "start": 1790457182976,
+                "stop": 1790457185623,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_killed_migration_and_concurrent_restarts",
+                "status": "passed",
+                "duration": 2798,
+                "start": 1790457185624,
+                "stop": 1790457188422,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_delayed_commit_preserves_order_stock_and_receipt",
+                "status": "passed",
+                "duration": 2430,
+                "start": 1790457188422,
+                "stop": 1790457190852,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_lost_target_commit_acknowledgements",
+                "status": "passed",
+                "duration": 12897,
+                "start": 1790457190852,
+                "stop": 1790457203749,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_delayed_source_connection_across_routing",
+                "status": "passed",
+                "duration": 2609,
+                "start": 1790457203749,
+                "stop": 1790457206358,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}

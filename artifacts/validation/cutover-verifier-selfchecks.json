@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "evidence_type": "local_authoring_verifier_regressions",
+  "scope": "Seven development selfchecks of the trusted controller. Not model trials, submitted-solver success, a cheat pass, or proof of complete security.",
+  "observed_result": {
+    "tests": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "unittest_reported_seconds": 10.513,
+    "exit_code": 0,
+    "test_names": [
+      "test_http_trickle_cannot_extend_total_request_guard",
+      "test_independent_sql_bounds",
+      "test_known_commit_then_retry_is_rejected",
+      "test_partial_committed_response_then_retry_is_accepted",
+      "test_sql_fields_cannot_trigger_untrusted_arithmetic_or_unbounded_rows",
+      "test_type_confusion_cannot_forge_api_or_receipt_equality",
+      "test_unknown_committed_response_then_retry_is_accepted"
+    ]
+  },
+  "execution_context": {
+    "image_tag": "klavis-cutover-verifier:candidate",
+    "image_digest_at_run": null,
+    "network": "none",
+    "cpus": 2,
+    "memory": "4g",
+    "interpreter_command": "python -B; current verifier files copied into /tests before running the selfcheck script"
+  },
+  "provenance": {
+    "kind": "tool_output_observed_in_this_conversation",
+    "exec_session_id": 33240,
+    "initial_output_chunk_id": "098b99",
+    "completion_output_chunk_id": "aae03f",
+    "raw_output_file": null,
+    "raw_output_sha256": null,
+    "note": "The final seven-test output was returned by exec/write_stdin and was not saved as a raw file. No raw-log hash, pre-run source hash, or historical image digest is invented. The source hash below is a current-file hash recorded when this summary was written."
+  },
+  "current_selfcheck_source": {
+    "path": "artifacts/local/cutover-verifier-selfcheck.py",
+    "sha256": "fff58edb5791e68b1aa773d336220d887841ba5bc6538a3aad41898a347fc0ef",
+    "bytes": 6739
+  },
+  "observed_red_then_green": [
+    {
+      "case": "HTTP trickle deadline",
+      "before": "The 0.3-second raw call lasted 1.2815317949998644 seconds and failed the 0.9-second regression ceiling.",
+      "red_tool_chunk_id": "245126",
+      "after": "Passed with total-deadline socket shutdown."
+    },
+    {
+      "case": "Unknown committed response then retry",
+      "before": "Incorrectly rejected because old-model SQL inspection saw the prior unknown committed mutation.",
+      "red_tool_chunk_id": "a43b23",
+      "after": "Passed after tracking unknown outcome; first known commit-then-retry remains rejected."
+    },
+    {
+      "case": "Partial committed HTTP response",
+      "before": "Interrupted body incorrectly classified as a complete invalid JSON response.",
+      "red_tool_chunk_id": "7dd4f0",
+      "after": "Passed after treating an incomplete declared body as unknown outcome."
+    }
+  ],
+  "limits": [
+    "This summary preserves observed tool results; it is not a reconstructed raw log.",
+    "The seven tests exercise particular boundaries and regressions, not all malformed data, network schedules, or isolation attacks.",
+    "Final frozen-task correctness is separately supported by cutover-harbor-controls.json; these development checks are not the 23-case Harbor verifier run."
+  ]
+}

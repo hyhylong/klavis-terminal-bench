@@ -1,8 +1,9 @@
 # 第三版：在线订单服务迁移
 
-目前是本地可运行原型与正在整理的候选任务包，不是已达标的提交。
+目前已有本地可运行、冻结并经过正式控制试验的候选任务包，不是已达标的提交。
 第一版被 Codex 和 DeepSeek 解出，第二版被 Codex 解出，均保留真实成功
-结果。第三版还没有模型试做，不能用开发测试通过来推断模型会失败。
+结果。第三版的 Codex 试做与 35 项 rubric 审查正在运行，结果尚未得出；
+不能用开发测试通过来推断模型会失败。
 
 ## 已有实证
 
@@ -43,16 +44,42 @@
 见[独立审查](research/online-cutover-feasibility-review.md)和
 [合法替代方案证据](../artifacts/validation/cutover-alternative.json)。
 
-## 封装与剩余工作
+## 冻结版本与正式控制
 
-`tasks/online-order-cutover` 正在按独立 verifier 方式封装，只传递
+`tasks/online-order-cutover` 已按独立 verifier 方式封装，只传递
 `/app/orderbridge`。公开合同说明角色权限、输入边界、进展时限和故障
 方式。测试不能强制出现参考实现的阶段；合法实现提前完成或采用不同
 连接策略时，应验证最终结果并如实记录未覆盖的故障窗口。
 
-下一步是完整镜像、参考解/初始代码/合法替代方案控制、安全边界检查、
-同一冻结版本的 Harbor oracle/nop，然后单次 Codex 试做。若再次被正常
-解出，就保存成功证据，停止该候选的完整失败矩阵。
+冻结目录为 `online-order-cutover-20260926T212539311430Z`，Harbor task
+checksum 为 `96461fe05ddf2c6b2aac03e9cbcf440aa94a61e08d90900590b857dc92c5ce3a`。
+参考答案在 Harbor 中 **23/23 通过、reward 1**；初始代码 **9 项通过、14 项
+失败、reward 0**。两者平台预检查均通过，`exception_info` 均为 null。
+
+合法双次复制实现通过完整的打包验收器 **23/23、reward 1**，pytest 用时
+82.59 秒；既有私有测试文件哈希保持不变。覆盖包括源库和目标库下的
+“提交后未读 HTTP 响应即重启”、四个丢 COMMIT 回执窗口，以及跨切换的
+旧连接。该结果是作者控制，不能作为模型难度证据。见[完整替代方案
+证据](../artifacts/validation/cutover-alternative-package.json)。
+
+冻结版本的权限检查通过：应用 UID 不能读取私有预期结果、改写奖励、
+继承可信父进程环境或取得数据库管理员权限。这只是列出的有限探针，
+不是完整安全证明或正式模型对抗试验。另一个一次性容器移除可信模型后，
+预检查退出 70，未产生 reward 或 CTRF，确认环境故障不会伪装成零分。
+见[权限控制](../artifacts/validation/cutover-frozen-guards.json)与
+[环境故障控制](../artifacts/validation/cutover-infrastructure-control.json)。
+
+冻结版本上游静态检查为 **24/25**，唯一失败是缺少真实作者 GitHub 用户名。
+amd64 两个镜像已构建并执行；arm64 资源与构建分支已准备，但其构建被
+Docker Hub 网络路由阻断，尚未执行，不声称已经验证。
+
+普通试做 job 为 `standard-codex-20260926T213203660705Z`，独立 rubric job
+为 `implementation-review-codex-20260926T213043756969Z`。两者检查同一
+冻结候选。rubric 使用 Codex，已记录与上游默认 Claude 审查器的差异；
+其 reward 仅表示输出 verdict 文件，不表示 35 项通过。若普通试做被
+正常解出，就保存成功证据，停止该候选的完整失败矩阵。
+
+## 剩余门槛
 
 真实作者信息、四段人工撰写的 README、25 项静态门槛、35 项 rubric、
 两个模型各三次真正失败、两个有效对抗试验以及最终仓库交付仍未齐备。

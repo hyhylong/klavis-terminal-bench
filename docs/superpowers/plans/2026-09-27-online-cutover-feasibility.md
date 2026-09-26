@@ -80,20 +80,31 @@ new task package, deadline, performance score or claim of model difficulty.
   backfill is blocked; release it and verify final SQL plus API results.
 - [x] Add create/replace/delete/recreate and receipt replay around that schedule.
 - [x] Kill/restart a copying migrator and run two concurrent migration commands.
-- [ ] Design delayed-commit/stale-route barriers from observable SQL behavior;
+- [x] Design delayed-commit/stale-route barriers from observable SQL behavior;
   do not add hidden solution-specific phase assumptions.
-- [ ] Show deliberately invalid implementations fail the intended obligation,
-  including target checkpoint-before-commit and lost low-sequence changes.
+- [x] Show deliberately invalid low-sequence, stale-route and global-pause
+  implementations fail the intended obligation. The exact-ID mutant passes
+  the original three tests but fails the independent delayed-commit model.
+- [x] Inject lost target COMMIT acknowledgements at all four observed reference
+  ordinals and verify fresh-process recovery, new target writes and retirement.
+  A separate checkpoint-before-target-commit mutant was not established; do
+  not claim this ACK schedule covers a rollback before the database commit.
 
 ## Task 6: Decide whether to package
 
-- [ ] Review the complete simplest solution and actual repair/build surface.
-- [ ] Measure correct and naive baseline service interruption across repeated runs.
-- [ ] Reject timing-dependent tests without generous reference margin.
-- [ ] Review trust boundaries with hostile artifacts and independent reviewers.
-- [ ] If the experiment has a substantive, fair challenge, write a separate
+- [x] Review the complete simplest solution and actual repair/build surface.
+- [x] Measure correct and naive baseline service interruption across repeated runs.
+- [x] Reject timing-dependent tests without generous reference margin. The
+  short double-copy alternative passed; accept it rather than tighten limits.
+- [x] Review trust boundaries with hostile artifacts and independent reviewers.
+- [x] If the experiment has a substantive, fair challenge, write a separate
   packaging plan with public examples and precise resources. Otherwise record
   the counter-evidence and reassess the direction before more model runs.
+
+Decision: package the complete target/routing/migration build surface, retaining
+the legal alternative. The 68-check authoring suite passed in 132.638 seconds;
+this shows local feasibility, not model difficulty. Details and outstanding
+packaged controls are in `2026-09-27-online-cutover-packaging.md`.
 
 Verification commands and exact run manifests will be recorded when runtime
 paths are established. Do not report unexecuted tests as passing. Preserve

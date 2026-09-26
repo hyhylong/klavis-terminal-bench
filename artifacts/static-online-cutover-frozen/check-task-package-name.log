@@ -1,0 +1,3 @@
+Checking /mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover/task.toml...
+PASS /mnt/e/JOB/klavis-terminal-bench/artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover
+All task.toml files have the expected [task] name

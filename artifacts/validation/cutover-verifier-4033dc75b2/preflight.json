@@ -1,0 +1,16 @@
+{
+  "purpose": "trusted platform only; submitted artifact not evaluated",
+  "status": "passed",
+  "checks": [
+    "fresh_postgresql",
+    "unprivileged_application",
+    "standard_library_and_psycopg",
+    "protected_tests_read_denied",
+    "reward_write_denied",
+    "restricted_sql_role",
+    "server_file_read_denied",
+    "known_inventory",
+    "read_only_inspection",
+    "commit_ack_proxy"
+  ]
+}

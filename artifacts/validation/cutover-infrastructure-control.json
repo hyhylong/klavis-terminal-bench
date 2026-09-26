@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "recorded_at": "20260926T213046225690Z",
+  "model_trial": false,
+  "purpose": "Trusted-model unavailable infrastructure control in a disposable container copy",
+  "status": "passed",
+  "image": "klavis-cutover-verifier:candidate",
+  "image_id": "sha256:fd42ef01de5b6ab82ac2fcc0ad8edee9087106532686e5b40f3e5ffbdebdb335",
+  "container_name": "klavis-cutover-missing-model-20260926t213046225690z",
+  "mutation": "Renamed /tests/model.py inside this container only",
+  "task_sources_modified": false,
+  "submitted_artifact_executed": false,
+  "verifier_process_exit": 70,
+  "preflight": {
+    "purpose": "trusted platform only; submitted artifact not evaluated",
+    "status": "failed",
+    "error_type": "ModuleNotFoundError"
+  },
+  "reward_file_exists": false,
+  "ctrf_file_exists": false,
+  "evidence_directory": "artifacts/local/cutover-double-copy/infrastructure-20260926T213046225690Z",
+  "build_control_file_sha256": {
+    "environment/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b",
+    "tests/.dockerignore": "92d7055894aa805605cc6b27df3c217c1d7b44ef82081dce96f42506909f2b3b"
+  },
+  "frozen_candidate": "artifacts/local/frozen/online-order-cutover-20260926T212539311430Z/online-order-cutover"
+}

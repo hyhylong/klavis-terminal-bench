@@ -1,0 +1,3 @@
+Checking tasks/online-order-cutover/task.toml...
+PASS tasks/online-order-cutover
+All task.toml files have the expected [task] name

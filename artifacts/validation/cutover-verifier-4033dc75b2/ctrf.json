@@ -1,0 +1,56 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-09-26T21:18:52.902082+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1790457512018,
+            "stop": 1790457532901
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_live_changes_during_adaptive_backfill",
+                "status": "passed",
+                "duration": 2726,
+                "start": 1790457512109,
+                "stop": 1790457514835,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_delayed_commit_preserves_order_stock_and_receipt",
+                "status": "passed",
+                "duration": 2372,
+                "start": 1790457514835,
+                "stop": 1790457517207,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_lost_target_commit_acknowledgements",
+                "status": "passed",
+                "duration": 15694,
+                "start": 1790457517207,
+                "stop": 1790457532901,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}
