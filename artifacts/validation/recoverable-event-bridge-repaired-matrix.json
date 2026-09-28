@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "requirements_status": "not_assessed",
+  "analysis_status": "pending",
+  "source_roots": [
+    "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix",
+    "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z"
+  ],
+  "trials": [
+    {
+      "trial_name": "recoverable-event-bridge__jnMKWVT",
+      "task_name": "terminal-bench/recoverable-event-bridge",
+      "task_checksum": "b2dc1d34aea3d0c8a47240f210cb5232f3c7d7228b35dd9c02bea6f95679ac64",
+      "agent": "terminus-2",
+      "agent_version": "2.0.0",
+      "model": "deepseek-flash",
+      "model_provider": "deepseek",
+      "times": {
+        "started_at": "2026-09-28T06:30:07.357706Z",
+        "finished_at": "2026-09-28T07:30:57.086116Z",
+        "environment_setup": {
+          "started_at": "2026-09-28T06:30:07.399688Z",
+          "finished_at": "2026-09-28T06:30:12.137547Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-28T06:30:12.137575Z",
+          "finished_at": "2026-09-28T06:30:14.261441Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-28T06:30:14.261531Z",
+          "finished_at": "2026-09-28T07:30:08.822260Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-28T07:30:13.674902Z",
+          "finished_at": "2026-09-28T07:30:57.086058Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "zero_reward_requires_trajectory_review",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__jnMKWVT\\trial.log"
+      }
+    },
+    {
+      "trial_name": "recoverable-event-bridge__wbsbsV8",
+      "task_name": "terminal-bench/recoverable-event-bridge",
+      "task_checksum": "b2dc1d34aea3d0c8a47240f210cb5232f3c7d7228b35dd9c02bea6f95679ac64",
+      "agent": "terminus-2",
+      "agent_version": "2.0.0",
+      "model": "deepseek-flash",
+      "model_provider": "deepseek",
+      "times": {
+        "started_at": "2026-09-28T05:44:50.523090Z",
+        "finished_at": "2026-09-28T06:30:07.117441Z",
+        "environment_setup": {
+          "started_at": "2026-09-28T05:44:50.605745Z",
+          "finished_at": "2026-09-28T05:44:55.721139Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-28T05:44:55.721237Z",
+          "finished_at": "2026-09-28T05:44:57.885598Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-28T05:44:57.885813Z",
+          "finished_at": "2026-09-28T06:29:17.129739Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-28T06:29:21.752500Z",
+          "finished_at": "2026-09-28T06:30:07.117416Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "zero_reward_requires_trajectory_review",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852-repaired-matrix\\recoverable-event-bridge__wbsbsV8\\trial.log"
+      }
+    },
+    {
+      "trial_name": "recoverable-event-bridge__3Lgxt6M",
+      "task_name": "terminal-bench/recoverable-event-bridge",
+      "task_checksum": "b2dc1d34aea3d0c8a47240f210cb5232f3c7d7228b35dd9c02bea6f95679ac64",
+      "agent": "terminus-2",
+      "agent_version": "2.0.0",
+      "model": "deepseek-flash",
+      "model_provider": "deepseek",
+      "times": {
+        "started_at": "2026-09-28T05:02:50.382434Z",
+        "finished_at": "2026-09-28T05:40:03.314664Z",
+        "environment_setup": {
+          "started_at": "2026-09-28T05:02:50.451271Z",
+          "finished_at": "2026-09-28T05:03:27.166108Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-28T05:03:27.166144Z",
+          "finished_at": "2026-09-28T05:03:29.349558Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-28T05:03:29.349663Z",
+          "finished_at": "2026-09-28T05:39:13.521641Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-28T05:39:19.949407Z",
+          "finished_at": "2026-09-28T05:40:03.314619Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "zero_reward_requires_trajectory_review",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\standard-deepseek-20260928T044852305249Z\\recoverable-event-bridge__3Lgxt6M\\trial.log"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "task_checksum": "b2dc1d34aea3d0c8a47240f210cb5232f3c7d7228b35dd9c02bea6f95679ac64",
+      "agent": "terminus-2",
+      "model": "deepseek-flash",
+      "classification": "zero_reward_requires_trajectory_review",
+      "count": 3
+    }
+  ],
+  "scan_issues": []
+}

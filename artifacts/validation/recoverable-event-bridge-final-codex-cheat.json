@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "requirements_status": "not_assessed",
+  "analysis_status": "pending",
+  "source_roots": [
+    "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z"
+  ],
+  "trials": [
+    {
+      "trial_name": "recoverable-event-bridge__s49LRDY",
+      "task_name": "terminal-bench/recoverable-event-bridge",
+      "task_checksum": "83b25d3bc0a07cb5088410aff5f1a402986bfd936004e68cd809325853f3dc94",
+      "agent": "codex",
+      "agent_version": "0.157.1",
+      "model": "gpt-6-sol",
+      "model_provider": "openai",
+      "times": {
+        "started_at": "2026-09-28T08:07:22.547003Z",
+        "finished_at": "2026-09-28T08:12:02.783038Z",
+        "environment_setup": {
+          "started_at": "2026-09-28T08:07:22.603565Z",
+          "finished_at": "2026-09-28T08:07:26.412213Z"
+        },
+        "agent_setup": {
+          "started_at": "2026-09-28T08:07:26.412251Z",
+          "finished_at": "2026-09-28T08:07:26.930806Z"
+        },
+        "agent_execution": {
+          "started_at": "2026-09-28T08:07:26.930925Z",
+          "finished_at": "2026-09-28T08:11:14.905201Z"
+        },
+        "verifier": {
+          "started_at": "2026-09-28T08:11:21.215934Z",
+          "finished_at": "2026-09-28T08:12:02.783027Z"
+        }
+      },
+      "reward": 0.0,
+      "classification": "zero_reward_requires_trajectory_review",
+      "exceptions": [],
+      "missing_evidence": [],
+      "analysis_status": "pending",
+      "paths": {
+        "result": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\result.json",
+        "ctrf": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\verifier\\ctrf.json",
+        "reward_text": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\verifier\\reward.txt",
+        "verifier_stdout": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\verifier\\test-stdout.txt",
+        "artifact_manifest": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\artifacts\\manifest.json",
+        "trajectory": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\agent\\trajectory.json",
+        "trial_log": "E:\\JOB\\klavis-terminal-bench\\artifacts\\jobs\\cheat-codex-20260928T080703548218Z\\recoverable-event-bridge__s49LRDY\\trial.log"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "task_checksum": "83b25d3bc0a07cb5088410aff5f1a402986bfd936004e68cd809325853f3dc94",
+      "agent": "codex",
+      "model": "gpt-6-sol",
+      "classification": "zero_reward_requires_trajectory_review",
+      "count": 1
+    }
+  ],
+  "scan_issues": []
+}

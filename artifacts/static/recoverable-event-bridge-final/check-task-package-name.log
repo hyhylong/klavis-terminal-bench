@@ -1,0 +1,3 @@
+Checking tasks/recoverable-event-bridge/task.toml...
+PASS tasks/recoverable-event-bridge
+All task.toml files have the expected [task] name
