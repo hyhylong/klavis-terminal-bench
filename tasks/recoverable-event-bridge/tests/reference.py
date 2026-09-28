@@ -137,6 +137,66 @@ def scan(data: bytes):
     return good, bad
 
 
+def scan_records(data: bytes):
+    """Return the durable wire records in their original scan order.
+
+    This deliberately duplicates the cursor logic instead of inspecting the
+    submitted artifact's journal.  The resulting ``end_offset`` values make
+    the public journal digest independently checkable.
+    """
+    records = []
+    cursor = 0
+    while cursor < len(data):
+        start = cursor
+        if data[start:start + 4] != MAGIC:
+            cursor = data.find(MAGIC, start + 1)
+            if cursor < 0:
+                cursor = len(data)
+            records.append((start, cursor, None, "invalid_magic"))
+            continue
+        if len(data) - start < 8:
+            cursor = data.find(MAGIC, start + 1)
+            if cursor < 0:
+                cursor = len(data)
+            records.append((start, cursor, None, "truncated_frame"))
+            continue
+        size = int.from_bytes(data[start + 4:start + 8], "little")
+        if size == 0 or size > MAX_PAYLOAD:
+            cursor = data.find(MAGIC, start + 4)
+            if cursor < 0:
+                cursor = len(data)
+            records.append((start, cursor, None, "invalid_length"))
+            continue
+        body_start = start + 8
+        body_end = body_start + size
+        end = body_end + 4
+        if end > len(data):
+            cursor = data.find(MAGIC, start + 4)
+            if cursor < 0:
+                cursor = len(data)
+            records.append((start, cursor, None, "truncated_frame"))
+            continue
+        body = data[body_start:body_end]
+        given = int.from_bytes(data[body_end:end], "little")
+        cursor = end
+        if (zlib.crc32(body) & 0xffffffff) != given:
+            records.append((start, end, None, "bad_crc"))
+            continue
+        try:
+            payload = _json(body)
+        except UnicodeDecodeError:
+            records.append((start, end, None, "invalid_utf8"))
+            continue
+        except Exception:
+            records.append((start, end, None, "invalid_json"))
+            continue
+        if not _valid_payload(payload):
+            records.append((start, end, None, "invalid_payload"))
+        else:
+            records.append((start, end, payload, None))
+    return records
+
+
 def replay(data: bytes):
     frames, quarantine = scan(data)
     txs = {}

@@ -397,11 +397,45 @@ def large_case(root: Path):
     write_input(root, bytes(blob), cuts)
 
 
+def sparse_case(root: Path):
+    """Build a sparse corruption prefix to exercise bounded scanner memory.
+
+    The prefix contains no marker, so the independent replay sees one
+    invalid-magic quarantine followed by a valid transaction at the end.  The
+    file is sparse on disk while the verifier exposes its full logical size;
+    implementations that materialize the whole stream exceed the child memory
+    limit, while a bounded scanner reads the prefix in chunks.
+    """
+    root = Path(root)
+    segdir = root / "segments"
+    segdir.mkdir(parents=True, exist_ok=True)
+    prefix_size = 192 * 1024 * 1024
+    item = event("sparse", "sparse-1", 1, {"status": "ready"})
+    suffix = frame(item) + frame(commit("sparse", 1, [item]))
+    segment = segdir / "segment-00.bin"
+    with segment.open("wb") as handle:
+        handle.seek(prefix_size)
+        handle.write(suffix)
+
+    digest = hashlib.sha256()
+    zero_chunk = b"\x00" * (1024 * 1024)
+    for _ in range(prefix_size // len(zero_chunk)):
+        digest.update(zero_chunk)
+    digest.update(suffix)
+    manifest = {"schema_version": 1, "segments": [segment.name],
+                "stream_sha256": digest.hexdigest()}
+    (root / "manifest.json").write_text(
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+
+
 def case_builders():
     return {
         "cutover": cutover_case,
         "empty": empty_case,
         "large": large_case,
         "semantic": semantic_case,
+        "sparse": sparse_case,
         "wire": wire_case,
     }

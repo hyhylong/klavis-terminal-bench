@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import resource
 import shutil
 import signal
 import subprocess
@@ -15,7 +16,7 @@ import tempfile
 
 import pytest
 
-from reference import input_stream, ndjson, replay, scan
+from reference import input_stream, ndjson, replay, scan, scan_records
 from hidden_cases import case_builders
 
 
@@ -24,7 +25,8 @@ ARTIFACT = Path("/app/bridge.py")
 
 
 def _run(output: Path, *extra: str, input_root: Path = INPUT,
-         env_overrides: dict[str, str] | None = None, timeout: int = 30):
+         env_overrides: dict[str, str] | None = None, timeout: int = 30,
+         address_space_mb: int | None = None):
     """Run the submitted artifact in a disposable, unprivileged worker tree."""
     worker_root = Path(tempfile.mkdtemp(prefix="recoverable-bridge-", dir="/tmp"))
     worker_root.chmod(0o755)
@@ -53,6 +55,9 @@ def _run(output: Path, *extra: str, input_root: Path = INPUT,
             env.update(env_overrides)
 
         def drop_privileges():
+            if address_space_mb is not None:
+                limit = address_space_mb * 1024 * 1024
+                resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
             if os.geteuid() == 0:
                 os.setgroups([])
                 os.setgid(65534)
@@ -152,6 +157,7 @@ def _assert_outputs(output: Path, data: bytes, events, quarantine, complete=True
     assert isinstance(checkpoint["journal_sha256"], str)
     assert len(checkpoint["journal_sha256"]) == 64
     assert checkpoint["journal_sha256"] == checkpoint["journal_sha256"].lower()
+    assert checkpoint["journal_sha256"] == _journal_digest(data)
     assert type(checkpoint["offset"]) is int and 0 <= checkpoint["offset"] <= len(data)
     assert type(checkpoint["frames_scanned"]) is int and checkpoint["frames_scanned"] >= 0
     if complete:
@@ -159,6 +165,18 @@ def _assert_outputs(output: Path, data: bytes, events, quarantine, complete=True
         assert checkpoint["offset"] == len(data)
         assert checkpoint["frames_scanned"] == len(valid_frames) + len(wire_quarantine)
     return manifest, checkpoint
+
+
+def _journal_digest(data: bytes) -> str:
+    """Independently calculate the digest required by CONTRACT.md."""
+    state = b""
+    for offset, end_offset, payload, reason in scan_records(data):
+        row = {"offset": offset, "end_offset": end_offset,
+               "payload": payload, "reason": reason}
+        encoded = json.dumps(row, ensure_ascii=False, sort_keys=True,
+                             separators=(",", ":")).encode("utf-8")
+        state = hashlib.sha256(state + b"\n" + encoded).digest()
+    return state.hex() if state else hashlib.sha256(b"").hexdigest()
 
 
 def test_clean_run_matches_independent_replay(tmp_path, expected):
@@ -242,7 +260,8 @@ def test_hidden_fixture_matches_independent_replay(tmp_path, case_name):
     events, quarantine = replay(data)
     output = tmp_path / f"output-{case_name}"
     result = _run(output, input_root=input_root,
-                  timeout=120 if case_name == "large" else 30)
+                  timeout=180 if case_name in {"large", "sparse"} else 30,
+                  address_space_mb=160 if case_name == "sparse" else None)
     assert result.returncode == 0, result.stderr
     _assert_outputs(output, data, events, quarantine)
 

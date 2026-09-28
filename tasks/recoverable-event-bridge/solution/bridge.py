@@ -227,12 +227,22 @@ class StreamReader:
         self.offset += size
 
     def seek_magic(self) -> int:
-        """Discard bytes until the next complete marker or EOF."""
+        """Discard bytes until the next complete marker or EOF.
+
+        Search each bounded buffer in C rather than consuming a corrupt
+        prefix one byte at a time.  Retaining the final three bytes preserves
+        markers that cross a chunk boundary without allowing the scanner to
+        grow with the input.
+        """
         while True:
-            sample = self.peek(4)
-            if sample == MAGIC or not sample:
+            sample = self.peek(CHUNK_SIZE)
+            if not sample:
                 return self.offset
-            self.consume(1)
+            marker = sample.find(MAGIC)
+            if marker >= 0:
+                self.consume(marker)
+                return self.offset
+            self.consume(max(0, len(sample) - len(MAGIC) + 1))
 
     def next_marker_in_buffer(self, start: int) -> int:
         return self._buffer.find(MAGIC, start)

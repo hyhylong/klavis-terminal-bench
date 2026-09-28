@@ -6,7 +6,15 @@ The program is `/app/bridge.py`. It must run with `python /app/bridge.py
 corrupt), it must persist a resumable state and exit with status 75. A normal
 run without that option must resume and finish. The hook is not required for a
 normal run, and a program may finish earlier if its durable result is already
-complete.
+complete. The verifier also uses the documented `BRIDGE_FAILPOINT` environment
+hook for hard-interruption tests. On the first matching boundary, the program
+must exit with a nonzero status and leave its durable files as they are:
+`after_journal` is immediately after the next journal record is committed,
+`after_checkpoint` is immediately after the next checkpoint is atomically
+published, and `after_publish` is immediately after `events.ndjson` is
+atomically published but before the remaining public files are published. The
+hook is for testing restart recovery; a normal invocation must ignore it when
+the variable is unset.
 
 The input directory contains `manifest.json` and a `segments/` directory. The
 manifest has exactly `{"schema_version":1,"segments":[...],"stream_sha256":"..."}`.
@@ -95,11 +103,16 @@ and contain the fields defined above. Use sorted keys and compact JSON for every
 output object. `checkpoint.json` must have exactly `schema_version`, `offset`,
 `frames_scanned`, `source_sha256`, `journal_sha256`, and `complete`.
 `source_sha256` is the manifest stream digest. `journal_sha256` is a lowercase
-SHA-256 digest of the canonical durable scan record sequence; it detects a torn
-or stale private journal without prescribing its storage format. A complete run
-has the concatenated byte length, the number of scanned frames, and
-`complete: true`. A stopped run has `complete: false` and a checkpoint offset
-that permits a later run to finish.
+SHA-256 digest of the canonical durable scan record sequence. In scan order,
+each record is the compact UTF-8 JSON object
+`{"end_offset":<int>,"offset":<int>,"payload":<object-or-null>,"reason":<string-or-null>}`
+with sorted keys. Start with an empty byte string and set
+`state = SHA256(state + b"\\n" + record_json)` for each record; the lowercase
+hex digest is the final state, or `SHA256(b"").hexdigest()` for an empty
+sequence. This detects a torn or stale private journal without prescribing its
+storage format. A complete run has the concatenated byte length, the number of
+scanned frames, and `complete: true`. A stopped run has `complete: false` and a
+checkpoint offset that permits a later run to finish.
 
 The output manifest has exactly `schema_version`, `accepted_count`,
 `quarantine_count`, `events_sha256`, `quarantine_sha256`, and `complete`.
@@ -111,8 +124,11 @@ The verifier may remove temporary files, run the stop hook, hard-interrupt the
 process at a journal, checkpoint, or publication boundary, restart the program,
 and run it repeatedly. Temporary files and internal state are not part of the
 required public output. The verifier compares the complete output to an
-independent replay model; it does not require a particular database schema or
-checkpoint layout, only the observable digest and recovery contract above.
+independent replay model, independently recomputes `journal_sha256`, and runs
+a sparse 192 MiB corruption-prefix case with a 160 MiB address-space limit on
+the submitted child. These checks enforce bounded scanning and restart
+behavior without requiring a particular database schema or checkpoint layout;
+only the observable digest and recovery contract above are fixed.
 
 Public smoke command:
 
