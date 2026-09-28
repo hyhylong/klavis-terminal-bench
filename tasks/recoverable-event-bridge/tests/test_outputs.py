@@ -70,7 +70,10 @@ def _run(output: Path, *extra: str, input_root: Path = INPUT):
             try:
                 returncode = process.wait(timeout=30)
             except subprocess.TimeoutExpired:
-                os.killpg(process.pid, signal.SIGKILL)
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
                 returncode = process.wait()
 
             stdout_file.seek(0)
