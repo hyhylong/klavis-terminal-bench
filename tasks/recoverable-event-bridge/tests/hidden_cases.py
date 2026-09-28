@@ -140,6 +140,7 @@ def wire_case(root: Path):
     good1 = event("wire1", "wire-1", 1, {"text": "EVB1 inside a corrupt payload"})
     good2 = event("wire2", "wire-2", 1, {"text": "after invalid json"}, stream="customers")
     good3 = event("wire3", "wire-3", 1, {"text": "after invalid utf8"}, stream="payments")
+    good4 = event("wire4", "wire-4", 1, {"text": "after truncated frame"}, stream="shipments")
     payload_bad_crc = canonical(event("corrupt", "corrupt-1", 1, {"text": "EVB1"}))
     invalid_json = b"{\"kind\":\"event\",\"txn\":"
     invalid_utf8 = b"{\"kind\":\"event\",\xff"
@@ -147,7 +148,9 @@ def wire_case(root: Path):
     length_bad = MAGIC + struct.pack("<I", 0xffffffff) + b"junk"
     partial_magic = b"E"
     empty_txn = event("", "empty-txn-1", 1, {"text": "empty identifier"}, stream="empty")
-    truncated = MAGIC + struct.pack("<I", 12) + b"short"
+    # Declared body is longer than the remaining suffix, so the scanner must
+    # classify this as truncation and then recover at the following marker.
+    truncated = MAGIC + struct.pack("<I", 1000) + b"short"
     records = (
         b"noise-before-first-frame" + frame(good1, crc=False)
         + invalid_raw(invalid_json) + frame(good2)
@@ -159,7 +162,10 @@ def wire_case(root: Path):
         + partial_magic
         + frame(empty_txn)
         + frame(commit("", 4, [empty_txn]))
-        + truncated
+        # The truncated body is followed by a complete frame.  A scanner that
+        # stops at EOF-shaped corruption loses the valid suffix.
+        + truncated + frame(good4)
+        + frame(commit("wire4", 5, [good4]))
     )
     # Cuts intentionally split magic, length, CRC, and a UTF-8 payload.
     write_input(root, records, [1, 6, 19, 73, 141, 219, 307, 421, len(records)])
@@ -344,10 +350,58 @@ def cutover_case(root: Path):
     write_input(root, blob, cuts)
 
 
+def large_case(root: Path):
+    """Build a deterministic multi-segment stream large enough to expose buffering.
+
+    The records remain ordinary public protocol frames.  Each transaction uses a
+    unique sequence number so the independent replay can validate the entire
+    stream while the wire noise, duplicate deliveries, commit-before-event
+    ordering, and a separate cutover exercise the same recovery semantics as
+    the small fixtures.
+    """
+    records = [cutover("bulk-handoff", 1, "acme", "archive", 0, 2)]
+    archive = event("bulk-archive", "bulk-archive-3", 3,
+                    {"status": "ready"}, stream="archive")
+    records.extend([archive, commit("bulk-archive", 2, [archive])])
+    for index in range(14_000):
+        txn = f"bulk-{index:05d}"
+        item = event(
+            txn,
+            f"bulk-event-{index:05d}",
+            index + 1,
+            {"status": "accepted", "payload": f"{index:05d}-" + ("x" * 430)},
+        )
+        operation = commit(txn, index + 10, [item])
+        if index % 4 == 0:
+            records.extend([operation, item])
+        else:
+            records.extend([item, operation])
+        if index % 11 == 0:
+            records.append(item)
+        if index % 257 == 0:
+            corrupt = bytearray(frame(event(
+                f"corrupt-{index:05d}", f"corrupt-event-{index:05d}", 1,
+                {"payload": "discard"}, stream="corrupt",
+            )))
+            corrupt[-1] ^= 0x01
+            records.append(bytes(corrupt))
+        if index % 509 == 0:
+            records.append(b"noise-between-frames")
+
+    blob = bytearray()
+    for value in records:
+        blob.extend(value if isinstance(value, bytes) else frame(value))
+    segment_count = 32
+    cuts = [len(blob) * index // segment_count for index in range(1, segment_count)]
+    cuts.append(len(blob))
+    write_input(root, bytes(blob), cuts)
+
+
 def case_builders():
     return {
         "cutover": cutover_case,
         "empty": empty_case,
+        "large": large_case,
         "semantic": semantic_case,
         "wire": wire_case,
     }

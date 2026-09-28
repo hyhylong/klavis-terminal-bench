@@ -11,7 +11,11 @@ complete.
 The input directory contains `manifest.json` and a `segments/` directory. The
 manifest has exactly `{"schema_version":1,"segments":[...],"stream_sha256":"..."}`.
 Concatenate the named segment files in listed order. Their bytes are one stream;
-do not treat a segment boundary as a frame boundary. Input is read-only.
+do not treat a segment boundary as a frame boundary. Input is read-only. The
+stream is intentionally large and split across many files. Process it in
+bounded chunks rather than loading the complete concatenated stream into
+memory. A restart may begin at the durable checkpoint offset and must retain
+the records already acknowledged by that checkpoint.
 
 ## Frames
 
@@ -42,9 +46,10 @@ invalid UTF-8, invalid JSON, or invalid magic is quarantined. A truncated
 header/body is reported as `truncated_frame`; an invalid declared length is
 reported as `invalid_length`. On a bad CRC or invalid payload, resume scanning
 at the next byte after the frame's magic/declared body; otherwise scan forward
-to the next occurrence of `EVB1`. The quarantine offset is the absolute byte
-offset in the concatenated stream. A corrupt frame must not hide a later valid
-frame.
+to the next occurrence of `EVB1`. If a truncated frame is followed by a later
+marker, continue from that marker so corruption cannot hide a valid suffix. The
+quarantine offset is the absolute byte offset in the concatenated stream. A
+corrupt frame must not hide a later valid frame.
 
 ## Transaction and sequence semantics
 
@@ -87,10 +92,14 @@ represented by a zero-byte NDJSON file. Events are canonical JSON
 objects sorted by `(tenant, stream, seq, event_id)` and contain exactly the input
 event fields plus `commit_no`. Quarantine objects are sorted by `(offset,reason)`
 and contain the fields defined above. Use sorted keys and compact JSON for every
-output object. `checkpoint.json` must have `schema_version`, `offset`,
-`frames_scanned`, and `complete`; a complete run has the concatenated byte
-length, the number of scanned frames, and `complete: true`. A stopped run has
-`complete: false` and a checkpoint offset that permits a later run to finish.
+output object. `checkpoint.json` must have exactly `schema_version`, `offset`,
+`frames_scanned`, `source_sha256`, `journal_sha256`, and `complete`.
+`source_sha256` is the manifest stream digest. `journal_sha256` is a lowercase
+SHA-256 digest of the canonical durable scan record sequence; it detects a torn
+or stale private journal without prescribing its storage format. A complete run
+has the concatenated byte length, the number of scanned frames, and
+`complete: true`. A stopped run has `complete: false` and a checkpoint offset
+that permits a later run to finish.
 
 The output manifest has exactly `schema_version`, `accepted_count`,
 `quarantine_count`, `events_sha256`, `quarantine_sha256`, and `complete`.
@@ -98,11 +107,12 @@ The two digests are SHA-256 of the exact UTF-8 bytes of their corresponding
 NDJSON files. A successful run is idempotent: running it again in the same
 output directory leaves the same bytes and counts.
 
-The verifier may remove temporary files, run the stop hook, restart the program,
+The verifier may remove temporary files, run the stop hook, hard-interrupt the
+process at a journal, checkpoint, or publication boundary, restart the program,
 and run it repeatedly. Temporary files and internal state are not part of the
 required public output. The verifier compares the complete output to an
-independent replay model; it does not require a particular implementation or
-checkpoint layout.
+independent replay model; it does not require a particular database schema or
+checkpoint layout, only the observable digest and recovery contract above.
 
 Public smoke command:
 

@@ -90,7 +90,13 @@ def scan(data: bytes):
             continue
         if len(data) - start < 8:
             bad.append({"offset": start, "reason": "truncated_frame"})
-            break
+            # A truncated header cannot tell us its declared body length.  A
+            # later EVB1 marker is therefore the only recoverable boundary;
+            # keep scanning so corruption does not hide a valid suffix.
+            cursor = data.find(MAGIC, start + 1)
+            if cursor < 0:
+                cursor = len(data)
+            continue
         size = int.from_bytes(data[start + 4:start + 8], "little")
         if size == 0 or size > MAX_PAYLOAD:
             bad.append({"offset": start, "reason": "invalid_length"})
@@ -103,7 +109,10 @@ def scan(data: bytes):
         end = body_end + 4
         if end > len(data):
             bad.append({"offset": start, "reason": "truncated_frame"})
-            break
+            cursor = data.find(MAGIC, start + 4)
+            if cursor < 0:
+                cursor = len(data)
+            continue
         body = data[body_start:body_end]
         given = int.from_bytes(data[body_end:end], "little")
         if (zlib.crc32(body) & 0xffffffff) != given:
