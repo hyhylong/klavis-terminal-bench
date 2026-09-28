@@ -6,8 +6,8 @@ artifacts = ["/app/bridge.py"]
 name = "terminal-bench/recoverable-event-bridge"
 
 [metadata]
-author_name = ""
-author_email = ""
+author_name = "longhangyu"
+author_email = "q32854978lhy@gmail.com"
 author_github = "longhangyu"
 category = "Software"
 subcategory = "Data engineering"
@@ -27,7 +27,6 @@ cpus = 2
 memory_mb = 4096
 storage_mb = 10240
 gpus = 0
-network_mode = "public"
 
 [verifier.environment]
 cpus = 2

@@ -82,7 +82,8 @@ Wire-level quarantine records use `invalid_magic`, `invalid_length`,
 ## Output and persistence
 
 Create `/app/output/events.ndjson`, `quarantine.ndjson`, `checkpoint.json`, and
-`manifest.json`. Each NDJSON file ends with `\n`; events are canonical JSON
+`manifest.json`. Each non-empty NDJSON file ends with `\n`; an empty result is
+represented by a zero-byte NDJSON file. Events are canonical JSON
 objects sorted by `(tenant, stream, seq, event_id)` and contain exactly the input
 event fields plus `commit_no`. Quarantine objects are sorted by `(offset,reason)`
 and contain the fields defined above. Use sorted keys and compact JSON for every
@@ -95,8 +96,7 @@ The output manifest has exactly `schema_version`, `accepted_count`,
 `quarantine_count`, `events_sha256`, `quarantine_sha256`, and `complete`.
 The two digests are SHA-256 of the exact UTF-8 bytes of their corresponding
 NDJSON files. A successful run is idempotent: running it again in the same
-output directory leaves the same bytes and counts. Use atomic replacement for
-checkpoint/manifest and do not trust caller-supplied summaries.
+output directory leaves the same bytes and counts.
 
 The verifier may remove temporary files, run the stop hook, restart the program,
 and run it repeatedly. Temporary files and internal state are not part of the
