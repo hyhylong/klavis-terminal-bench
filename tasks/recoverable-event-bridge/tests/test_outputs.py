@@ -226,7 +226,10 @@ def _assert_failpoint_boundary(output: Path, data: bytes, failpoint: str) -> Non
         assert events.is_file()
         assert not quarantine.exists()
         assert not manifest.exists()
-        assert not checkpoint.exists()
+        if checkpoint.exists():
+            value = json.loads(checkpoint.read_text(encoding="utf-8"))
+            assert value["complete"] is False and value["offset"] > 0
+            assert value["journal_sha256"] == _prefix_journal_digest(data, value["offset"])
 
 
 def test_clean_run_matches_independent_replay(tmp_path, expected):
