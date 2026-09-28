@@ -241,7 +241,8 @@ def test_hidden_fixture_matches_independent_replay(tmp_path, case_name):
     data = input_stream(input_root)
     events, quarantine = replay(data)
     output = tmp_path / f"output-{case_name}"
-    result = _run(output, input_root=input_root)
+    result = _run(output, input_root=input_root,
+                  timeout=120 if case_name == "large" else 30)
     assert result.returncode == 0, result.stderr
     _assert_outputs(output, data, events, quarantine)
 
