@@ -201,9 +201,9 @@ def _prefix_journal_digest(data: bytes, offset: int) -> str:
 
 def _assert_failpoint_boundary(output: Path, data: bytes, failpoint: str) -> None:
     """Check that the named durable boundary, rather than an early exit, ran."""
-    state = output / ".bridge-state"
-    assert state.is_dir()
-    assert any(path.is_file() for path in state.rglob("*"))
+    public_names = {"events.ndjson", "quarantine.ndjson", "checkpoint.json", "manifest.json"}
+    private_paths = [path for path in output.iterdir() if path.name not in public_names]
+    assert private_paths, "interruption did not leave private durable state"
     checkpoint = output / "checkpoint.json"
     events = output / "events.ndjson"
     quarantine = output / "quarantine.ndjson"
