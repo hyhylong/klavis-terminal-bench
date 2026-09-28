@@ -58,6 +58,17 @@ and keeps `/logs/verifier` mode 0700. Root derives the binary reward only from
 the child exit status; pytest writes the per-test CTRF report and the startup
 failure path writes a valid fallback CTRF document.
 
+The sparse memory check is calibrated on the same Ubuntu/Python runtime used by
+the verifier. The reference bounded scanner passed with address-space limits of
+96, 128, and 160 MiB, leaving room for different bounded-buffer and journal
+implementations below the 160 MiB ceiling. A control that materializes the
+192 MiB sparse segment with `Path.read_bytes()` raised `MemoryError` at both
+160 and 192 MiB and succeeded only at 256 MiB. The limit therefore rejects
+whole-stream materialization while leaving the algorithm's bounded memory
+strategy unconstrained; it is not an implementation-specific peak-memory
+assertion. The exact one-newline canonical JSON rule for `checkpoint.json` and
+`manifest.json` is defined in the contract and checked byte-for-byte.
+
 ## Relevant experience
 
 I built and calibrated this task as part of the Terminal-Bench assignment,

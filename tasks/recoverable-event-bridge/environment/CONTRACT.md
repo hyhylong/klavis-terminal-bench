@@ -120,6 +120,11 @@ The two digests are SHA-256 of the exact UTF-8 bytes of their corresponding
 NDJSON files. A successful run is idempotent: running it again in the same
 output directory leaves the same bytes and counts.
 
+`checkpoint.json` and `manifest.json` are each encoded as one compact,
+sorted-key JSON object followed by exactly one UTF-8 newline byte. That
+terminator is part of the required file bytes; it is separate from the
+newline rule for the NDJSON files above.
+
 The verifier may remove temporary files, run the stop hook, hard-interrupt the
 process at a journal, checkpoint, or publication boundary, restart the program,
 and run it repeatedly. Temporary files and internal state are not part of the
