@@ -107,7 +107,7 @@ SHA-256 digest of the canonical durable scan record sequence. In scan order,
 each record is the compact UTF-8 JSON object
 `{"end_offset":<int>,"offset":<int>,"payload":<object-or-null>,"reason":<string-or-null>}`
 with sorted keys. Start with an empty byte string and set
-`state = SHA256(state + b"\n" + record_json)` for each record; the lowercase
+`state = SHA256(state + b"\\n" + record_json)` for each record; the lowercase
 hex digest is the final state, or `SHA256(b"").hexdigest()` for an empty
 sequence. This detects a torn or stale private journal without prescribing its
 storage format. A complete run has the concatenated byte length, the number of
