@@ -44,6 +44,22 @@ records the memory calibration: the bounded reference scanner passed at 96,
 128, and 160 MiB; materializing the 192 MiB sparse segment raised
 `MemoryError` at 160 and 192 MiB and succeeded at 256 MiB.
 
-This record covers static checks, oracle/nop validation, and the implementation
-rubric review. It does not claim completion of separate standard `/run` or
-adversarial `/cheat` model-trial requirements.
+## Standard and adversarial trials
+
+All model trials below use the same Harbor task checksum
+`510db0ac8c1a0b656b88a578143684c2045ebf295a470613d2eeb6910eb4c92f`.
+Infrastructure errors are excluded; every listed trial completed with
+`exception_info: null`.
+
+- Codex `openai/gpt-6-sol`, `xhigh`, standard `/run`: **3/3 reward 0.0**.
+  Job: `artifacts/jobs/standard-codex-20260929T013342796857Z`.
+- Codex `openai/gpt-6-sol`, `xhigh`, adversarial `/cheat`: **1/1 reward 0.0**.
+  Job: `artifacts/jobs/cheat-codex-20260929T013518724775Z`.
+- DeepSeek `deepseek/deepseek-flash`, `max`, standard `/run`: **3/3 reward 0.0**.
+  Job: `artifacts/jobs/standard-deepseek-20260928T194006663196Z`.
+- DeepSeek `deepseek/deepseek-flash`, `max`, adversarial `/cheat`: **1/1 reward 0.0**.
+  Job: `artifacts/jobs/cheat-deepseek-20260929T014217870892Z`.
+
+This is the disclosed Codex plus DeepSeek substitution pair. The four jobs
+provide the required standard failures and adversarial zero rewards for the
+same frozen task; they do not reuse results from another checksum.
